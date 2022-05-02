@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .dropdown {
+            /* border: 1px dashed; */
+            position: relative;
+            /* 필요한 공간만 차지하게한다 */
+            display: inline-block;
+        }
+        .dropdown-content {
+            position: absolute;
+            /* top: 0; right: 0; */
+            border: 1px solid #ddd;
+            /* 안보이게 만든다 */
+            display: none;
+            width: 150px;
+        }
+        .dropdown-content a {
+            padding: 10px;
+            /* 공간을 다차지 */
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        /* parent와child 관계일때 사용가능 */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropbtn {
+            padding: 16px;
+            border: none;
+            background-color: dodgerblue;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+    <div class="dropdown">
+        <button class="dropbtn">Drop Down</button>
+        <div class="dropdown-content">
+            <a href="">Menu 1</a>
+            <a href="">Menu 2</a>
+            <a href="">Menu 3</a>
+        </div>
+    </div>
+</body>
+</html>

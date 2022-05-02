@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/767f5ec4ff.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            min-height: 1000px;
+        }
+        .fixed-top {
+            /* border: 1px dashed; */
+            position: fixed;
+            top :0;
+            left: 0;
+            margin: 0 15px;
+            width: 100%;
+        }
+        input {
+            width: 50%;
+            padding: 10px 55px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            outline: none;
+            position: relative;
+            
+        }
+        .fa-solid {
+            /* relative parent의 대해 absolute 값을 갖는다 */
+            position: absolute;
+        }
+
+        .side-bar {
+            /* border: 1px dashed; */
+            max-width: 200px;
+            min-height: 1000px;
+            position: fixed;
+            top :40px;
+            left: 0;
+            overflow: scroll;
+            background-color: #fff;
+        }
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        .fa-bars {
+            top : 10px;
+            right : 0;
+            
+        }
+        .fa-youtube {
+            top : 10px;
+            left :10%;
+            color : red
+            
+        }
+        .fa-magnifying-glass{
+            top: 10px;
+            right: 38%;
+        }
+        .fa-microphone{
+            top: 10px;
+            right: 35%;
+        }
+        .fa-keyboard {
+            top:10px;
+            right: 45%;   
+        }
+        .fa-ellipsis-vertical {
+            top:10px;
+            right: 10%;
+        }
+        button[type=login]{
+            position: absolute;
+            top:5px;
+            right:2%;
+        }
+    </style>
+    <div class="fixed-top">
+        <div class="navi-bar">
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <a href="">YouTube</a>
+            <input type="text" placeholder="검색">
+            <i class="fa-solid fa-keyboard"></i>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-microphone"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <button type=login>로그인</button>
+        </div>
+        <div class="side-bar">
+            <ul>
+                <li><a href="">홈</a></li>
+                <li><a href="">탐색</a></li>
+                <li><a href="">Shorts</a></li>
+                <li><a href="">구독</a></li>
+                <hr>
+                <li><a href="">보관함</a></li>
+                <li><a href="">시청기록</a></li>
+                <hr>
+                <p>로그인하면 동영상에 좋아요를 표시하고 댓글을 달거나 구독할 수 있습니다.</p>
+                <button>로그인
+                </button>
+                <hr>
+                <p>인기 YOUTUBE</p>
+                <li><a href="">음악</a></li>
+                <li><a href="">스포츠</a></li>
+                <li><a href="">게임</a></li>
+                <li><a href="">음식</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

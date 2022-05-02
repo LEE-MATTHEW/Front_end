@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>css flow</h1> 
+    <hr>
+    <h1>Media rule</h1>
+    <p>Responsive Web(반응형)</p>
+
+    <style>
+        p {
+            border: 1px dashed;
+        }
+        /* min-width 는 숫자가 점점 커지게 만들어야함 */
+        /* 600px미만은 검정색, 600px 이상 800px 미만은 초록, 800px 이상은 파란색 */
+        @media (min-width: 600px) {
+            .min-width {
+                color: green;
+            }
+        }
+        @media (min-width: 800px) {
+            .min-width {
+                color: blue;
+            }
+        }
+        
+        /* max-width 는 숫자가 점점 작아지게 만들어야함 */
+        /* min-width 와는 반대 */
+        @media (max-width: 1000px) {
+            .max-width {
+                color: red;
+            }
+        }
+        @media (max-width: 600px) {
+            .max-width {
+                color: pink;
+            }
+        }
+    </style>
+
+    <p class="min-width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, dignissimos. Adipisci doloribus quod rerum! Quidem repudiandae, numquam quasi, excepturi exercitationem nobis ipsam laborum perspiciatis placeat doloremque dolor praesentium facere assumenda?</p>
+    <p class="max-width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, dignissimos. Adipisci doloribus quod rerum! Quidem repudiandae, numquam quasi, excepturi exercitationem nobis ipsam laborum perspiciatis placeat doloremque dolor praesentium facere assumenda?</p>
+</body>
+</html>

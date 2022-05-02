@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- 
+    DOM 
+    DOM tree
+    document object model == html 
+    
+    DOM tree level
+    -->
+
+<body>
+    <!-- 컨텐츠의 머리부분 -->
+    <header>
+        <!-- heading, 제목에 사용된다. h1 - h5 글자크기가 점점작아지며, 기본 bald처리-->
+        <h1>현대자동차 공식홈페이지</h1>
+    </header>
+    <nav>
+        <h2>메뉴</h2>
+        <a href="">모델소개</a>
+        <a href="">모델 비교표</a>
+        <a href="">오시는 길</a>
+        <a href="">연락하기</a>
+    </nav>
+    
+    <!-- horizontal rule(border) (수평줄) -->
+    <hr>
+    
+    <!-- 메인 컨텐츠 -->
+    <main>
+        <iframe width="1180" height="664" src="https://www.youtube.com/embed/B6hFFF6AnXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- 모델소개 -->
+        <section>
+            <h2>모델소개</h2>
+            <ul>
+                <!-- li : list item -->
+                <li>
+                    <h3>투싼</h3>
+                    <!-- 상대경로 : 현재파일을 기준으로
+                         절대경로 : root부터(윈도우의 경우 C드라이브부터) -->
+                    <img src="../img/car.jfif" alt="투싼" width="300"> <!-- alt : 이미지를 잘못가져왔을경우 이미지의 설명-->
+                    <!-- b : bold -->
+                    <!-- br(breaking rule) : 줄바꿈, 계속 추가 가능-->
+                    <p><b>Lorem</b> ipsum dolor sit amet consectetur adipisicing elit.
+                        <br> Beatae ipsum animi perspiciatis corrupti quisquam expedita, soluta eaque debitis sunt doloremque saepe, rem distinctio iusto fuga nisi, corporis cumque odit quibusdam.
+                    </p>
+                </li>
+                <li>
+                    <h3>싼타페</h3>
+                    <!-- 상대경로 : 현재파일을 기준으로
+                         절대경로 : root부터(윈도우의 경우 C드라이브부터) -->
+                    <img src="../img/다운로드.jfif" alt="싼타페" width="300"> <!-- alt : 이미지를 잘못가져왔을경우 이미지의 설명-->
+                    <p>
+                        <span style="color:red"> Lorem</span> ipsum dolor sit amet consectetur adipisicing elit.
+                        <br> Beatae ipsum animi perspiciatis corrupti quisquam expedita, soluta eaque debitis sunt doloremque saepe, rem distinctio iusto fuga nisi, corporis cumque odit quibusdam.
+                    </p>
+                </li>
+                <li>
+                    <h3>제네시스</h3>
+                    <!-- 상대경로 : 현재파일을 기준으로
+                         절대경로 : root부터(윈도우의 경우 C드라이브부터) -->
+                    <img src="../img/gv80.jfif" alt="제네시스" width="300"> <!-- alt : 이미지를 잘못가져왔을경우 이미지의 설명-->
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        <br> Beatae ipsum animi perspiciatis corrupti quisquam expedita, soluta eaque debitis sunt doloremque saepe, rem distinctio iusto fuga nisi, corporis cumque odit quibusdam.</p>
+                </li>
+            </ul>
+        </section>
+        <hr>
+        <!-- 모델비교표 -->
+        <section>
+            <h2>모델 비교표</h2>
+            <table border="5" >
+                <!-- table row(행) -->
+                <tr>
+                    <!-- table head -->
+                    <th>이름</th>
+                    <th>컬러</th>
+                    <th>연비</th>
+                    <th>가격</th>
+                </tr>
+                <tr>
+                    <!-- table data -->
+                    <td>투싼</td>
+                    <td>블랙, 화이트, 그레이</td>
+                    <td>15km/1L</td>
+                    <td>3000만원</td>
+                </tr>
+                <tr>
+                    <td>싼타페</td>
+                    <td>블랙, 화이트, 그레이</td>
+                    <td>14km/1L</td>
+                    <td>3800만원</td>
+                </tr>
+                <tr>
+                    <td>GV80</td>
+                    <td>블랙, 화이트, 그레이</td>
+                    <td>17km/1L</td>
+                    <td>8000만원</td>
+                </tr>
+            </table>
+        </section>
+        <hr>
+        <!-- 오시는길 -->
+        <section>
+            <h2>오시는 길</h2>
+            <!-- iframe :html 안에 다른 html을 추가할 때 사용 -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101271.61902932209!2d126.8073842664344!3d37.51409487205037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7d0c6d136969%3A0x65ce7af493ae07af!2z7L2U66as7JWESVTslYTsubTrjbDrr7gg7J247LKc7KeA7KCQ!5e0!3m2!1sko!2skr!4v1650683231653!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+        <hr>
+        <!-- 연락하기 -->
+        <section>
+            <h2>연락하기</h2>
+            <form action="">
+                <div class="form-group">
+                    <!-- label : input에 대한 설명 -->
+                    <label for="">성 함</label>
+                    <!-- input : 유저로부터 데이터를 받는다 -->
+                    <input type="text" placeholder="이름">
+                </div>
+                <div class="form-group">
+                    <label for="">연락처</label>
+                    <input type="text" placeholder="전화번호">
+                </div>
+                <div class="form-group">
+                    <!-- 많은 텍스트 데이터를 받는다 -->
+                    <!-- placeholder : 어떤 내용을 써야되는지에 대한 설명(글자쓰면 없어짐) -->
+                    <textarea name="" id="" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox">
+                    <!-- 글자크기가 기본적인 글자(16px)보다 더 작다 (약 13px)-->
+                    <small><a href="">개인정보 처리방침</a>에 동의합니다</small>
+                </div>
+                <div class="form-group">
+                    <button>보내기</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        <small>
+            2022 현대자동차
+        </small>
+    </footer>
+
+</body>
+</html>

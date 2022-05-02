@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        /* Universal selector */
+        *{
+            box-sizing: border-box;
+        }
+        .line{
+            border: 1px solid #ddd;
+        }
+        form{
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        /* .class */
+        .form-group {
+            /* border: 1px dashed; */
+            margin: 25px 0;
+        }
+        label {
+            font-weight: bold;
+        }
+        /* element */
+        input[type=text], input[type=password] {
+            padding: 12px 20px;
+            width: 100%;
+            background-color: lightgray;
+            border: none;
+        }
+        button[type=cancel] {
+            width: 100%;
+            padding: 14px 20px;
+            /* button은 border-box가 기본값!! */
+            background-color: red;
+            /* text color */
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button[type=submit] {
+            width: 100%;
+            padding: 14px 20px;
+            /* Hex color */
+            /* #rrggbb */
+            background-color: green;
+            /* text color */
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+    </style>
+    <form action="">
+        <h1>Sign Up</h1>
+        <h5>Please fill in this form to creat an account.</h5>
+
+        <hr class="line">
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" placeholder="Enter password">
+        </div>
+        <div class="form-group">
+            <label for="">Repeat Password</label>
+            <input type="password" placeholder="Enter repeat password">
+        </div>
+        <div class="form-group">
+            <input type="checkbox" name="" id="">
+            <label for="">Remember me</label>
+        </div>
+        <div class="form-group">
+            <small>*By creating an account you agree to our <a href="link">Terms & Privacy</small>.</a>
+        </div>
+        <div class="button">
+            <button type="cancel">Cancel</button>
+            <button type="submit">Sign Up</button>
+        </div>
+        
+    </form>
+</body>
+</html>

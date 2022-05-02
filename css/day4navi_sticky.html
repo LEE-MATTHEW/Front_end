@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            min-height: 1000px;
+        }
+        /* display : flex */
+        .nav-bar {
+            display: flex;
+            /* border: 1px dashed; */
+            background-color: #222;
+        }
+        /* flex item */
+        .nav-bar a {
+            padding : 10px;
+            /* border: 1px dashed; */
+            color : #fff
+        }
+        .sticky {
+            /* sticky : static 와 fixed를 합해놓은 것 */
+            position: sticky;
+            top:0;
+            left:0;
+        }
+    </style>
+    <div class="header">
+        <h1>Header</h1>
+    </div>
+    <div class="sticky">
+        <div class="nav-bar">
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Blog</a>
+            <a href="">contact</a>
+    </div>
+    </div>
+</body>
+</html>

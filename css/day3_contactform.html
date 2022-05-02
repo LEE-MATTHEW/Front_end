@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        form {
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        .form-group {
+            /* border: 1px dashed; */
+            margin: 10px 0;
+        }
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            /* 모서리 둥글게 처리 */
+            border-radius: 5px;
+        }
+        input[type=text]:focus, textarea:focus {
+            /* border 밖의 선*/
+            outline: 2px solid rgb(37, 87, 194);
+            /* border: 4px solid dodgerblue; */
+        }
+        button {
+            padding: 10px;
+            background-color: green;
+            color: #ddd;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <form action="">
+        <h1>Contact Form</h1>
+        <div class="form-group">
+            <label for="">이름</label>
+            <!-- name은 html 상에서는 보이지 않지만 서버에 제출할 경우 필요하다 -->
+            <input type="text" name="username">
+        </div>
+        <div class="form-group">
+            <label for="">연락처</label>
+            <input type="text" name="phone">
+        </div>
+        <div class="form-group">
+            <label for="">지역</label>
+            <!-- 선택창 만들기 -->
+            <select name="city" id="">
+                <option value="seoul">서울</option>
+                <option value="incheon">인천</option>
+                <option value="gyeonggi">경기</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">메세지</label>
+            <textarea name="messge" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">보내기</button>
+        </div>
+    </form>
+</body>
+</html>

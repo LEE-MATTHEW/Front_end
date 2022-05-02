@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>css flow</h1> 
+    <hr>
+    
+    <h1>background</h1>
+    <p>background-color, background-img</p>
+
+    <style>
+        .bg-black {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+
+    <div class="bg-black">Dark Mode</div>
+
+    <style>
+        .bg-img {
+            border: 1px dashed;
+            width: 200px;
+            height: 200px;
+            /* 상대경로 */
+            /* 현재 파일을 기준으로 */
+            background-image: url(../img/gv80.jfif);
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+
+    <div class="bg-img"></div>
+
+</body>
+</html>

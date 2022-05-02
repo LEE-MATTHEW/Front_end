@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/767f5ec4ff.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            /* border: 1px solid red; */
+        }
+        table {
+            border: 1px dashed;
+            width: 100%;
+            /* table의 기본 border를 제거 */
+            border-collapse:collapse;
+        }
+        th,td {
+            padding: 16px;
+            text-align: left;
+        }
+        /* : Pseudo class(가짜 클래스) */
+        /* 기본 클래스에 효과를 줄 떄 사용한다. */
+        /* even : 짝수, odd : 홀수 */
+        tr:nth-child(even) {
+            background-color: #ddd;
+        }
+    </style>
+    <h1>자동차 비교표</h1>
+    <table>
+        <!-- 4행 3열 -->
+        <tr>
+            <th>브랜드</th>
+            <th>모델</th>
+            <th>가격</th>
+        </tr>
+        <tr>
+            <td>현대</td>
+            <td>제네시스</td>
+            <td>1300원</td>
+        </tr>
+        <tr>
+            <td>기아</td>
+            <td>K9</td>
+            <td>1000원</td>
+        </tr>
+        <tr>
+            <td>현대</td>
+            <td>그렌져</td>
+            <td>800원</td>
+        </tr>
+    </table>
+</body>
+</html>

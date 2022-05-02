@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>css flow</h1> 
+    <hr>
+
+    <h1>width, height, min-height, min-width, max-height, max-width</h1>
+    <style>
+        p {
+            border: 1px dashed;
+            /* 컨텐츠에 필요한 만큼의 너비, 기본값 */
+            width: auto;
+            /* 컨텐츠에 필요한 만큼의 높이, 기본값 */
+            height: auto;
+        }
+        .fixed {
+            width: 200px;
+            height: 200px;
+        }
+        .max-width {
+            max-width: 600px;
+        }
+        .min-height {
+            min-height: 100px;
+        }
+        .width {
+            width: 600px;
+        }
+        .height {
+            height: 100px;
+        }
+    </style>
+    <!-- max-width 와 min-height은 반응형(ex>유튜브)에 쓰임 width와 height는 고정형(ex>네이버, 구글)이며 많은 데이터를 취급하는 곳에 쓰임 (많은 정보를 반응형으로 만들기엔 어려움) -->
+    <!-- <p class="fixed">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio tenetur facere vitae vero at officia quasi suscipit consequatur laboriosam. Reiciendis enim nobis totam? Rem at commodi atque nam voluptatem optio.</p>
+    <p class="max-width">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio tenetur facere vitae vero at officia quasi suscipit consequatur laboriosam. Reiciendis enim nobis totam? Rem at commodi atque nam voluptatem optio.</p>
+    <p class="min-height">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio tenetur facere vitae vero at officia quasi suscipit consequatur laboriosam. Reiciendis enim nobis totam? Rem at commodi atque nam voluptatem optio.</p> -->
+    <p class="width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus in atque numquam molestiae. Deserunt nesciunt nihil, id voluptas odio, quod accusamus aliquam, dolore ea dolorem est perspiciatis minus quae.</p>
+    <p class="height">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus in atque numquam molestiae. Deserunt nesciunt nihil, id voluptas odio, quod accusamus aliquam, dolore ea dolorem est perspiciatis minus quae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus in atque numquam molestiae. Deserunt nesciunt nihil, id voluptas odio, quod accusamus aliquam, dolore ea dolorem est perspiciatis minus quae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis minus in atque numquam molestiae. Deserunt nesciunt nihil, id voluptas odio, quod accusamus aliquam, dolore ea dolorem est perspiciatis minus quae.</p>
+
+</body>
+</html>

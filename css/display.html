@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>css flow</h1> 
+    <hr>
+    <h1>Display</h1>
+
+    <style>
+
+        hr {
+            margin: 0;
+        }
+        p, span, button {
+            border : 1px dashed;
+            padding: 10px;
+            margin: 10px;
+        }
+        /* span {
+            display: inline-block;
+        } */
+    </style>
+
+    <!-- display : block parent element(DOM Tree상 바로위의 element)의 넓이를 다 차지한다. -->
+    <!-- ex) div, p, header,nav, section, form, footer, ... -->
+    <p>block</p>
+    <p>block</p>
+
+    <hr>
+    <!-- dispaly : inline 필요한 만큼(안의 컨텐츠)만 넓이를 차지한다 -->
+    <!-- 상하의 패딩과 마진이 무시된다 -->
+    <!-- ex) a, span, img, ... -->
+    <span>inline</span>
+    <span>inline</span>
+
+    <hr>
+    <!-- dispaly : inline-block 필요한 만큼(안의 컨텐츠)만 넓이를 차지한다 -->
+    <!-- ex) button, input, ... -->
+    <button>inline-block</button>
+    <button>inline-block</button>
+</body>
+</html>

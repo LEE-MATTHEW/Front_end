@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1>css flow</h1> 
+    <hr>
+   
+   
+   <style>
+        /* class */
+        .container {
+            background-color: rgb(152, 170, 251);
+        }
+        /* id */
+        #title {
+            font-weight: normal;
+        }
+        /* element */   
+        p {
+            font-style: italic;
+        }
+        /* children */
+        p .bold {
+            font-weight: bold;
+        }
+        .border {
+            border: 3px solid black;
+        }
+        .bg-black {
+            background-color: #555;
+            color: wheat;
+        }
+   </style>
+
+   <div class="container">
+       <h2 id="title">현대자동차</h2>
+       <p>현대자동차 2022년  <span class="bold">신제품</span></p>
+       <ul class="border bg-black">    <!--  띄어쓰기가 안되어서 -으로 띄어쓰기 표시  -->
+           <li>제네시스</li>
+           <li>스타리아</li>
+           <li>캐스퍼</li>
+       </ul>
+   </div>
+</body>
+</html>

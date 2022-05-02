@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            min-height: 1000px;
+        }
+        .fixed-top {
+            /* view port(디바이스의 화면) 기준으로 위치한다 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* border: 2px solid red; */
+        }
+        .nav-bar{
+            border: 1px dashed;
+            display: flex;
+            flex-direction: column;
+            background-color: #222;
+        }
+        .nav-bar a {
+            /* parent 가 display:flex가 되면 child는 flex-item이 된다 */
+            /* border: 1px dashed; */
+            padding: 10px;
+            color: #fff;
+            /* underline 제거 */
+            text-decoration: none;
+            text-align: center;
+        }
+        .nav-bar a:hover {
+            background-color: #333;
+        }
+        @media (min-width:500px) {
+            .nav-bar {
+                flex-direction: row;
+            }
+        }
+    </style>
+    <div class="fixed-top">
+    <div class="nav-bar">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Blog</a>
+        <a href="">contact</a>
+    </div>
+    </div>
+</body>
+</html>

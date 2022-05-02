@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fontawesome.com에 로그인하여 다양한 아이콘들을 쓸수 있게 하는 장치 -->
+    <script src="https://kit.fontawesome.com/767f5ec4ff.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        table {
+            border: 1px solid #ddd;
+            width: 100%;
+            border-collapse: collapse;
+
+        }
+        tr:nth-child(even) {
+            background-color: #ddd;
+        }
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+        /* 원하는 행을 선택하여 변경 */
+        td:first-child, th:first-child {
+            text-align: left;
+        }
+        .fa-check {
+            color: green;
+            font-weight: bolder;
+        }
+        .fa-xmark {
+            color: red;
+            font-weight: bolder;
+        }
+    </style>
+
+    <h1>Comparison Table</h1>
+    <table>
+        <tr>
+            <th>Features</th>
+            <th>Basic</th>
+            <th>Pro</th>
+        </tr>
+        <tr>
+            <td>Sample text</td>
+            <td><i class="fa-solid fa-xmark"></i></td>
+            <td><i class="fa-solid fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Sample text</td>
+            <td><i class="fa-solid fa-check"></i></td>
+            <td><i class="fa-solid fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Sample text</td>
+            <td><i class="fa-solid fa-check"></i></td>
+            <td><i class="fa-solid fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Sample text</td>
+            <td><i class="fa-solid fa-xmark"></i></td>
+            <td><i class="fa-solid fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Sample text</td>
+            <td><i class="fa-solid fa-check"></i></td>
+            <td><i class="fa-solid fa-check"></i></td>
+        </tr>
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>css flow</h1> 
+    <hr>
+    
+    <h1> CSS color</h1>
+    <p>Name, RGB, RGBA, HEX</p>
+
+    <style>
+        /* Name */
+        .red {
+            color: red;
+        }
+        /* RGB(red, green, blue) */
+        /* 0-225 까지의 값이 존재 */
+        .green {
+            color: rgb(60, 179, 113);
+        }
+        /* RGBA(red, green, blue, opacity(투명도)) */
+        /* 0-225까지 같지만, opacity만 0(완전투명) - 1(완전불투명)까지(소수점으로 기입가능) */
+        .opacity {
+            color: rgba(60, 179, 113, 0.5);
+        }
+        /* Hexabecimal (16진수) */
+        /* 0-9, a-f */
+        /* rrggbb */
+        .blue {
+            /* color: #0000ff; */
+            /* 세개가 같으면 3자리로 줄이는게 가능 */
+            color: #00f;
+        }
+    </style>
+
+    <ul>
+        <li class="red">Red</li>
+        <li class="green">Green</li>
+        <li class="opacity">Opacity</li>
+        <li class="blue">Blue</li>
+
+    </ul>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        /* display : flex */
+        .nav-bar {
+            /* border: 1px dashed; */
+            display: flex;
+            background-color: black;
+            
+        }
+        a {
+            text-decoration: none;
+            
+        }
+        /* flex item */
+        .navi-item {
+            /* border: 1px dashed; */
+            padding: 10px;
+            color: #ddd;
+        }
+        .dropdown {
+            border: 1px dashed;
+
+        }
+        .dropbtn {
+            border: none;
+            background-color: black;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            border: 1px solid #ddd;
+            position: absolute;
+            display: none;
+            width: 150px;
+            background-color: #fff;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+
+        }
+        
+    </style>
+    <div class="nav-bar">
+        <a class="navi-item" href="">Home</a>
+        <a class="navi-item" href="">About</a>
+        <a class="navi-item" href="">Blog</a>
+        <div class="dropdown">
+            <button class="dropbtn navi-item">Dropdown</button>
+            <div class="dropdown-content">
+                <a href="">Menu 1</a>
+                <a href="">Menu 2</a>
+                <a href="">Menu 3</a>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <h1>Content</h1>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis perferendis, beatae repudiandae nam recusandae, placeat explicabo dolor deserunt rerum ipsam dolorem repellendus hic reiciendis optio error laboriosam tempora! Ratione, officiis?</p>
+</body>
+</html>

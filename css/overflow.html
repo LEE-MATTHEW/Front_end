@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>css flow</h1> 
+    <hr>
+    <h1>Overflow</h1>
+    <p>컨텐츠가 element의 크기를 넘었을때</p>
+    <p>visible, auto, scroll, hidden, ...</p>
+
+    <style>
+        p {
+            border: 1px dashed;
+            width: 200px;
+            height: 100px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .auto {
+            /* 오버플로우 되는 부분만 스크롤바 생성 */
+            overflow: auto;
+        }
+        .scroll {
+            /* x,y 축 스크롤바 생성 */
+            overflow: scroll;
+        }
+        .hidden {
+            /* 오버플로우 된 부분을 숨김 */
+            overflow: hidden;
+        }
+        .visible {
+            /* 오버플로우 된것을 그냥 보여줌(기본값) */
+            overflow: visible;
+        }
+    </style>
+
+    <p class="auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla corporis iusto provident velit maxime porro, quibusdam accusantium labore consequatur similique! Molestiae omnis veritatis reiciendis sint, magnam obcaecati doloribus perspiciatis commodi?</p>
+    <p class="scroll">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla corporis iusto provident velit maxime porro, quibusdam accusantium labore consequatur similique! Molestiae omnis veritatis reiciendis sint, magnam obcaecati doloribus perspiciatis commodi?</p>
+    <p class="hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla corporis iusto provident velit maxime porro, quibusdam accusantium labore consequatur similique! Molestiae omnis veritatis reiciendis sint, magnam obcaecati doloribus perspiciatis commodi?</p>
+    <p class="visible">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla corporis iusto provident velit maxime porro, quibusdam accusantium labore consequatur similique! Molestiae omnis veritatis reiciendis sint, magnam obcaecati doloribus perspiciatis commodi?</p>
+</body>
+</html>

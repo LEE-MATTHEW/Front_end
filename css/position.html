@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>css flow</h1> 
+    <hr>
+    <h1>Position</h1>
+    <p>element를 어떻게 위치시킬 것인가</p>
+    <p>static, relative, absolute, fixed</p>
+
+    <style>
+        body {
+            border: 1px solid pink;
+            min-height: 1000px;
+        }
+        div {
+            border: 1px dashed;
+            width: 100px;
+            height: 100px;
+        }
+        .static {
+            /* 기본값, 자연스러운 흐름 */
+            position: static;
+        }
+        .fixed {
+            /* viewport(디바이스의 화면)에 상대적이다 */
+            /* 지정한 위치에 고정되어 있음(스크롤바를 움직여도 고정) */
+            position: fixed;
+            top: 0; right: 0;
+        }
+        .relative {
+            /* 원래 자신의 위치를 기준으로 포지션을 가짐 */
+            /* 주로 혼자 쓰이기보단 absolute의 parent(기준)로 많이 사용됨 */
+            position: relative;
+            left: 10px;
+            top: 10px;
+        }
+        .absolute {
+            /* relative parent(기준) 에 대해 절대값을 갖는다 */
+            position: absolute;
+            background-color: red;
+            right: 10px;
+            bottom: 10px;
+        }
+    </style>
+
+    <div class="container">
+        <div class="static">static</div>
+        <div class="fixed">fixed</div>
+        <div class="relative">
+            <span class="absolute">absolute</span>
+        </div>
+    </div>
+</body>
+</html>

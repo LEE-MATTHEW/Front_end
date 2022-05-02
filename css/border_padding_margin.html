@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>css flow</h1> 
+    <hr>
+    <h1>border padding margin</h1>
+
+    <style>
+        .btn {
+            /* element 내부의 공간 */
+            /* padding: 10px; (상하좌우 다 10px)*/
+            /* top bottom / left right */
+            /* padding: 10px 15px; */
+            /* top right bottom */
+            /* padding: 10px 15px 10px; */
+            padding-top: 10px;
+            padding-right: 15px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+
+            /* 여백 */
+            margin: 7px; 
+            /* 마진도 패딩과 같이 줄수 있음 */
+        }
+
+    </style>
+
+    <h1>저장하시겠습니까?</h1>
+    <div class="btn-group">
+        <button class = "btn">저장</button>
+        <button class = "btn">취소</button>
+    </div>
+</body>
+</html>

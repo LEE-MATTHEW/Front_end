@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>css flow</h1> 
+    <hr>
+    <h1>Transfer</h1>
+    <p>element의 변형</p>
+    <p>none, translate, scale, rotate, skew</p>
+
+    <style>
+        div {
+            border: 1px dashed;
+            width: 100px;
+            height: 100px;
+            /* 기본값 */
+            transform: none;
+        }
+        .translate {
+            /* 원래 자신의 위치를 기준으로 움직인다 */
+            /* translate: (top/bottom, left/right); */
+            /* 양수나 음수로 입력이 가능 */
+            transform: translate(25px, 50px);
+        }
+        .rotate {
+            /* rotate(degree) 회전 */
+            /* 양수 : 시계방향, 음수 : 반시계방향 */
+            transform: rotate(20deg);
+        }
+        .scale {
+            /* scale(width, height) 크기변환 */
+            /* 애니메이션등에서 사용 조그만게 커지거나 하는 동작 */
+            transform: scale(0.5,0.5);
+        }
+        .skew {
+            /* skew(degree, degree)비스듬하게 */
+            /* 거의 잘 사용되지는 않음 */
+            transform: skew(10deg, 5deg);
+        }
+    </style>
+    <div class="translate"></div>
+    <div class="rotate"></div>
+    <div class="scale"></div>
+    <div class="skew"></div>
+</body>
+</html>
