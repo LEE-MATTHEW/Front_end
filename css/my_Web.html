@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/767f5ec4ff.js" crossorigin="anonymous"></script>
+    <title>My Web</title>
+</head>
+<body>
+    <style>
+        body {
+            min-height: 2000px;
+        }
+        .fixed-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: 0 15px;
+            width: 100%;
+        }
+        .dropdown {
+            /* border: 1px dashed; */
+            position: relative;
+            display: inline-block;
+        }
+        .all-menu-content {
+            position: absolute;
+            border: 1px solid #ddd;
+            display: none;
+            width: 150px;
+        }
+        .all-menu-content a {
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
+        .all-menu-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .all-menu-content {
+            display: block;
+        }
+        .all-menu {
+            cursor: pointer;
+        }
+        .btn {
+            background-color: transparent;
+            border: none;
+            font-style: bold;
+            font-size: 17px;
+            padding: 10px 20px;
+            margin: 0 120px;
+            text-align: center;
+            
+        }
+        @media (min-width:500px) {
+            .nav-bar {
+                flex-direction: column;
+            }
+        }
+        .main {
+            text-align: center;
+            font-weight: 900;
+            font-style: oblique;
+        }
+    </style>
+    
+    <div class="fixed-top">
+        <h1 class="main">별별잡화</h1>
+    <hr>
+        <div class="dropdown">
+            <button class="btn all-menu">전체메뉴</button>
+            <div class="all-menu-content">
+                <a href="">생활용품</a>
+                <a href="">주방용품</a>
+                <a href="">가구</a>
+                <a href="">인테리어</a>
+            </div>
+        </div>
+        <button class="btn life">생활용품</button>
+        <button class="btn kitchen">주방용품</button>
+        <button class="btn furniture">가구</button>
+        <button class="btn interior">인테리어</button>
+    </div>
+</body>
+</html>
