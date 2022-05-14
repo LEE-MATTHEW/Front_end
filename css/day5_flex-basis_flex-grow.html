@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>flex-basis, flex-grow</h1>
+    
+    <style>
+        .flex{
+            display: flex;
+            background-color: #ddd;
+        }
+        .item {
+            border: 1px dashed;
+            flex-basis:200px;
+            /* flex-grow의 기본값은 0 */
+            /* 기본은 basis에서 설정한 값이지만 flex를 꽉채움 */
+            flex-grow: 1;
+        }
+        .flex-grow{
+            background-color: orange;
+            /*  */
+            flex-grow: 2;
+        }
+    </style>
+
+    <div class="flex">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <hr>
+
+    <div class="flex">
+        <div class="item">1</div>
+        <div class="item flex-grow">2</div>
+        <div class="item">3</div>
+    </div>
+</body>
+</html>

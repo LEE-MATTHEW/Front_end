@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .flex{
+            display: flex;
+            background-color: #ddd;
+        }
+        /* wrap은 창 크기가 줄어들면 밑으로 내려감 */
+        /* 반응형에는 wrap을 이용해 자동정렬이 되게끔 한다 */
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+        /* nowrap는 기본값으로 창이줄어들면 크기가 줄어듬 */
+        .flex-nowrap {
+            flex: nowrap;       
+        }
+        .item {
+            border: 1px dashed;
+            width : 200px;
+            height: 200px;
+        }
+    </style>
+    <h1>flex-wrap</h1>
+    <!-- 알아서 크기가 줄어들어 반응형에 좋다 -->
+    <div class="flex flex-nowrap">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <hr>
+
+    <div class="flex flex-wrap">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+</body>
+</html>

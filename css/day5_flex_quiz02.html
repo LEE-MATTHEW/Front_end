@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .header1 {
+            border: 1px yellow;
+            background-color: yellow;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header2 {
+            border: 1px solid aqua;
+            background-color: aqua;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .nav {
+            display: flex;
+            background-color: black;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-style: bold;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1000px;
+        }
+        .fake-image {
+            width: auto;
+            height: 100px;
+            background-color: #ddd;
+        }
+        .footer {
+            background-color: #ddd;
+            text-align: center;
+        }
+        @media (min-width:500px){
+            .nav {
+                flex-direction: column;
+            }
+            .aside {
+                width: 100%;
+            }
+            .main {
+                width: 100%;
+            }
+        }
+        @media (min-width:801px) {
+            .nav {
+                flex-direction: row;
+            }
+            .aside{
+                
+                width: 25%;
+            }
+            .main {
+               
+                width: 75%;
+            }
+        }
+    </style>
+
+    <div class="header1">
+        <small>Lorem ipsum dolor sit amet consectetur adipisicing elit.</small>
+    </div>
+    <div class="header2">
+        <h1>My Website</h1>
+        <h5>with a flexible layout.</h5>
+    </div>
+    <div class="nav">
+        <a href="">link</a>
+        <a href="">link</a>
+        <a href="">link</a>
+        <a href="">link</a>
+    </div>
+    <div class="row">
+    
+        <div class="aside">
+            <h2>About Me</h2>
+            <h5>Photo of me:</h5>
+            <div class="fake-image">image</div>
+            <h5>some text about me</h5>
+            <h3>More text</h3>
+            <h5>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h5>
+            <div class="fake-image">image</div>
+            <br>
+            <div class="fake-image">image</div>
+            <br>
+            <div class="fake-image">image</div>
+        </div>
+        <div class="main">
+            <h2>Title Heading</h2>
+            <h5>Title discription, Dec 7, 2017</h5>
+            <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem accusantium natus placeat quae numquam officia? Maxime debitis impedit officiis praesentium quo et consequuntur enim, dolorem velit cupiditate aut vero laboriosam.</h5>
+            <img src="../img/car.jfif" alt="" width="300px">
+            <h5>some text</h5>
+            <br>
+            <h2>Title Heading</h2>
+            <h5>Title discription, Dec 7, 2017</h5>
+            <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem accusantium natus placeat quae numquam officia? Maxime debitis impedit officiis praesentium quo et consequuntur enim, dolorem velit cupiditate aut vero laboriosam.</h5>
+            <img src="../img/car.jfif" alt="" width="300px">
+            <h5>some text</h5>
+        </div>
+    </div>
+    <div class="footer">
+        <small>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </small>
+    </div>
+
+</body>
+</html>

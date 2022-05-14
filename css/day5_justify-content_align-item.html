@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <style>
+        .flex {
+            display: flex;
+            background-color: #ddd;
+            width: 300px;
+            height: 300px;
+            /* 기본값 */
+            왼쪽 끝 정렬
+            /* justify-content: flex-start;
+            align-items: stretch; */
+            /* 좌우정렬 : 가운데*/
+            justify-content: center;
+            /* 상하정렬 : 가운데*/
+            align-items: center;
+        }
+        .item {
+            width: 100px;
+            height: 100px;
+            border: 1px dashed;
+        }
+    </style>
+    <h1>justify-content_align-item</h1>
+
+    <div class="flex">
+        <div class="item">1</div>
+    </div> -->
+
+    <style>
+        .flex{
+            display: flex;
+            background-color: #ddd;
+            width: 300px;
+            height: 300px;
+            /* item사이에 같은 여백이 생김 */
+            justify-content: space-between;
+            /* 상하정렬 : 끝에정렬 */
+            align-items: flex-end;
+        }
+        .item{
+            border: 1px dashed;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+    <div class="flex">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+</body>
+</html>

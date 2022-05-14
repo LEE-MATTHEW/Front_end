@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Flex image</h1>
+    <style>
+        img {
+            width: 100%;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #ddd;
+        }
+        .item{
+            border: 1px dashed;
+            flex-basis: 100%;
+            box-sizing: border-box;
+        }
+        @media (min-width: 501px)  {
+            .item {
+                flex-basis: 50%;
+            }    
+        }
+        @media (min-width: 701px)  {
+            .item {
+                flex-basis: 25%;
+            }    
+        }
+    </style>
+    <div class="container">
+        <div class="item">
+            <img src="../img/assisi-city-gb1ec39327_1920.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="../img/butterfly-gb23ed3592_1920.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="../img/flowers-gd0b8cbfdf_1920.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="../img/field-g98a72c508_1920.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="../img/kiteboarding-g0fcebd400_1920.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="../img/tourist-ga818e5f94_1920.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="../img/nature-gf5fee42bd_1920.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="../img/river-gea25d4de8_1920.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

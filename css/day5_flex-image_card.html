@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        img {
+            width: 100%;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            background-color: #ddd;
+        
+        }
+        .card {
+            border: 1px dashed;
+            /* flex: number (flex-grow) */
+            flex: 1 ;
+            
+        }
+        @media (min-width : 501px) {
+            .container {
+                flex-direction: row;
+            }
+        }
+    </style>
+    <div class="container">
+        <div class="card">
+            <img src="../img/assisi-city-gb1ec39327_1920.jpg" alt="">
+            <h3>name</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit provident vitae praesentium animi distinctio ut, libero mollitia minima similique veniam rem iste unde harum saepe impedit dolorum debitis. Quasi, voluptatum?</p>
+        </div>
+        <div class="card">
+            <img src="../img/tourist-ga818e5f94_1920.jpg" alt="">
+            <h3>name</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit provident vitae praesentium animi distinctio ut, libero mollitia minima similique veniam rem iste unde harum saepe impedit dolorum debitis. Quasi, voluptatum?</p>
+        </div>
+        <div class="card">
+            <img src="../img/butterfly-gb23ed3592_1920.jpg" alt="">
+            <h3>name</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit provident vitae praesentium animi distinctio ut, libero mollitia minima similique veniam rem iste unde harum saepe impedit dolorum debitis. Quasi, voluptatum?</p>
+        </div>
+    </div>
+</body>
+</html>

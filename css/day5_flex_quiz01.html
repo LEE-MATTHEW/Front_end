@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .header {
+            background-color: blueviolet;
+        }
+    
+        .row {
+            display: flex;
+            /* 넓이 값이 적용될 수 있게 한다 */
+            flex-wrap: wrap;
+            /* 한없이 늘어나는 것을 막아줌 */
+            max-width: 800px;
+            margin: auto;
+        }
+    
+        .nav, .main, .aside {
+            width: 100%;
+        }
+    
+        .footer {
+            background-color: #333;
+            color: #fff;
+        }
+    
+        /* 각각의 크기에 따라 화면의 반응성 */
+        @media (min-width : 501px) {
+            .nav {
+                width: 25%;
+            }
+    
+            .main {
+                width: 75%;
+            }
+        }
+    
+        @media (min-width : 701px) {
+            .nav {
+                width: 25%;
+            }
+    
+            .main {
+                width: 50%;
+            }
+    
+            .aside {
+                width: 25%;
+            }
+        }
+    </style>
+    <div class="header">
+        <h1>Chania</h1>
+    </div>
+    <div class="row">
+        <div class="nav">
+            <ul>
+                <li><a href="">The Flight</a></li>
+                <li><a href="">The City</a></li>
+                <li><a href="">The Island</a></li>
+                <li><a href="">The Food</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <h3>The City</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus provident sequi laboriosam eveniet
+                officia optio! Enim obcaecati quisquam vitae error illum modi incidunt ratione doloremque, fugit accusantium
+                aut eveniet quasi!
+            </p>
+        </div>
+        <div class="aside">
+            <div class="">
+                <b>What?</b>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            </div>
+            <div class="">
+                <b>Where?</b>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            </div>
+            <div class="">
+                <b>How?</b>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            </div>
+    
+        </div>
+    </div>
+    <hr>
+    <div class="footer">
+        <small>footer</small>
+    </div>
+</body>
+</html>
