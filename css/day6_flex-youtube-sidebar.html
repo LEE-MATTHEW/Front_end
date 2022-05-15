@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/767f5ec4ff.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            min-height: 1000px;
+        }
+        .sidebar {
+            /* border: 1px dashed; */
+            /* color: #fff; */
+            /* background-color: #333; */
+            position: fixed;
+            top:0;
+            left:0;
+            width: 72px;
+            height: 100%;
+        }
+        .menu-item {
+            /* border: 1px dashed; */
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .icon {
+            display: flex;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .description {
+            display: flex;
+            justify-content: center;
+            
+        }
+    </style>
+    <div class="sidebar">
+        <div class="menu-item">
+            <a href="" class="icon">
+                <i class="fa-solid fa-house"></i>
+            </a>
+            <small class="description">홈</small>
+        </div>
+        <div class="menu-item">
+            <div class="icon">
+                <i class="fa-solid fa-compass"></i>
+            </div>
+            <div class="description">
+                <small>탐색</small>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="icon">
+                <i class="fa-solid fa-clapperboard"></i>
+            </div>
+            <div class="description">
+                <small>구독</small>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="icon">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <div class="description">
+                <small>시청기록</small>
+            </div> 
+        </div>    
+    </div>
+
+    
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/767f5ec4ff.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 1000px;
+        }
+        .fixed-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .container {
+            background-color: #fff;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        /* .은 클래스를 끌어올때, #은 id를 끌어다 쓸때 사용 */
+        /* class와 id를 같이 사용함으로써 좀더 세분화하고 다양하게 쓸수 있음 */
+        /* ex> #id.class 이런식으로 사용가능 */
+        #start, #center, #end {
+            /* border: 1px dashed; */
+            display: flex;
+            
+        }
+        #start {
+            min-width: 200px;
+            align-items: center;
+        }
+        .bars {
+            display: flex;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            /* border: 1px dashed; */
+        }
+        .logo {
+            display: flex;
+            height: 30px;
+            align-items: center;
+            align-self: center;
+            justify-content: center;
+            font-weight: bolder;
+        }
+        #center {
+            width: 600px;
+            height: 40px;
+            justify-content: flex-end;
+        }
+        form {
+            position: relative;
+        }
+        .search-form {
+            display: none;
+            width: 100%;
+        }
+        .search-form input {
+            width: 100%;
+            padding: 10px;
+            outline: none;
+        }
+        .fa-keyboard {
+            position: absolute;
+            right: 60px;
+            top: 7px;
+        }
+        .microphone {
+            display: flex;
+            min-width: 50px;
+            align-items: center;
+            justify-content: center;
+        }
+        .search-form button {
+            display: flex;
+            /* width를 하면 창을 줄일때 같이 줄어드나 min-width를 하면 줄어들지 않음  */
+            min-width: 50px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .mobile-search {
+            display: flex;
+            min-width: 50px;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px dashed; */
+        }
+        .country-code {
+            align-self: flex-start;
+            font-size: xx-small;
+            font-weight: 100;
+        }
+        .fa-brands, .fa-solid {
+            font-size: 25px;
+        }
+        .fa-brands {
+            color: red;
+        }
+        #end {
+            min-width: 200px;
+        }
+        .button {
+            display: flex;
+            width: 50px;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px dashed; */
+        }
+        @media(min-width:650px) {
+            .search-form {
+                display: flex;
+            }
+            .mobile-search {
+                display: none;
+            }
+        }
+    </style>
+    <div class="wrap fixed-top">
+        <div class="container">
+            <div id="start">
+                <div class="bars">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="logo">
+                    <i class="fa-brands fa-youtube"></i>
+                    <!-- &nbsp; 띄어쓰기 -->
+                    <span> &nbsp; YouTube</span>
+                    <small class="country-code">KR</small>
+                </div>
+            </div>
+            <div id="center">
+                <form action="" class="search-form">
+                    <input type="text">
+                    <i class="fa-solid fa-keyboard"></i>
+                    <button>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div class="mobile-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="microphone">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+            </div>
+            <div id="end">
+                <div class="button">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+                <div class="button">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <div class="button">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+                <div class="button">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
