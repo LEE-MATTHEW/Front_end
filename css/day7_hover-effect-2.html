@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hover effect on Image</h1>
+    <style>
+        .thumbnail {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .overlay{
+            position: absolute;
+            /* 현재 CSS에 opacity를 할경우 글씨까지 투명해지기 때문에 background를 통해 투명도를 준다. */
+            background-color: rgba(0, 0,0,0.5);
+            width: 100%;
+            height: 100%;
+            color: #fff;
+        }
+        .overlay .text {
+            position: inherit;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            /* 마진의 여백으로 인해 가운데가 안맞기때문에 마진을 0으로 만든다  */
+            margin: 0;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <div class="thumbnail image-layer">
+        <div class="overlay">
+            <div class="text">
+                <h1>Heading</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit enim, reiciendis quaerat qui quos sequi
+                    praesentium dicta ex. Officiis maiores modi voluptates deleniti ratione perferendis blanditiis sint
+                    magnam nam quas.</p>
+            </div>
+        </div>
+        <img src="../img/field-g98a72c508_1920.jpg" alt="">
+    </div>
+
+</body>
+</html>

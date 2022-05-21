@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hover effect on Image</h1>
+    <style>
+        .container {
+            display: flex;
+        }
+        .thumbnail {
+            width: 200px;
+            height: 200px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* scalable image */
+        .scalable {
+            /* 이미지가 커지며 container 밖으로 벗어나는 부분을 감춰준다 */
+            overflow: hidden;
+        }
+        .scalable img {
+            /* 이미지 변화를 매끄럽게 변환한다 */
+            transition: 0.5s;
+        }
+        /* 커서를 가져다 놓을때 이미지 크기의 변화  */
+        .scalable:hover img {
+            /* scale(width, height) */
+            /* 원래 이미지에 비례해 입력한 값(소수점입력)만큼 커진다 */
+            transform: scale(1.1, 1.1);
+        }
+        
+        /* Overlay on image */
+        .image-layer {
+            position: relative;
+        }
+        .image-layer:hover .overlay {
+            opacity: 1;
+        }
+        .overlay{
+            position: absolute;
+            background-image: url(../img/kiteboarding-g0fcebd400_1920.jpg);
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: 0.5s;
+        }
+    </style>
+
+    <div class="container">
+        <div class="thumbnail scalable">
+            <img src="../img/seagull-g935d15513_1920.jpg" alt="">
+        </div>
+        <div class="thumbnail image-layer">
+            <div class="overlay"></div>
+            <img src="../img/field-g98a72c508_1920.jpg" alt="">
+        </div>
+    </div>
+
+
+</body>
+</html>

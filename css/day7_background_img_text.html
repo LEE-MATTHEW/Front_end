@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CSS image</h1>
+    <style>
+        .container {
+            width: 400px;
+            height: 400px;
+            background-color: #ddd;
+            position: relative;
+        }
+        .bg-image {
+            background-image:  url(../img/river-gea25d4de8_1920.jpg);
+            background-size: cover;
+            background-position: center;
+            /* filter: grayscale(퍼센트); */
+            filter: grayscale(50%);
+        }
+        .bg-text {
+            border: 1px dashed;
+            position: absolute;
+            /* 왼쪽 위 꼭지점이 가운데로 온다 */
+            top: 50%;
+            left: 50%;
+            /* transform의 trasnlate를 이용해 가운데로 이동할 수 있다 */
+            /* transform: translate(top/bottom, left/right); */
+            /* 음수 : top, left */
+            /* 양수 : bottom, right */
+            /* 따라서 치우쳐있는 방향에 따라 음수 또는 양수를 써야된다 */
+            transform: translate(-50%, -50%);
+            color: #ddd;
+        }
+    </style>
+    <div class="container bg-image">
+        <div class="bg-text">
+            <h1>IMAGE</h1>
+        </div>
+    </div>
+</body>
+</html>

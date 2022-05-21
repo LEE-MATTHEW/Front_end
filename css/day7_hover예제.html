@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .thumbnail {
+            /* border: 1px dashed; */
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+        /* 그냥 img tag로 주면 다른 기능들을 넣기가 어렵기 때문에 container를 주어 다양한 기능을 넣을수 있게끔 해준다 */
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .thumbnail:hover .overlay {
+            opacity: 1;
+            
+        }
+        .overlay {
+            /* border: 1px dashed; */
+            background-color: rgba(0,0,0,0.5);
+            position: absolute;
+            bottom: 0;
+            width : 100%;
+            box-sizing: border-box;
+            opacity: 0;
+            color: #ddd;
+            text-align: center;
+            transition: 0.5s;
+        }
+    </style>
+    <h1>Image Overlay Title</h1>
+    <h5>Hover over the image to see the effect</h5>
+    <div class="thumbnail">
+        <div class="overlay">
+            <h2>My name is John</h2>
+        </div>
+        <img src="../img/butterfly-gb23ed3592_1920.jpg" alt="">
+    </div>
+</body>
+</html>

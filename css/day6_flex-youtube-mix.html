@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/767f5ec4ff.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>YouTube</title>
 </head>
 <body>
     <style>
@@ -15,22 +15,23 @@
             box-sizing: border-box;
         }
         .side-container {
-            min-height: 1000px;
             position: fixed;
             top: 0;
             left: 0;
             width: 200px;
-            border: 1px dashed;
+            height: 100%;
+            /* border: 1px dashed; */
             display: flex;
             flex-direction: column;
 
         }
         .side-bar {
-            min-height: 1000px;
-            display: flex;
-            flex-direction: column;
-            scroll-behavior: auto;
-
+            /* side bar에만 스크롤 생기게 하는법 */
+            /* fake content를 주어 overflow : auto를 주면 가능 */
+            /* overflow : auto의 기능 >> 화면을 넘어가는 내용에 대해 자동으로 스크롤 생성 */
+            height: 100%;
+            overflow: auto;
+            /* border: 3px dashed; */
         }
         #start {
             display: flex;
@@ -43,25 +44,128 @@
             align-items: center;
             justify-content: center;
         }
+        .menu {
+            margin: 15px 30px;
+            display: flex;
+        }
+        body {
+            min-height: 1000px;
+        }
+        .fixed-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .fake-content {
+            /* background-color: #888; */
+            height: 1000px;
+        }
+        
+        .container {
+            background-color: #fff;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #start, #center, #end {
+            /* border: 1px dashed; */
+            display: flex;
+            
+        }
+        #start {
+            min-width: 200px;
+            align-items: center;
+        }
+        .bars {
+            display: flex;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            /* border: 1px dashed; */
+        }
         .logo {
             display: flex;
             height: 30px;
             align-items: center;
+            align-self: center;
+            justify-content: center;
+            font-weight: bolder;
+        }
+        #center {
+            width: 600px;
+            height: 40px;
+            justify-content: flex-end;
+        }
+        form {
+            position: relative;
+        }
+        .search-form {
+            display: none;
+            width: 100%;
+        }
+        .search-form input {
+            width: 100%;
+            padding: 10px;
+            outline: none;
+        }
+        .fa-keyboard {
+            position: absolute;
+            right: 60px;
+            top: 12px;
+        }
+        .microphone {
+            display: flex;
+            min-width: 50px;
+            align-items: center;
             justify-content: center;
         }
+        .search-form button {
+            display: flex;
+            /* width를 하면 창을 줄일때 같이 줄어드나 min-width를 하면 줄어들지 않음  */
+            min-width: 50px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .mobile-search {
+            display: flex;
+            min-width: 50px;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px dashed; */
+        }
         .country-code {
-            font-size: xx-small;
             align-self: flex-start;
+            font-size: xx-small;
+            font-weight: 50;
         }
-        .fa-youtube, .fa-bars {
-            font-size: 25px;
+        .fa-brands, .fa-solid {
+            font-size: 17px;
         }
-        .fa-youtube {
+        .fa-brands {
             color: red;
         }
-        .menu {
-            margin: 10px 30px;
+        #end {
+            min-width: 200px;
+        }
+        .button {
             display: flex;
+            width: 50px;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px dashed; */
+        }
+        @media(min-width:650px) {
+            .search-form {
+                display: flex;
+            }
+            .mobile-search {
+                display: none;
+            }
         }
     </style>
 
@@ -103,6 +207,51 @@
                     <i class="fa-solid fa-clock">
                         <small class="description">&nbsp;&nbsp;&nbsp;시청기록</small>
                     </i>
+                </div>
+            </div>
+            <div class="fake-content"></div>
+        </div>
+    </div>
+    <div class="wrap fixed-top">
+        <div class="container">
+            <div id="start">
+                <div class="bars">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="logo">
+                    <i class="fa-brands fa-youtube"></i>
+                    <!-- &nbsp; 띄어쓰기 -->
+                    <span> &nbsp; YouTube</span>
+                    <small class="country-code">KR</small>
+                </div>
+            </div>
+            <div id="center">
+                <form action="" class="search-form">
+                    <input type="text">
+                    <i class="fa-solid fa-keyboard"></i>
+                    <button>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <div class="mobile-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="microphone">
+                    <i class="fa-solid fa-microphone"></i>
+                </div>
+            </div>
+            <div id="end">
+                <div class="button">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+                <div class="button">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+                <div class="button">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+                <div class="button">
+                    <i class="fa-solid fa-circle-user"></i>
                 </div>
             </div>
         </div>
