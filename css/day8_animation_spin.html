@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CSS Animation</h1>
+
+    <h2>Loading spinner</h2>
+
+    <style>
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid;
+            border-top: 5px solid #fff;
+            /* width 와 height가 같은 길이에서 border-radious를 50% 이상으로 하면 완전한 구가 된다 */
+            border-radius: 50%;
+            /* 애니메이션 이름 (임의로 설정) */
+            /* animation-name: spin; */
+            /* 애니메이션 1번 재생시간 */
+            /* animation-duration: 2s; */
+            /* 애니메이션 반복횟수 */
+            /* animation-iteration-count: infinite; */
+            /* 애니메이션 재생속도를 처음부터 일정하게 설정 */
+            /* animation-timing-function: linear; */
+
+            /* shorthand 줄여서 쓰는 방법 */
+            /* animation: name / duration / timing-function / delay / itteration-count / 
+                        direction / fill-mode / play-state; */
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            } to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <div class="spinner"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .container{
+            width: 200px;
+            height: 8px;
+            background-color: #ddd;
+        }
+        .item {
+            width: 40px;
+            height: 100%;
+            background-color: blue;
+            /* 원래 자신의 위치를 기준으로 상대적이다 */
+            position: relative;
+            
+            animation-name: loading;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            /* 애니메이션 방향이 앞뒤로 작동 */
+            animation-direction: alternate;
+        }
+        @keyframes loading {
+            from {
+                left:0;
+            } to {
+                left: 100%;
+                /* percentage : element자신의 크기에 상대적이다 */
+                /* translate(percentage) */
+                /* translate(x,y) */
+                /* translateX(x) */
+                /* translateY(y) */
+                /* container를 넘어가지 않기 위해 설정 */
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+    <h2>Loading Bar</h2>
+    <div class="container">
+        <div class="item"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        /* CSS에서 변수를 설정한다 */
+        :root {
+            --sun: red;
+            --mercury : yellow;
+            --earth : rgb(178, 178, 245);
+            --mars : rgb(87, 52, 52);
+            --jupiter : rgb(253, 169, 169);
+            --neptune : rgb(59, 59, 235);
+        }
+        body {
+            background-color: #000;
+            padding: 50px;
+        }
+        .solar-system {
+            /* border: 1px dashed #fff; */
+            width: 500px;
+            height: 500px;
+            position: relative;
+        }
+        .sun {
+            background-color: var(--sun);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            /* border: 1px solid #fff; */
+            transform: translate(-50%,-50%);
+            
+           
+        }
+        .planet {
+            border-radius: 50%;
+            
+        }
+        .mercury {
+            width: 100px;
+            height: 100px;
+            animation: orbiting 0.5s linear infinite;
+        }
+        .mercury .planet {
+            width: 10px;
+            height: 10px;
+            background-color: var(--mercury);
+        }
+        .earth {
+            width: 150px;
+            height: 150px;
+            animation: orbiting 1.5s linear infinite;
+        }
+        .earth .planet {
+            width: 15px;
+            height: 15px;
+            background-color: var(--earth);
+        }
+        .mars {
+            width: 200px;
+            height: 200px;
+            animation: orbiting 3s linear infinite;
+            
+        }
+        .mars .planet {
+            width: 20px;
+            height: 20px;
+            background-color: var(--mars);
+        }
+        .jupiter {
+            width: 300px;
+            height: 300px;
+            animation: orbiting 7s linear infinite;
+        }
+        .jupiter .planet {
+            width: 40px;
+            height: 40px;
+            background-color: var(--jupiter);
+            /* background-image: linear-gradient(rgb(248, 218, 218), brown); */
+            background-image: repeating-linear-gradient(rgb(248, 218, 218), brown 30%)
+        }
+        .neptune {
+            width: 400px;
+            height: 400px;
+            animation: orbiting 100s linear infinite;
+        }
+        .neptune .planet {
+            width: 10px;
+            height: 10px;
+            background-color: var(--neptune);
+        }
+        @keyframes orbiting {
+            from {
+                transform: translate(-50%,-50%) rotate(0);
+            } to {
+                transform: translate(-50%,-50%) rotate(360deg);
+            }
+        }
+    </style>
+    <h2>Space</h2>
+
+    <div class="solar-system">
+        <div class="sun"></div>
+        <div class="orbit mercury">
+            <div class="planet"></div>
+        </div>
+        <div class="orbit earth">
+            <div class="planet"></div>
+        </div>
+        <div class="orbit mars">
+            <div class="planet"></div>
+        </div>
+        <div class="orbit jupiter">
+            <div class="planet"></div>
+        </div>
+        <div class="orbit neptune">
+            <div class="planet"></div>
+        </div>
+    </div>
+</body>
+</html>
