@@ -1,0 +1,157 @@
+/* 초기화 태그는 가장 위에 쓰는게 관례 */
+/* 순서는 중요한 순이나 초기화와 관련된 코드일 수록 위에 씀 */
+/* Initialize */
+* {
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+input[type = text], input[type=date] {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+img {
+    width: 100%;
+}
+
+/* button */
+.btn {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #cccbcb;
+    text-align: center;
+}
+.btn:hover {
+    background-color: #ddd;
+}
+.btn-dark {
+    background-color: #333;
+    color: #fff;
+}
+.btn-dark:hover {
+    background-color: #222;
+}
+
+/* width and height */
+.w-100 {
+    width: 100%;
+}
+
+/* position */
+.relative {
+    position: relative;
+}
+.fixed-top {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* 포지션이 겹칠경우 z-index값이 높을수록 위로감 */
+    z-index: 1;
+}
+.center {
+    position: absolute;
+    top : 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.left-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.right-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.flex {
+    display: flex;   
+}
+.flex-grow-1 {
+    flex-grow: 1;
+}
+.flex-equal > * {
+    flex-grow: 1;
+}
+/* border */
+.border {
+    border: 1px dashed;
+}
+/* >  ==  바로 밑의 자식을 의미 */
+/* *  ==  전체선택이라는 의미 */
+.border-children > * {
+    border: 1px dashed;
+}
+/* box-shadow */
+.box-shadow {
+    /* box-shadow : h / v / blur / spread/ color */
+    /* box-shadow : 수평(필수) / 수직(필수) / 흐림 / 퍼짐 / 색상 */
+    /* 스프레드가 없는 상태 */
+    box-shadow: 1px 3px 3px #888,
+    -1px -3px 3px #888
+}
+/* background color */
+.bg-black {
+    background-color: #000;
+}
+.bg-dark-grey {
+    background-color: #555;
+}
+/* background image */
+.bg-image {
+    background-color: #ddd;
+    background-position: center;
+    background-size: cover;
+}
+.fake-img {
+    /* parent element의 width기준 */
+    padding-top: 75%;
+    background-color: #ddd;
+    
+}
+/* text */
+.text-white {
+    color: #fff;
+}
+.text-center {
+    text-align: center;
+}
+/* padding */
+.pd-5 {
+    padding: 5px;
+}
+.pd-10 {
+    padding: 10px;
+}
+.pd-tb-48 {
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+/* margin */
+.mx-auto {
+    margin: auto;
+}
+.mg-10 {
+    margin: 10px;
+}
+.mt-24 {
+    margin-top: 24px;
+}
+.blockquote {
+    background-color: #f1f1f1;
+    border-left : 5px solid #ddd;
+    padding: 24px;
+}
+/* media 태그는 가장 밑에 */
+.hide-small {
+    display: none;
+}
+@media (min-width : 501px) {
+    .hide-small {
+        display: block;
+    }
+}
