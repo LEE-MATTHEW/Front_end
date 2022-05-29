@@ -1,17 +1,36 @@
 /* 초기화 태그는 가장 위에 쓰는게 관례 */
+/* 초기화 태그 외에는 큰 상관은 없으나 같은 분야끼리 묶어 해주는 것이 좋음 */
 /* 순서는 중요한 순이나 초기화와 관련된 코드일 수록 위에 씀 */
 /* Initialize */
+/* import로 가지고 오면 스타일 시트 안에 */
+/* link로 가져오면 head에 넣어줘야됨 */
+/* 무료폰트는 구글폰트 사용가능!! */
+
+
+
 * {
+    /* 전체 선택자(모든 element선택) */
+    /* 초기화 작업 */
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,p {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 a {
     text-decoration: none;
+    color: #000;
 }
 input[type = text], input[type=date] {
     padding: 10px;
     border: 1px solid #ddd;
 }
 img {
+    /* img태그는 원래의 width, height를 가지기 때문에 overflow된다 */
+    /* 따라서, 부모태그의 넓이를 다 차지하도록 만든다 */
     width: 100%;
 }
 
@@ -58,6 +77,11 @@ img {
     left: 50%;
     transform: translate(-50%,-50%);
 }
+.top-left {
+    position: absolute;
+    top:0;
+    left: 0;
+}
 .left-bottom {
     position: absolute;
     left: 0;
@@ -71,15 +95,42 @@ img {
 .flex {
     display: flex;   
 }
+.justify-content-between {
+    justify-content: space-between;
+}
 .flex-grow-1 {
     flex-grow: 1;
 }
+/* >  ==  바로 밑의 자식을 의미 */
+/* *  ==  전체선택이라는 의미 */
+/* 따라서, 바로 밑의 자식들 전체선택 (그 밑의 자식들은 해당되지 않음) */
+/* 만약 > 없이 사용하면 밑의 element 모두 선택 */
 .flex-equal > * {
     flex-grow: 1;
 }
+/* 위와 같은 기능(밑에 a태그 밖에 없기때문에 */
+/* .flex-equal a {
+    flex-grow: 1;
+} */
+
+/* grid */
+.grid-container {
+    display: grid;
+    /* 컬럼의 갯수 (auto의 갯수가 열 갯수임!) */
+    /* grid-template-columns: auto auto auto auto; */
+}
+.grid-gap-10 { 
+    /* grid 기준으로 패딩이 생기지 않아 컨트롤 하기 좋음 */
+    gap: 10px;
+}
+.grid-sm-100 {
+    grid-template-columns: auto;
+}
+
 /* border */
+/* 실제 사용하는 보더 */
 .border {
-    border: 1px dashed;
+    border: 1px solid #f1f1f1;
 }
 /* >  ==  바로 밑의 자식을 의미 */
 /* *  ==  전체선택이라는 의미 */
@@ -89,12 +140,16 @@ img {
 /* box-shadow */
 .box-shadow {
     /* box-shadow : h / v / blur / spread/ color */
-    /* box-shadow : 수평(필수) / 수직(필수) / 흐림 / 퍼짐 / 색상 */
+    /* box-shadow : 수평(필수, 양수:아래, 음수:위) / 수직(필수, 양수:오른쪽, 음수:왼쪽) / 흐림 / 퍼짐 / 색상 */
+    /* ,를 이용해 전체 면에 효과를 줄수 있음 */
     /* 스프레드가 없는 상태 */
     box-shadow: 1px 3px 3px #888,
     -1px -3px 3px #888
 }
 /* background color */
+.bg-white {
+    background-color: #fff;
+}
 .bg-black {
     background-color: #000;
 }
@@ -121,21 +176,25 @@ img {
     text-align: center;
 }
 /* padding */
-.pd-5 {
+.p-5 {
     padding: 5px;
 }
-.pd-10 {
+.p-10 {
     padding: 10px;
 }
-.pd-tb-48 {
+.py-48 {
     padding-top: 48px;
     padding-bottom: 48px;
+}
+.px-15 {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 /* margin */
 .mx-auto {
     margin: auto;
 }
-.mg-10 {
+.m-10 {
     margin: 10px;
 }
 .mt-24 {
@@ -153,5 +212,17 @@ img {
 @media (min-width : 501px) {
     .hide-small {
         display: block;
+    }
+    /* 이 클래스를 다가지고 있는 element에 적용 */
+    .flex.hide-small {
+        display: flex;
+    }
+    .grid-md-50 {
+        grid-template-columns: auto auto;
+    }
+}
+@media (min-width : 700px) {
+    .grid-lg-25 {
+        grid-template-columns: auto auto auto auto;
     }
 }

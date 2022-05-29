@@ -6,41 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafe</title>
     <link rel="stylesheet" href="../miniProject/style.css   ">
+    <!-- 보통은 스타일 시트를 불러와서 작업하지만 -->
+    <!-- 이 문서에서만 작업하고 싶은 것이 있을경우 스타일 태그를 넣어준다 -->
+    <!-- html은 나중에 온것이 우선시 됨으로 스타일 시트를 불러올때도 순서에 따라 기능이 달라질 수 있다!! -->
+    <!-- 외부에서 가져오는 것들은 보통 head부분에 많이 넣어줌 -->
+    <!-- body는 컨텐츠 자체에 집중되는 것이 좋음 -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Poppins:wght@500&display=swap');
+        html {
+            /* 스크롤의 움직이는 형태? 모션?을 설정 */
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inconsolata', monospace;
+        }
         .bg-image {
             height: 600px;
-            background-image: url(../img/coffeehouse.jpeg);
+            background-image: url(../img/프로젝트1/coffeehouse.jpeg);
         }
     </style>
 </head>
 <body style="min-height: 2000px;">
     <!-- Navigation -->
     <div class="fixed-top">
-        <div class="navbar flex flex-equal pd-5 bg-black">
-            <a class="pd-10 text-white text-center" href="">HOME</a>
-            <a class="pd-10 text-white text-center" href="">ABOUT</a>
-            <a class="pd-10 text-white text-center" href="">MENU</a>
-            <a class="pd-10 text-white text-center" href="">WHERE</a>
+        <div class="navbar flex flex-equal p-5 bg-black">
+            <a class="p-10 text-white text-center" href="#">HOME</a>
+            <a class="p-10 text-white text-center" href="#about">ABOUT</a>
+            <a class="p-10 text-white text-center" href="#menu">MENU</a>
+            <a class="p-10 text-white text-center" href="#contact">WHERE</a>
         </div>
     </div>
     <!-- Hero image -->
     <div class="bg-image relative">
         <div class="center text-white">
-            <h1>&nbsp;THE</h1>
+            <h1>THE</h1>
             <h1>CAFE</h1>
         </div>
-        <div class="left-bottom hide-small mg-10 bg-black text-white">
+        <div class="left-bottom hide-small m-10 bg-black text-white">
             Open from 6am to 5pm
             </div>
-            <div class="right-bottom mg-10 text-white">
+            <div class="right-bottom m-10 text-white bg-black">
                 15 adr street, 5015
             </div>
         </div>
     <!-- Main content -->
-    <div class="mx-auto" style="max-width:700px">
+    <!-- html tag안에 style속성을 이용항 수 있다 -->
+    <!-- 가장 우선시 된다!! -->
+    <div class="mx-auto px-15" style="max-width:700px">
         <!-- About -->
         <div id="about">
-            <div class="pd-tb-48">
+            <div class="py-48">
                 <h3 class="text-center">
                     <span class="bg-black text-white">About The Cafe</span>
                 </h3>
@@ -67,7 +82,7 @@
                 </div>
                 <div class="mt-24">
                     <!-- <div class="fake-img"></div> -->
-                    <img src="../img/coffeehouse2.jpeg" alt="">
+                    <img src="../img/프로젝트1/coffeehouse2.jpeg" alt="">
                 </div>
                 <div class="mt-24">
                     <p><b>Opening hours :</b> am 6 - pm 5</p>
@@ -80,7 +95,7 @@
         <div id="menu">
 
             <!-- Title -->
-            <div class="pd-tb-48">
+            <div class="py-48">
                 <h3 class="text-center">
                     <span class="bg-black text-white">Menu</span>
                 </h3>
@@ -88,30 +103,30 @@
             <!-- 메뉴판 -->
             <div class="box-shadow">
                 <!-- 메뉴버튼 -->
-                <div class="flex flex-equal pd-5 box-shadow">
-                    <a class="pd-5 text-center bg-dark-grey text-white" href="">Eat</a>
-                    <a class="pd-5 text-center" href="">Drink</a>
+                <div class="flex flex-equal p-5 box-shadow">
+                    <a class="p-5 text-center bg-dark-grey text-white" href="">Eat</a>
+                    <a class="p-5 text-center" href="">Drink</a>
                 </div>
 
                 <!-- 메뉴내용 -->
                 <div class="">
-                    <div class="">
+                    <div class="p-10">
                         <h3>Menu Name</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     </div>
-                    <div class="">
+                    <div class="p-10">
                         <h3>Menu Name</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     </div>
-                    <div class="">
+                    <div class="p-10">
                         <h3>Menu Name</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     </div>
-                    <div class="">
+                    <div class="p-10">
                         <h3>Menu Name</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     </div>
-                    <div class="">
+                    <div class="p-10">
                         <h3>Menu Name</h3>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -120,13 +135,13 @@
             <!-- 메뉴사진 -->
             <div class="mt-24">
                 <!-- <div class="fake-img"></div> -->
-                <img src="../img/coffeeshop.jpeg" alt="">
+                <img src="../img/프로젝트1/coffeeshop.jpeg" alt="">
             </div>
 
             <!-- Where & Contact -->
             <div id="contact">
                 <!-- Title -->
-                <div class="pd-tb-48">
+                <div class="py-48">
                     <h3 class="text-center">
                         <span class="bg-black text-white">Where to find us</span>
                     </h3>
@@ -155,7 +170,7 @@
         </div>
     </div>
     <!-- Footer -->
-    <div class="footer bg-black pd-tb-48">
+    <div class="footer bg-black py-48">
         <p class="text-center text-white">Footer</p>
     </div>
 
