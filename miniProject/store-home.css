@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* fake img */
+.fake-img {
+    padding-top: 70%;
+    background-color: #ddd;
+}
+/* position */
+.fixed-top {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.relative {
+    position: relative;
+}
+.center {
+    position: absolute;
+    top : 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.left {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    transform: translateX(-50%, -50%);
+}
+.justify-content-between {
+    justify-content: space-between;
+}
+.top-right {
+    justify-content: right;
+}
+.top-bottom {
+    align-items: flex-end;
+}
+
+.inline-block {
+    display: inline-block;
+}
+.display-none {
+    position: absolute;
+    display: none;
+    width: 150px;
+}
+.display-none a {
+    padding: 10px;
+    display: block;
+}
+.flex {
+    display: flex;
+}
+.flex-direction {
+    flex-direction: column;
+}
+/* Width & Height */
+.w-30 {
+    width: 30%;
+}
+.w-100 {
+    width: 100%;
+}
+.w-110 {
+    width: 110px;
+}
+.w-120 {
+    width: 120px;
+}
+.w-270 {
+    width: 270px;
+}
+.h-110 {
+    height: 110px;
+}
+.h-120 {
+    height: 120px;
+}
+.h-600 {
+    height: 600px;
+}
+/* border */
+.border {
+    border: 1px dashed;
+}
+.border-children > * {
+    border: 1px dashed;
+}
+.border-pink {
+    border: 8px solid rgb(245, 141, 141);
+}
+.border-radius {
+    border-radius: 50%;
+}
+/* margin */
+.mx-auto {
+    margin: auto;
+}
+.mt-110 {
+    margin-top: 110px;
+}
+
+/* padding */
+.py-50 {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.py-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pt-20 {
+    padding-top: 20px;
+}
+.px-20 {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+/* text */
+.text-white {
+    color: white;
+}
+.line-height {
+    line-height: 1;
+}
+.font-size {
+    font-size: larger;
+}
+
+/* background color */
+.bg-black {
+    background-color: black;
+}
+.bg-green {
+    background-color: rgb(8, 95, 117);
+}
+.bg-white {
+    background-color: white;
+}
+
+
+
+/* hover */
+.display-none a:hover {
+    background-color: white;
+}
+.display:hover .display-none {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+/* media */
+@media (min-width:501px) {
+    .hide {
+        display: block;
+    }
+}
