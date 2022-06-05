@@ -400,7 +400,7 @@ input[type=text] input[type=password] {
     }
 }
 
-@media (min-width:801px) {
+@media (min-width:894px) {
     .fixed-top {
         flex-direction: row;
     }
