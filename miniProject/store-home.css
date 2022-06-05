@@ -13,7 +13,15 @@ h1,h2,h3,h4,h5,p {
 img {
     width: 100%;
 }
+input[type=text] input[type=password] {
+    padding: 10px 10px;
+    border: 1px solid #ddd;
+}
 
+/* button */
+.btn {
+    cursor: pointer;
+}
 
 
 /* fake img */
@@ -32,6 +40,7 @@ img {
 .relative {
     position: relative;
 }
+
 .center {
     position: absolute;
     top : 50%;
@@ -78,6 +87,9 @@ img {
 .flex-direction {
     flex-direction: column;
 }
+.flex-grow {
+    flex-grow: 1;
+}
 .flex-wrap {
     flex-wrap: wrap;
 }
@@ -104,8 +116,14 @@ img {
 .w-270 {
     width: 270px;
 }
+.w-300 {
+    width: 300px;
+}
 .w-350 {
     width: 350px;
+}
+.h-60 {
+    height: 60px;
 }
 .h-100 {
     height: 100px;
@@ -153,9 +171,14 @@ img {
 .m-0 {
     margin: 0;
 }
+.my-15 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 .mt-110 {
     margin-top: 110px;
 }
+
 
 
 
@@ -174,6 +197,9 @@ img {
 .py-10 {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+.pt-300 {
+    padding-top: 300px;
 }
 
 .pt-20 {
@@ -196,6 +222,12 @@ img {
 }
 .font-size {
     font-size: larger;
+} 
+.text-black {
+    color: black;
+}
+.fa-heart {
+    color: red;
 }
 
 /* background color */
@@ -259,6 +291,10 @@ img {
     .px-150 {
         padding: 30px;
     }
+    .my-300 {
+        padding-top: 300px;
+        padding-bottom: 300px;
+    }
    
 }
 @media (min-width:801px) {
@@ -296,6 +332,10 @@ img {
     .px-150 {
         padding-left: 150px;
         padding-right: 150px;
+    }
+    .my-300 {
+        padding-top: 200px;
+        padding-bottom: 100px;
     }
 
 }
