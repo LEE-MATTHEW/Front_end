@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Nanum+Gothic:wght@400;700;800&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+body {
+    font-family: 'Dongle', sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
+}
 a {
     text-decoration: none;
 }
@@ -313,7 +317,7 @@ input[type=text] input[type=password] {
 /* overlay */
 .overlay {
     position: absolute;
-    background-image: url(../img/coffee-g249b74130_1920.jpg);
+    background-image: url(../project1/img/coffee-g249b74130_1920.jpg);
     background-size: cover;
     background-position: center;
     width: 100%;
