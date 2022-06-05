@@ -241,7 +241,25 @@ input[type=text] input[type=password] {
     background-color: white;
 }
 
+/* scalable */
+.scalable {
+    overflow: hidden;
+}
+.scalable img {
+    transition: 0.5s;
+}
 
+/* overlay */
+.overlay{
+    position: absolute;
+    background-image: url(../img/coffee-g249b74130_1920.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s;
+}
 
 /* hover */
 .display-none a:hover {
@@ -253,6 +271,12 @@ input[type=text] input[type=password] {
 .small {
     width: 110px;
     height: 110px;
+}
+.scalable:hover img {
+    transform: scale(1.1, 1.1);
+}
+.h-600:hover .overlay {
+    opacity: 1;
 }
 
 
