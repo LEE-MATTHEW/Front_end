@@ -3,16 +3,25 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 a {
     text-decoration: none;
 }
-h1,h2,h3,h4,h5,p {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 img {
     width: 100%;
 }
+
 input[type=text] input[type=password] {
     padding: 10px 10px;
     border: 1px solid #ddd;
@@ -29,6 +38,7 @@ input[type=text] input[type=password] {
     padding-top: 70%;
     background-color: #ddd;
 }
+
 /* position */
 .fixed-top {
     position: fixed;
@@ -37,34 +47,40 @@ input[type=text] input[type=password] {
     left: 0;
     z-index: 1;
 }
+
 .relative {
     position: relative;
 }
 
 .center {
     position: absolute;
-    top : 50%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 .left {
     position: absolute;
     top: 30%;
     left: 0;
     transform: translateX(-50%, -50%);
 }
+
 .right {
     position: absolute;
-    right:0;
+    right: 0;
     transform: translateY(-20%);
 }
+
 .justify-content-between {
     justify-content: space-between;
 }
+
 .top-right {
     justify-content: right;
     display: none;
 }
+
 .top-bottom {
     align-items: flex-end;
 }
@@ -72,94 +88,122 @@ input[type=text] input[type=password] {
 .inline-block {
     display: inline-block;
 }
+
 .display-none {
     position: absolute;
     display: none;
     width: 150px;
 }
+
 .display-none a {
     padding: 10px;
     display: block;
 }
+
 .flex {
     display: flex;
 }
+
 .flex-direction {
     flex-direction: column;
 }
+
 .flex-grow {
     flex-grow: 1;
 }
+
 .flex-wrap {
     flex-wrap: wrap;
 }
+
 .column {
     flex-direction: row;
 }
+
 .text-center {
     justify-content: center;
     align-items: center;
 }
+
 /* Width & Height */
 .w-30 {
     width: 30%;
 }
+
 .w-100 {
     width: 100%;
 }
+
 .w-110 {
     width: 110px;
 }
+
 .w-120 {
     width: 120px;
 }
+
 .w-270 {
     width: 270px;
 }
+
 .w-300 {
     width: 300px;
 }
+
 .w-350 {
     width: 350px;
 }
+
 .h-60 {
     height: 60px;
 }
+
 .h-100 {
     height: 100px;
 }
+
 .h-110 {
     height: 110px;
 }
+
 .h-120 {
     height: 120px;
 }
+
 .h-150 {
     height: 150px;
 }
+
 .h-600 {
     height: 600px;
 }
+
 /* border */
 .border {
     border: 1px dashed;
 }
-.border-children > * {
+
+.border-children>* {
     border: 1px dashed;
 }
+
 .border-pink {
     border: 8px solid rgb(245, 141, 141);
 }
+
 .border-radius {
     border-radius: 50%;
 }
+
 /* grid */
 .grid-container {
     display: grid;
 }
+
 .gird-sm-100 {
     grid-template-columns: auto;
 }
+
 .grid-gap {
     gap: 10px;
 }
@@ -168,13 +212,16 @@ input[type=text] input[type=password] {
 .mx-auto {
     margin: auto;
 }
+
 .m-0 {
     margin: 0;
 }
+
 .my-15 {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
 .mt-110 {
     margin-top: 110px;
 }
@@ -186,18 +233,22 @@ input[type=text] input[type=password] {
 .p-10 {
     padding: 10px;
 }
+
 .py-50 {
     padding-top: 50px;
     padding-bottom: 50px;
 }
+
 .px-50 {
     padding-left: 50px;
     padding-right: 50px;
 }
+
 .py-10 {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .pt-300 {
     padding-top: 300px;
 }
@@ -205,27 +256,34 @@ input[type=text] input[type=password] {
 .pt-20 {
     padding-top: 20px;
 }
+
 .px-20 {
     padding-left: 20px;
     padding-right: 20px;
 }
+
 .px-150 {
     padding-left: 150px;
     padding-right: 150px;
 }
+
 /* text */
 .text-white {
     color: white;
 }
+
 .line-height {
     line-height: 1;
 }
+
 .font-size {
     font-size: larger;
-} 
+}
+
 .text-black {
     color: black;
 }
+
 .fa-heart {
     color: red;
 }
@@ -234,9 +292,11 @@ input[type=text] input[type=password] {
 .bg-black {
     background-color: black;
 }
+
 .bg-green {
     background-color: rgb(8, 95, 117);
 }
+
 .bg-white {
     background-color: white;
 }
@@ -245,12 +305,13 @@ input[type=text] input[type=password] {
 .scalable {
     overflow: hidden;
 }
+
 .scalable img {
     transition: 0.5s;
 }
 
 /* overlay */
-.overlay{
+.overlay {
     position: absolute;
     background-image: url(../img/coffee-g249b74130_1920.jpg);
     background-size: cover;
@@ -265,16 +326,20 @@ input[type=text] input[type=password] {
 .display-none a:hover {
     background-color: white;
 }
+
 .display:hover .display-none {
     display: block;
 }
+
 .small {
     width: 110px;
     height: 110px;
 }
+
 .scalable:hover img {
     transform: scale(1.1, 1.1);
 }
+
 .h-600:hover .overlay {
     opacity: 1;
 }
@@ -287,9 +352,11 @@ input[type=text] input[type=password] {
         justify-content: center;
         align-items: center;
     }
+
     .top-right {
         display: none;
     }
+
     .column {
         flex-direction: column;
         background-color: black;
@@ -297,69 +364,90 @@ input[type=text] input[type=password] {
         justify-content: center;
         align-items: center;
     }
+
     .column * {
         padding: 5px;
     }
+
     .px-20 {
         padding: 0;
     }
+
     .small {
         display: none;
     }
-    .grid-md-500 {
-        grid-template-columns: auto auto;
-    }
+
+
+
     .hide {
         display: none;
     }
+
     .px-150 {
         padding: 30px;
     }
+
     .my-300 {
         padding-top: 300px;
-        padding-bottom: 300px;
+        padding-bottom: 50px;
     }
-   
+
 }
+
+@media(min-width:501px) {
+    .grid-md-500 {
+        grid-template-columns: auto auto;
+    }
+}
+
 @media (min-width:801px) {
     .fixed-top {
-        flex-direction: row;    
+        flex-direction: row;
     }
+
     .top-right {
         display: flex;
         padding-right: 20px;
     }
+
     .column {
         flex-direction: row;
         justify-content: space-between;
     }
+
     .column * {
         padding-top: 0;
         padding-bottom: 0;
         padding-left: 20px;
         padding-right: 20px;
     }
+
     .small {
         display: inline-block;
     }
+
     .px-20 {
         padding-left: 20px;
         padding-right: 20px;
     }
+
     .grid-lg-800 {
         grid-template-columns: auto auto auto auto;
     }
+
     .hide {
         display: flex;
         flex-direction: column;
     }
+
     .px-150 {
         padding-left: 150px;
         padding-right: 150px;
     }
+
     .my-300 {
         padding-top: 200px;
-        padding-bottom: 100px;
+        padding-bottom: 50px;
     }
 
 }
