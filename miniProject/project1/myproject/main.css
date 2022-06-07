@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+}
+
+.grid-container {
+    display: grid;
+}
+.grid-template {
+    grid-template-columns: auto auto;
+}
+.w-50 {
+    width: 50%;
+}
+.w-100 {
+    width: 100%;
+}
+.w-244 {
+    width: 244px;
+}
+.w-640 {
+    width: 640px;
+}
+.h-244 {
+    height: 244px;
+}
+.h-350 {
+    height: 350px;
+}
+
+.h-768 {
+    height: 768px;
+}
+.h-640{
+    height: 640px;
+}
+.h-1000 {
+    height: 1000px;
+}
+
+.mx-auto {
+    margin: auto;
+}
+.mt-50 {
+    margin-top: 50px;
+}
+
+.pt-50 {
+    padding-top: 50px;
+}
