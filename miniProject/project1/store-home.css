@@ -317,7 +317,7 @@ input[type=text] input[type=password] {
 /* overlay */
 .overlay {
     position: absolute;
-    background-image: url(../project1/img/coffee-g249b74130_1920.jpg);
+    background-image: url(./img/coffee-g249b74130_1920.jpg);
     background-size: cover;
     background-position: center;
     width: 100%;
