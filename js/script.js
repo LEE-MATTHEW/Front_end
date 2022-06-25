@@ -1388,3 +1388,147 @@ var animals = ['bunny', 'cat', 'duck', 'bird']
 //     console.error(error)
 // }
 
+// ES6
+// 2015년 추가된 문법
+// 변수 let, const
+// 함수: Arrow function
+// for/of
+// Class(자바스크립트는 prototype기반 언어이다)
+// Promise(비동기 작업)
+// Destructiong/ spread operator(Object, Array의 표시 방법)
+// Ternary(삼항연산자)
+// Array.from(), Array.keys(), Array.find(), Boject.entries()
+
+// #변수 : var, let, const
+// 1. 기본적인 차이점
+// 2. 변수의 범위에서의 차이점
+
+// var cat;  // declare(선언)
+// console.log(cat)  // undefined
+
+// var cat='Kitty';  // declare, assignment(할당)=define
+// = : 할당연산자
+// cat=kitty : literal 방식 (value만 할당)
+// var cat= new String('kitty')   // String의 클래스의 instance생성
+// instance의 커스텀 method
+// instance의 커스텀 method를 추가할 수 있다
+// cat.sound=function(){
+//     return '야옹'
+// }
+// instance를 만들고 property를 추가할 수 있다
+// cat.home = null;
+// console.log(typeof cat)  //object
+// console.log(cat instanceof String)
+// console.log(cat.toUpperCase())
+// String.prototype을 통해 String이 사용가능한 method를 볼수 있다.
+
+// var cat = 'kitty'
+// var cat = 'Alfredo'  //redeclare, define
+
+// console.log(cat)
+
+// let cat; //declare
+// console.log(cat)  //undefined
+
+// let cat; //declare
+// cat = 'kitty'; //define
+// console.log(cat)
+
+// let cat='kitty';
+// let cat='alfredo';  //재선언 안됨
+// console.log(cat);
+
+// const cat; //declare, define(intializer : 초기화를 반드시 해야함)
+
+// //초기화 : 선언과 값을 할당하는 것
+// console.log(cat)
+
+// const cat = 'kitty';  //const초기화
+// cat = 'alfredo';  //const에는 할당 불가
+// console.log(cat)
+
+// const cat = "Kitty";  // 선언
+// const cat = "Alfredo"; // 재선언 불가
+
+// Uncaught SyntaxError가 발생한 이유와 에러를 catch하는 방법
+// try {
+//     const cat; //문법적 오류는 try/catch로 못잡음
+//     console.log(cat)
+// } catch (error) {
+//     console.error(cat)
+// }
+
+// 변수의 범위 (scope)
+// var, let, const
+// global scope(전역범위)
+// local scope(지역범위)
+// block scope(블록범위)
+
+// let cat='Kitty'  //Global(전역변수)
+// // 어디든 접근 가능
+// // 함수 내부, block 등
+// function f() {
+//     console.log(cat);
+// }
+// f()
+
+// function f() {
+//     // 함수의 내부는 local scope(지역범위)
+//     let cat='Kitty' //local variable(지역변수)
+// }
+// console.log(cat); //error(not define, 정의되지 않음)
+// // 함수의 외부에서 cat(지역변수)에 접근 할 수 없음
+// f()
+
+// let cat = 'kitty'  //전역변수
+// function f() {
+//     cat = 'alfredo'  //지역변수
+//     console.log(cat)
+// }
+// f()
+
+// let cat='kitty'
+// function f() {
+//     let cat = 'alfredo'
+//     // 변수의 비교는 지역범위 안에서만 한다.
+//     console.log(cat)
+// }
+// f()
+
+// const cat = 'Kitty';
+// function f() {
+//     console.log(cat)
+// }
+// f()
+
+// const cat = 'Kitty'
+// function f(){
+//     const cat = 'alfredo'
+//     console.log(cat)
+// }
+// f()
+
+// function f() {
+//     // 지역변수
+//     // 지역변수는 지역범위(함수범위)를 갖는다
+//     const cat = 'kitty'
+// }
+// f()
+// console.log(cat)
+
+// Block (블록 범위)
+// {} (brace, 중괄호)
+// {
+//     var cat = 'kitty'  // var은 블록 외부에서 접근 가능
+// }
+// console.log(cat)
+
+// {
+//     let cat = 'kitty'  // let은 블록 내부에서만 사용 가능
+// }
+// console.log(cat)
+
+// {
+//     const cat = 'kitty'  // const은 블록 내부에서만 사용 가능
+// }
+// console.log(cat)
