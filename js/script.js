@@ -1532,3 +1532,292 @@ var animals = ['bunny', 'cat', 'duck', 'bird']
 //     const cat = 'kitty'  // const은 블록 내부에서만 사용 가능
 // }
 // console.log(cat)
+
+
+
+
+
+
+
+
+
+// --------------------------------------------
+
+// ES6 Promise
+// 정의 : Promise 객체는 비동기 작업이 맞이할 미래의 완료 또는 실패와 그결과 값을 나타낸다
+// Promise - 비동기 작업의 가독성을 향상시키기 위해 나온 문법
+// Async/Await Promise- Promise의 문법을 더 쉽게 표현할 수 있다
+
+// Promise객체는 두개의 property: state/result
+// Promise가 Pending일때, result: undefined
+// Promise가 fullfilled일때, result: undefined
+// Promise가 reject일때, result: undefined
+
+// Promise클래스의 인스턴스 생성
+// let promise = new Promise(function (resolve,reject) {
+//     // 대기중일때
+//     // pending
+//     // 성공했을때
+//     // resolve() - fullfilled
+//     // 실패했을때
+//     // reject() - rejected
+// })
+
+// promise.then(
+//     // 성공했을 때
+//     function (value) {/*성공했을때 코드*/},
+//     function (error) {/*실패했을때 코드*/}
+// )
+
+// 데이터를 가져오는 함수
+// 비동기 함수
+// function fetchData(callback) {
+//     // setTimeout의 콜백은 동기적으로 작동한다
+//     setTimeout(() => {
+//         callback({message: '데이터 가져오기 성공'})
+//     },0)
+// }
+
+// // 데이터를 출력하는 함수 
+// function displayData(data) {
+//     console.log(data)
+// }
+// fetchData(displayData)
+// console.log(2)
+// console.log(3)
+
+// setTimeout(callback,ms) : ms후에 callback실행
+// setTimeout(()=> {
+//     console.log(1)
+// },1000)
+// console.log(2)
+// console.log(3)
+
+// function displayData(data) {
+//     console.log(data)
+// }
+// let promise = new Promise(function (res,rej){
+//     let x=0;
+//     if (x===0) {
+//         // resolve
+//         // fullfilled
+//         res({message:'ok'})
+//     }else {
+//         // reject
+//         // rejected
+//         rej({message:'error'})
+//     }
+// })
+
+// // promise.then (성공했을 때 실행되는 콜백, 실패했을 때 실행되는 콜백)
+// promise.then(function (value) {
+//     displayData(value)
+// },function(error) {
+//     displayData(error)
+// })
+
+
+// function displayData(data) {
+//     console.log(data)
+// }
+
+// // 거부되었을 때 생략가능 
+// let promise=new Promise(res => {
+//     // 성공했을때
+//     res({message:'ok'})
+// })
+// // console.log(promise)
+
+// // 콜백을 사용한 비동기 데이터처리
+// // promise(displayData)
+
+// // Promise를 사용한 비동기 데이터 처리
+// promise.then(displayData)
+
+// function displayData(data) {
+//     console.log(data)
+// }
+// function fetchData() {
+//     return new Promise((res,rej)=>{
+//         res({message:'ok'})
+       
+//     })
+// }
+// fetchData().then(displayData)
+
+// Promise chain
+// function first() {
+//     return new Promise(res => {
+//         console.log(1)
+//         res()
+//     })
+// }
+// function second() {
+//     return new Promise(res=> {
+//         console.log(2)
+//         res()
+//     })
+// }
+// function third() {
+//     console.log(3)
+// }
+// // callback chain
+// first(()=>second(third))
+
+// // promise chain
+// first().then(second).then(third)
+
+// Async function
+// async function fetchData() {
+//     // promise를 return 한다
+//     return {message:'ok'}
+// }
+// fetchData().then(value => console.log(value))
+
+// async function f() {}
+// // state : fullfilled
+// // result : undefined
+// console.log(f())
+
+// function fetchData() {
+//     return new Promise(res => {
+//         res({message:'ok'})
+//     })
+// }
+// async function f() {
+//     // fetchData().then(value=>console.log(value))
+
+//     // await
+//     // async 함수 안에서만 사용할 수 있다
+//     // promise가 결과값을 return할 때까지 async함수를 중지한다
+//     // 가독성이 향상시킨다
+//     let r = await fetchData();
+//     console.log(r)
+//     console.log('데이터 가져오기 및 출력 완료')
+// }
+// f()
+
+// function first() {
+//     return new Promise(res => {
+//         res(1)
+//     })
+// }
+// function second() {
+//     return new Promise(res=> {
+//         res(2)
+//     })
+// }
+// function third() {
+//     return new Promise(res=> {
+//         res(3)
+//     })
+// }
+// f()
+// async function f() {
+//     let r1=await first()
+//     console.log(r1) 
+//     let r2=await first().then(second)
+//     console.log(r2) 
+//     let r3=await first().then(second).then(third)
+//     console.log(r3) 
+//     console.log('숫자 출력 완료')
+// }
+
+
+// Promise Chain의 Error handling
+// function first() {
+//     return new Promise(res => {
+//         console.log(1)
+//         res(1)
+//     })
+// }
+// function second() {
+//     return new Promise(res=> {
+//         console.log(2)
+//         res(2)
+//     })
+// }
+// function third() {
+//     return new Promise(res=> {
+//         console.log(3)
+//     })
+// }
+
+// // first().then(second).then(third)
+
+// let promise=new Promise(res => {
+//     console.log('..')
+// })
+// // constuctor 안에 method는 instance를 만들면 바로 실행
+// setTimeout(()=> {
+//     console.log('..')
+// },0)
+
+// class User {
+//     constructor(username) {
+//         this.username=username;
+//         this.sound=function () {
+//             console.log('..')
+//         }
+//     }
+// }
+// User.prototype.sound = function () {
+//     console.log('당근')
+// }
+// let user = new User('changno')
+// console.log(user)
+
+
+// function first() {
+//     return new Promise(res => {
+//         console.log(1)
+//         res(1)
+//     })
+// }
+// function second() {
+//     return new Promise((res,rej)=> {
+//         console.log(2)
+//         rej(2)
+//     })
+// }
+// function third() {
+//     return new Promise(res=> {
+//         console.log(3)
+//     })
+// }
+// first().then(second).then(third).catch(console.error(error))
+
+// function fetchData() {
+//     return new Promise((res,rej) => {
+//         rej({message:'error'})
+//     })
+// }
+// fetchData().then(value=>console.log(value)).catch(error => console.error(error))
+
+// function first() {
+//     return new Promise(res => {
+//         res(1)
+//     })
+// }
+// function second() {
+//     return new Promise((res,rej) => {
+//         res(2)
+//     })
+// }
+// function third() {
+//     return new Promise(res => {
+//         res(3)
+//     })
+// }
+// f()
+// async function f() {
+//     try {
+//         console.log(await first())
+//         console.log(await second())
+//         console.log(await third())
+
+//     } catch (error) {
+//         // await Promise 에서 발생한 에러를 처리한다.
+//         console.error(error)
+//     }
+// }
