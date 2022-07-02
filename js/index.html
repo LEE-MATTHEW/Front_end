@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/767f5ec4ff.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+
 <body>
     <!-- <div id="root"></div> -->
     <!-- <script>
@@ -106,7 +109,7 @@
         }
     </script> -->
 
-    <button id="btn">Click Me</button>
+    <!-- <button id="btn">Click Me</button>
 
     <script>
         var btn =document.getElementById('btn');
@@ -119,6 +122,394 @@
         function f() {
             alert('오늘도 수고하셨습니다.')
         }
+    </script> -->
+
+    <!-- <style>
+        .active {
+            color: red;
+        }
+    </style>
+    <h1>
+        좋아요
+    </h1>
+    <h1>
+        <i class="fa-solid fa-thumbs-up"></i>
+    </h1>
+    <script>
+        // HTML DOM, JavaScript에서 HTML element에 접근한다.
+        var thumbsUp=document.querySelector(".fa-thumbs-up");
+
+        // eventlistner
+        // eventlistner는 callback에 event Object를 넘긴다
+        thumbsUp.addEventListener("click",e => {
+            console.log(e) // pointer event
+            console.log(e.target)  // Event를 발생시킨 HTML event(event가 적용된 element)
+
+            // element에 class에 active가 없으면 추가하고 있으면 제거한다.
+            e.target.classList.toggle("active")
+        })
+    </script> -->
+
+    <!-- <style>
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+        .dropdown-btn {
+            padding: 0.5em;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            border: 1px solid black;
+            padding: 1em;
+            width: 200px;
+            position: absolute;
+            display: none;
+            background-color: gray;
+        }
+        .dropdown-content a {
+            display: block;
+            text-decoration: none;
+            padding: 0.5em;
+            background-color: gray;
+            color: white;
+        }
+        .active {
+            display: block;
+        }
+        
+    </style>
+    <h1>Click Dropdown</h1>
+
+    <div class="dropdown">
+        <button class="dropdown-btn">더보기</button>
+        <div class="dropdown-content">
+            <a href="">제네시스</a>
+            <a href="">스타리아</a>
+            <a href="">캐스퍼</a>
+        </div>
+    </div>
+
+    <script>
+        var dropdownBtn = document.querySelector(".dropdown-btn");
+        var content = document.querySelector(".dropdown-content");
+
+        // 실행시킬 버튼이나 네비.addEventListener("이벤트", 발생시킬 상황)
+        dropdownBtn.addEventListener("click", ()=> {
+            content.classList.toggle("active")
+        })
+        
+    </script> -->
+
+    <!-- <style>
+        .active {
+            color: yellow;
+        }
+    </style>
+    
+    <h1>별점 리뷰 남기기</h1>
+    <i class="fa-solid fa-star" onclick="toggleStar(1)"></i>
+    <i class="fa-solid fa-star" onclick="toggleStar(2)"></i>
+    <i class="fa-solid fa-star" onclick="toggleStar(3)"></i>
+    <i class="fa-solid fa-star" onclick="toggleStar(4)"></i>
+    <i class="fa-solid fa-star" onclick="toggleStar(5)"></i>
+
+    <script>
+        // .fa-star 클래스 이름을 가진 모든 element를 선택
+        // Nodelist(length)를 return한다.
+        var stars = document.querySelectorAll(".fa-star")
+
+        function toggleStar(data) {
+            console.log(data)
+            // 초기화
+            // .fa-stars element의 active 클래스를 제거한다.
+            for (let i=0; i<stars.length;i++) {
+                stars[i].classList.remove("active");
+            }
+            for (let i=0; i<data; i++) {
+                stars[i].classList.add("active");
+            }
+        }
+    </script> -->
+    <!--     
+    <style>
+        .btn {
+            width: 100%;
+            padding: 1em;
+            cursor: pointer;
+            text-align: center;
+        }
+        .panel {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .add {
+            display: none;
+        }
+    </style>
+    <h1>Accordion 아코디언</h1>
+
+    <button class="btn">메뉴1</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet facilis harum ipsam et quasi voluptates adipisci
+            quas voluptate, dolorum, dicta, quo perferendis! Voluptates dolorem quod quibusdam minima, odio provident vitae!</p>
+    </div>
+    <button class="btn">메뉴2</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptate possimus rem consequuntur nesciunt
+            commodi accusantium, doloremque laudantium dignissimos molestiae nobis deserunt facilis quidem minima minus
+            voluptatibus expedita esse sunt?</p>
+    </div>
+    <button class="btn">메뉴3</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, nulla? Eius provident porro nesciunt id reprehenderit.
+            Rem est suscipit itaque neque repellat, cupiditate explicabo beatae illum ipsam, harum consequatur omnis.</p>
+    </div> -->
+
+    <!-- <script>
+        // HTMLCollection(length)
+        var btns=document.getElementsByClassName("btn")
+       
+
+        for(let btn of btns) {
+            btn.addEventListener('click', e=>{
+
+                // nextElementSibling: DOM tree 에서 element와 같은 level의 바로 다음 엘리먼트를 선택
+                var panel = e.target.nextElementSibling;
+                
+                // 방법 1
+                // if (panel.style.display === "block") {
+                //     panel.style.display = ""
+                // } else {
+                //     panel.style.display = "block"
+                // }
+
+                // 방법 2
+                panel.classList.toggle("active")
+                
+                
+            })
+        }
+        
+        // btns[0].addEventListener('click', e=> console.log(e.target))
+        // btns[1].addEventListener('click', e=> console.log(e.target))
+        // btns[2].addEventListener('click', e=> console.log(e.target))
+
+    </script> -->
+
+
+    <!-- <script>
+        // HTMLCollection(length)
+        var btns=document.getElementsByClassName("btn");
+        var panels=document.querySelectorAll(".panel");
+
+        for(let btn of btns) {
+            btn.addEventListener('click', e=>{
+                // for 반복문 대신에 Array.forEach method 사용
+                // 초기화
+                panels.forEach(panel => {
+                    panel.classList.remove("active")
+                })
+                var panel = e.target.nextElementSibling;            
+                console.log(panel.classList.contains("active"))
+                panel.classList.toggle("active")     
+                // contains(class name) : element에 classname이 포함되어 있으면 true 아니면 fale
+                panel.classList.contains("active")
+               
+            })
+        }
+        
+        // btns[0].addEventListener('click', e=> console.log(e.target))
+        // btns[1].addEventListener('click', e=> console.log(e.target))
+        // btns[2].addEventListener('click', e=> console.log(e.target))
+
+    </script> -->
+
+
+    <!-- <style>
+        .btn {
+            padding: 0.5em;
+            width: 100%;
+            background-color: #ddd;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+        }
+        .panel {
+            border: 1px dashed;
+            height: 0;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+    </style>
+
+    <h1>Animation Accordion</h1>
+
+
+    <button class="btn">메뉴1</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet facilis harum ipsam et quasi voluptates adipisci
+            quas voluptate, dolorum, dicta, quo perferendis! Voluptates dolorem quod quibusdam minima, odio provident vitae!</p>
+    </div>
+    <button class="btn">메뉴2</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptate possimus rem consequuntur nesciunt
+            commodi accusantium, doloremque laudantium dignissimos molestiae nobis deserunt facilis quidem minima minus
+            voluptatibus expedita esse sunt?</p>
+    </div>
+    <button class="btn">메뉴3</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, nulla? Eius provident porro nesciunt id reprehenderit.
+            Rem est suscipit itaque neque repellat, cupiditate explicabo beatae illum ipsam, harum consequatur omnis.</p>
+    </div>
+
+    <script>
+        var btns = document.getElementsByClassName("btn")
+        
+        for(let btn of btns) {
+            btn.addEventListener("click",e=>{
+                var panel=e.target.nextElementSibling;
+                console.log(panel)
+                // CSS의 style을 javascript에서 읽을 수 없다.
+                console.log(panel.style.height)  //" "  
+                // element.scrollHeight : element의 content의 높이(read-only)
+                console.log(panel.scrollHeight)  // 95 
+
+                if (panel.style.height==="") {
+                    panel.style.height = panel.scrollHeight + "px"
+                } else {
+                    panel.style.height = "";
+                }
+            })
+        }
+    </script>
+     -->
+
+
+
+    <!-- 
+    <style>
+        .tab-content {
+            display: none;
+        }
+        .btn {
+            border: none;
+            padding: 0.5em;
+            background-color: #ddd;
+        }
+    </style>
+
+    <h1>Tab content</h1>
+
+    <div class="tab">
+        <button class="btn" onclick="toggleTab('g')">제네시스</botton>
+        <button class="btn" onclick="toggleTab('s')">스타리아</botton>
+        <button class="btn" onclick="toggleTab('c')">캐스퍼</botton>
+    </div>
+    <div id="g" class="tab-content">
+        <h3>제네시스</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa assumenda placeat eveniet magni fugiat
+            architecto
+            suscipit maiores ea accusamus. Eligendi praesentium soluta quisquam laudantium fuga quo quae necessitatibus
+            aut vel.
+        </p>
+    </div>
+    <div id="s" class="tab-content">
+        <h3>스타리아</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur obcaecati quidem tempora ipsam, eos
+            cupiditate quae doloremque iusto? Distinctio libero perferendis impedit quo sunt? Ea atque cupiditate nisi
+            corporis porro!</p>
+    </div>
+    <div id="c" class="tab-content">
+        <h3>캐스퍼</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus culpa expedita optio, aliquam libero
+            nulla mollitia eos tempora repellat enim cupiditate sapiente eligendi obcaecati ad aliquid! Consectetur ea nemo
+            laboriosam.</p>
+    </div>
+
+    <script>
+        let tabContents = document.getElementsByClassName("tab-content");
+
+        console.log(tabContents);
+        
+        function toggleTab(id) {
+            
+            for(let i=0;i<tabContents.length;i++) {
+                tabContents[i].style.display="none"
+            
+                }
+                console.log(id)
+            document.getElementById(id).style.display="block"
+        }
+        // 항상 첫번째 tab이 나오게 하는 방법 1
+        // document.getElementById('g').style.display="block"
+
+        // 항상 첫번째 tab이 나오게 하는 방법 2
+        // style 속성 none가 필요 없다
+        // toggleTab("g")
+
+        
+    </script> -->
+
+
+    
+    <style>
+        .tab-content {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+
+    <h1>Tab Content with HTML data attribute</h1>
+
+    <div class="tab">
+        <button class="btn" data-car="g">제네시스</button>
+        <button class="btn" data-car="s">스타리아</button>
+        <button class="btn" data-car="c">캐스퍼</button>
+    </div>
+    <div id="g" class="tab-content">
+        <h3>제네시스</h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. A repudiandae labore iste nisi. Quo dolorem
+            accusantium nihil praesentium sed nisi iure, id dolore culpa eos deleniti, asperiores ratione optio totam.
+        </p>
+    </div>
+    <div id="s" class="tab-content">
+        <h3>스타리아</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nulla ea veritatis, laborum doloribus
+            reiciendis cupiditate voluptatibus. Quaerat, fugiat delectus. Ducimus qui commodi maxime magnam adipisci
+            fugiat corrupti? Iure, aperiam.</p>
+    </div>
+    <div id="c" class="tab-content">
+        <h3>캐스퍼</h3>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae enim, eveniet quibusdam quis deleniti
+            quisquam adipisci accusamus, temporibus vitae sed omnis neque laborum quo distinctio ratione, eum unde
+            possimus. Veniam!</p>
+    </div>
+
+    <script>
+        var btns=document.querySelectorAll(".btn")
+        console.log(btns)
+        btns.forEach(btn => {
+            btn.addEventListener("click", e=> {
+                // element.getAttribute(key) : element key의 value값을 return한다.
+                // e.target의 속성 중에 data-car 커스텀 속성에 접근
+                var id=e.target.getAttribute("data-car")
+
+                // 초기화
+                // tabContent는 앞쪽에서 callback을 받아서 변수선언을 안해도 쓸수 있다.
+                document.querySelectorAll(".tab-content").forEach(tabContent => {
+                    tabContent.classList.remove("active")
+                })
+                // 해당되는 id를 가진 tab content에 active클래스를 추가한다.
+                document.getElementById(id).classList.add("active")
+            })
+        });
+        document.getElementById('g').style.add("active")
     </script>
 </body>
+
 </html>
