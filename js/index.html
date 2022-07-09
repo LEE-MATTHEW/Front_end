@@ -887,7 +887,7 @@
         
     </script> -->
 
-    <style>
+    <!-- <style>
         img {
             width: 100%;
             height: 100%;
@@ -949,8 +949,313 @@
             
            
         }
-    </script>
+    </script> -->
+
+
+    <!-- <style>
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            opacity: 0.8;
+            object-fit: cover;
+            cursor: pointer;
+            /* float은 item에 속성을 적는다 */
+            float: left;
+        }
+        .thumbnail:hover {
+            opacity: 1;
+        }
+        .container {
+            width: 400px;
+            height: 300px;
+            position: relative;
+        }
+        .nav {
+            /* position은 absolute */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* display는 flex */
+            display: flex;
+            justify-content: space-between;
+            /* 기본값은 align-item : stretch */
+            align-items: center;
+        }
+        .prev, .next {
+            padding: 0.5em;
+            background-color: #ddd;
+            opacity: 0.2;
+            cursor: pointer;
+        }
+        .prev:hover,.next:hover {
+            opacity: 1;
+        }
+
+        
+    </style>
+
+    <h1>Image button & slide click </h1>
+
+    <div class="container">
+        <img src="" alt="" id="id">
+        <div class="nav">
+            <div class="prev" onclick="navigationTo(-1)">&#10094;</div>
+            <div class="next" onclick="navigationTo(1)">&#10095;</div>
+        </div>
+    </div>
+
+    <div id="thumbnails">
+        <img src="./../img/field-g98a72c508_1920.jpg" alt="" class="thumbnail" onclick="jumpTo(0)">
+        <img src="./../img/flowers-gd0b8cbfdf_1920.jpg" alt="" class="thumbnail" onclick="jumpTo(1)">
+        <img src="./../img/butterfly-gb23ed3592_1920.jpg" alt="" class="thumbnail" onclick="jumpTo(2)">
+        <img src="./../img/kiteboarding-g0fcebd400_1920.jpg" alt="" class="thumbnail" onclick="jumpTo(3)">
+    </div>
+
+    <script>
+        var thumbnails = document.querySelectorAll(".thumbnail");
+        var displayImg = document.getElementById("id");
+        var prev = document.querySelector(".prev");
+        var next = document.querySelector(".next");
+        
+        // global 전역함수
+        var index = 0;
+
+        // 이전 다음 버튼을 눌렀을 때
+        function navigationTo(data) {
+            // index 값을 구하고
+            index+= data;
+            console.log(index);
+            if(index===-1) {
+                index=thumbnails.length-1;
+            }
+            if(index===thumbnails.length) {
+                index=0;
+            }
+            // 반복되는 부분을 이런식으로 처리가 가능하다
+            getSrc(thumbnails[index].src);
+
+
+        }
+        // 이미지를 바로 클릭했을 때
+        function jumpTo(data) {
+            index = data;
+            console.log(index);
+            getSrc(thumbnails[index].src)
+        }
+        function getSrc(src) {
+            displayImg.src = src;
+        }
+        navigationTo(0)
+    </script> -->
     
+
+    <!-- <style>
+        .container {
+            background-color: #ddd;
+            /* display: flex; */
+           
+        }
+        .item {
+            width: 100px;
+            height: 100px;
+            border: 1px dashed;
+            /* 이미지가 기본으로 inline-block이다 */
+            /* display: inline-block; */
+            /* flex에 비해 다양한 속성을 주는 기능이 없음 */
+            /* 그래서 주로 flex를 많이 사용하는 추세임 */
+            float: left;
+        }
+    </style>
+    <h1>flex와 float 비교</h1>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div> -->
+
+
+
+
+    <!-- <p style="border: 1px dashed; width: 200px; white-space: nowrap;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias deserunt a, placeat optio nihil aliquam, recusandae
+        atque neque veritatis quis voluptatibus. Ea velit aut adipisci itaque perspiciatis tenetur perferendis assumenda!
+    </p> -->
+
+    <!-- <style>
+        button {
+            opacity: 0.5;
+        }
+        button:hover {
+            opacity: 1;
+        }
+        .carousel {
+            border: 3px dashed;
+            width: 200px;
+            height: 200px;
+            /* overflow: visible; 기본값  */
+            overflow: hidden;
+            /* white-space: normal 기본값 */
+            white-space: nowrap;
+            /* 엔터를 치게되면 자동으로 띄어쓰기가 적용되기 때문에 fontsize를 0으로 지정해주어 빈공간을 없애주는것 */
+            font-size: 0;
+            position: relative;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 기본값 */
+            display: inline-block;
+            transition: 0.5s;
+        }
+        #prev, #next {
+            /* element 를 안보이게 처리한다 */
+            /* element가 차지하는 공간도 없다 */
+            /* display : none; */
+
+            /* element를 안보이게 처리한다 */
+            visibility: hidden;
+        }
+        #prev.active, #next.active {
+            /* display: inline-block; */
+            /* 기본값 */
+            visibility: visible;
+        }
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .indicator {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .indicator .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 2px;
+        }
+        .dot.active {
+            background-color: #888;
+        }
+        
+    </style>
+
+    <h1>Carousel</h1>
+    <div class="carousel">
+        <img src="../img/field-g98a72c508_1920.jpg" alt="">
+        <img src="../img/butterfly-gb23ed3592_1920.jpg" alt="">
+        <img src="../img/assisi-city-gb1ec39327_1920.jpg" alt="">
+        
+        <div class="nav">
+            <button id="prev" onclick="navigationTo(-1)">&#10094;</button>
+            <button id="next" onclick="navigationTo(1)">&#10095;</button>
+        </div>
+
+        <div class="indicator">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script>
+        var imgs = document.querySelectorAll("img")
+        var prev = document.getElementById("prev")
+        var next = document.getElementById("next")
+        var dots = document.querySelectorAll(".dot")
+        var index=0;
+        // 처음 페이지가 로드 되었을 때
+        navigationTo(0);
+        function navigationTo(data) {
+            index+=data;
+            console.log(index)
+            // button 초기화
+            prev.classList.add("active");
+            next.classList.add("active");
+            // 첫번째 이미지 일때
+            if(index===0) {
+                prev.classList.remove('active')
+                
+            } 
+            // 마지막 이미지 일때
+            else if(index===imgs.length-1) {
+                next.classList.remove('active')
+            }
+            // 초기화
+            dots.forEach(dot=> {
+                dot.classList.remove('active')
+            })
+            // active
+            dots[index].classList.add("active")
+            imgs[0].style.marginLeft = `-${index*200}px`
+        }
+    </script> -->
+
+
+    <!-- <h1>시계</h1>
+    <h1 id="clock"></h1>
+    
+    <script>
+        // 페이지가 로드되었을 때 실행
+        // document.getElementById("clock").innerHTML = new Date().toLocaleTimeString();
+        // setInterval(callback, ms) : ms 주기로 callback을 실행
+        // 처음에 ms 지난 후 부터 시작
+        setInterval(() => {
+            document.getElementById("clock").innerHTML = new Date().toLocaleTimeString();
+        },1000)    
+    </script> -->
+
+    <h1>Auto Carousel</h1>
+
+    <style>
+        .carousel {
+            border: 3px dashed;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+    </style>
+    <div class="carousel">
+        <img src="../img/assisi-city-gb1ec39327_1920.jpg" alt="" >
+        <img src="../img/butterfly-gb23ed3592_1920.jpg" alt="">
+        <img src="../img/field-g98a72c508_1920.jpg" alt="">
+    </div>
+
+    <script>
+        var imgs = document.querySelectorAll('img')
+        console.log(imgs)
+        var index=0
+        function navigationTo(data){
+            index +=data
+            setInterval(()=>{
+                imgs =  (img[index].style.display = 'block')
+            },1000)
+        }
+    </script>
 </body>
 
 </html>
