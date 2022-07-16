@@ -1223,14 +1223,18 @@
         },1000)    
     </script> -->
 
-    <h1>Auto Carousel</h1>
+
+
+
+    <!-- <h1>Auto Carousel(내가만든 버전)</h1>
 
     <style>
         .carousel {
-            border: 3px dashed;
+            /* border: 3px dashed; */
             width: 200px;
             height: 200px;
             overflow: hidden;
+            position: relative;
         }
         img {
             width: 100%;
@@ -1238,24 +1242,168 @@
             object-fit: cover;
             display: none;
         }
+        .indicator {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .indicator .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 2px;
+        }
+        .dot.active {
+            background-color: #888;
+        }
     </style>
     <div class="carousel">
-        <img src="../img/assisi-city-gb1ec39327_1920.jpg" alt="" >
-        <img src="../img/butterfly-gb23ed3592_1920.jpg" alt="">
-        <img src="../img/field-g98a72c508_1920.jpg" alt="">
+        <img src="../img/assisi-city-gb1ec39327_1920.jpg" alt="" onclick="navidationTo(0)">
+        <img src="../img/butterfly-gb23ed3592_1920.jpg" alt="" onclick="navidationTo(1)">
+        <img src="../img/field-g98a72c508_1920.jpg" alt="" onclick="navidationTo(2)">
+        
+        <div class="indicator">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
     </div>
 
     <script>
         var imgs = document.querySelectorAll('img')
+        var dots = document.querySelectorAll(".dot")
         console.log(imgs)
-        var index=0
+        var index=-1
+        navigationTo(0)
+        setInterval(navigationTo,3000)
         function navigationTo(data){
-            index +=data
-            setInterval(()=>{
-                imgs =  (img[index].style.display = 'block')
-            },1000)
+            index++
+            if (index=== imgs.length) {
+                index=0;
+            }
+            imgs.forEach(img=>{
+                img.style.display="none"
+            })
+            imgs[index].style.display = 'block';
+            dots.forEach(dot=> {
+                dot.classList.remove('active')
+            })
+            dots[index].classList.add("active")
         }
+       
+    </script> -->
+
+
+    <h1>Auto Carousel(선생님 버전)</h1>
+
+    <style>
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+        .item {
+            width: 300px;
+            height: 300px;
+        }
+        .indicator {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 2px;
+        }
+        .dot.active {
+            background-color: #888;
+        }
+    </style>
+    <div class="carousel">
+        <!-- 주로 img 태그는 홀로 쓰기보단 div태그에 감싸서 쓴다 -->
+        <div class="item">
+            <img src="../img/assisi-city-gb1ec39327_1920.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="../img/butterfly-gb23ed3592_1920.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="../img/field-g98a72c508_1920.jpg" alt="">
+        </div>
+        <div class="indicator">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script>
+        var items = document.querySelectorAll(".item");
+        var dots = document.querySelectorAll(".dot");
+        // setInterval함수가 실행되기 전 또는 페이지 로드 되었을때
+        // 방법 1
+        // var index=0;
+        // items.forEach(item=>{
+        //     item.style.display="none"
+        // })
+        // items[0].style.display = "block";
+        // setInterval(()=> {
+        //     index++;
+        //     console.log(index);
+        //     마지막 이미지 일때
+        //     if(index===items.length) {
+        //         index=0;
+        //     }
+        //     // 초기화
+        //     items.forEach(item=>{
+        //         item.style.display = "none";
+        //     })
+        //     items[index].style.display="block"
+        // },3000)
+
+        // 방법 2
+        var index=-1;
+        // 초기화 방법
+        // navigationTo()
+        window.addEventListener("load",()=>{
+            navigationTo()
+        })
+
+        // 페이지로드 시 3초 간격으로 navigationTo함수 호출
+        setInterval(navigationTo,3000)
+
+        function navigationTo() {
+            index++;
+            // 마지막 이미지 일때
+            if(index===items.length) {
+                index=0;
+            }
+            items.forEach(item => {
+                item.style.display = "none";
+            })
+            items[index].style.display="block";
+            dots.forEach(dot=>{
+                dot.classList.remove("active")
+            })
+            dots[index].classList.add("active")
+        }
+
     </script>
+
 </body>
 
 </html>
