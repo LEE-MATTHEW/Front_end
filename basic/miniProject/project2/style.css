@@ -11,6 +11,11 @@ h1,h2,h3,h4,h5,p {
 ul {
     list-style-type: none;
 }
+input[type=text] {
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    outline: none;
+}
 .btn {
     display: inline-block;
     padding: 0.5em;
@@ -18,6 +23,13 @@ ul {
     text-align: center;
     border: 1px solid;
     background-color: #fff;
+}
+img {
+    width: 100%;
+}
+/* width and height */
+.w-100 {
+    width: 100%;
 }
 /* text */
 .text-center {
@@ -37,6 +49,9 @@ ul {
 }
 .bg-white {
     background-color: #fff;
+}
+.bg-light-grey {
+    background-color: #f1f1f1;
 }
 /* position */
 .relative {
@@ -62,6 +77,7 @@ ul {
 }
 .flex-equal >* {
     flex-grow: 1;
+    width: 100%;
 }
 .flex-col {
     flex-direction: column;
@@ -93,14 +109,39 @@ ul {
 .mx-auto {
     margin: auto;
 }
+.ms-1 {
+    margin-left: 0.25em;
+}
 .mx-1 {
     margin-left: 0.25em;
     margin-right: 0.25em;
+}
+.mt-1 {
+    margin-top: 0.25em;
 }
 .mt-3 {
     margin-top: 1em;
 }
 
+/* modal */
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    display: none;
+}
+#modal-content {
+    max-width: 400px;
+    margin: 100px auto 0;
+    padding: 1rem;
+}
+#modal.active {
+    display: block;
+}
 /* fake-img */
 .fake-img {
     background-color: #ddd;

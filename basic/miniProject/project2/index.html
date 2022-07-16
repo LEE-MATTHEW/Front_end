@@ -29,19 +29,19 @@
     <div class="row">
         <div class="slide-container">
             <div class="slide relative">
-                <div class="fake-img"></div>
+                <img src="./img/la.jpg" alt="">
                 <div class="bg-text center">
                     <h1>1</h1>
                 </div>
             </div>
             <div class="slide relative">
-                <div class="fake-img"></div>
+                <img src="./img/ny.jpg" alt="">
                 <div class="bg-text center">
                     <h1>2</h1>
                 </div>
             </div>
             <div class="slide relative">
-                <div class="fake-img"></div>
+                <img src="./img/chicago.jpg" alt="">
                 <div class="bg-text center">
                     <h1>3</h1>
                 </div>
@@ -64,15 +64,15 @@
                 <div class="flex flex-col flex-equal">
                     <div class="col px-3">
                         <h3 class="text-center">Name</h3>
-                        <div class="fake-img"></div>
+                        <img src="./img/bandmember.jpg" alt="">
                     </div>
                     <div class="col px-3">
                         <h3 class="text-center">Name</h3>
-                        <div class="fake-img"></div>
+                        <img src="./img/bandmember.jpg" alt="">
                     </div>
                     <div class="col px-3">
                         <h3 class="text-center">Name</h3>
-                        <div class="fake-img"></div>
+                        <img src="./img/bandmember.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -93,9 +93,9 @@
                     <li class="p-2 border-bottom">November</li>
                 </ul>
             </div>
-            <div class="flex">
+            <div class="flex flex-col">
                 <div class="col bg-white mx-1 mt-3">
-                    <div class="fake-img"></div>
+                    <img src="./img/newyork.jpg" alt="">
                     <div class="p-2">
                         <h3>Name</h3>
                         <p>Fri 27 Nov 2016</p>
@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <div class="col bg-white mx-1 mt-3">
-                    <div class="fake-img"></div>
+                    <img src="./img/paris.jpg" alt="">
                     <div class="p-2">
                         <h3>Name</h3>
                         <p>Fri 27 Nov 2016</p>
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="col bg-white mx-1 mt-3">
-                    <div class="fake-img"></div>
+                    <img src="./img/sanfran.jpg" alt="">
                     <div class="p-2">
                         <h3>Name</h3>
                         <p>Fri 27 Nov 2016</p>
@@ -126,12 +126,80 @@
     </div>
 
     <!-- Modal Foam -->
+    <div id="modal">
+        <div id="modal-content" class="bg-white">
+            <form action="">
+                <h1>Tickets</h1>
+                <div class="form-group">
+                    <h3>Tickets,$15 per person</h3>
+                    <input type="text" class="w-100" placeholder="How many?">
+                </div>
+                <div class="form-group">
+                    <h3>Send to</h3>
+                    <input type="text" class="w-100" placeholder="Enter email">
+                </div>
+                <div class="form-group mt-3">
+                    <button type="submit" class="w-100 btn">PAY</button>
+                </div>
+                <div class="form-group">
+                    <p>Need <a href="">help?</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Contact -->
+    <div id="contact" class="row py-5">
+        <div class="mx-auto px-3" style="max-width: 800px;">
+        <div class="text-center">
+            <h1>Contact</h1>
+            <p>Fan? Drop a note!</p>
+        </div>
+
+        <div class="flex flex-col flex-equal">
+            <div class="col py-3">
+                <ul>
+                    <li>Chicago, US</li>
+                    <li>Phone: +00 151515</li>
+                    <li>Email: mail@mail.com</li>
+                </ul>
+            </div>
+            <div class="col">
+                <form action="">
+                    <div class="flex flex-equal">
+                        <div class="">
+                            <input type="text" class="w-100" placeholder="Name">
+                        </div>
+                        <div class="ms-1">
+                            <input type="text" class="w-100" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="mt-1">
+                        <input type="text" class="w-100" placeholder="Message">
+                    </div>
+                    <div class="mt-3">
+                        <button type="submit" class="btn">SEND</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
 
     <!-- Map -->
+    <div class="row py-5">
+        <div class="mx-auto px-3" style="max-width: 800px;">
+            <img src="./img/map.jpg" alt="">
+        </div>
+    </div>
 
     <!-- Footer -->
+    <div class="footer bg-light-grey py-5">
+        <div class="text-center">
+            <p>Some icons</p>
+            <small>Powered by w3.css</small>
+        </div>
+    </div>
 
 
     <script>
@@ -139,12 +207,14 @@
         var nav = document.getElementById("nav");
 
         var slides = document.querySelectorAll(".slide");
+        
+        var modal = document.getElementById("modal")
+        
+        
         // navigation
         menu.addEventListener("click", e => {
             nav.classList.toggle("active");
-
         })
-
         var index = -1;
 
         navigationTo();
@@ -161,6 +231,18 @@
             })
             slides[index].style.display = "block";
         }
+
+        function showModal() {
+            modal.classList.add("active");
+        }
+
+        window.addEventListener("click", e=>{
+            // 현재 클릭하는 element
+            console.log(e.target);
+            if (e.target.id === "modal") {
+                e.target.classList.remove("active")
+            }
+        })
     </script>
 </body>
 
