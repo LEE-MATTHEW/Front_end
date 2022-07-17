@@ -3,3 +3,11 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  ul 
+    //- pug의 반복문
+    //- each 임의의 변수 in 서버에서 가져오는 list명
+    each post in posts 
+      li 
+        a(href=`/p/${post}`)= post.split('.')[0]
+
+  a(href="/create") New Post
