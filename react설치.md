@@ -1,3 +1,5 @@
+npm installl : 리엑트 설치
+
 mkdir react : react 경로 설정
 
 cd react : react폴더 진입
