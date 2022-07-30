@@ -386,18 +386,213 @@ import './index.css';
 //   )
 // }
 
+// function App() {
+//   const [isCount,setIsCount] = useState(false);
+
+//   function handleCount() {
+//     setIsCount(!isCount)
+//   }
+
+//   return (
+//     <>
+//       <h1>좋아요 {isCount}</h1>
+//       <button onClick={handleCount}>{isCount ? "좋아요 취소" : "좋아요"}</button>
+//     </>
+//   )
+// }
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// // root.render(<App />); : App 함수 컴포넌트르 호출한다
+// // <컴포넌트의 이름  key=value />
+// root.render(<App/>);
+
+
+// function App() {
+//   console.log('App Lorded');
+//   const [count, setCount] = useState(0);
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <p>{count}</p>
+//       <button onClick={()=>setCount(count+1)}>+</button>
+//     </>
+//   )
+// }
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// // root.render(<App />); : App 함수 컴포넌트르 호출한다
+// // <컴포넌트의 이름  key=value />
+// root.render(<App/>);
+
+// function App() {
+//   console.log("App Loaded!")
+//   const [count,setCount] = useState(0);
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <p>{count}</p>
+//       {/* count 와 setCount를 Foo 컴포넌트에 전달 */}
+//       <Foo count={count} setCount={setCount}/>
+//     </>
+//   )
+// }
+// function Foo(props) {
+//   console.log("Foo loaded");
+
+//   return (
+//     <>
+//       <button onClick={()=>""}>+</button>
+//     </>
+//   )
+// }
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// // root.render(<App />); : App 함수 컴포넌트르 호출한다
+// // <컴포넌트의 이름  key=value />
+// root.render(<App/>);
+
+
+// # useEffect
+// 컴포넌트 내에서 side effect 기능을 수행한다
+// side effect : 데이터 가져오기, 수동으로 React 컴포넌트의 DOM 수정 등
+// 기타 많은 effect를 수행
+
+// useEffect(callback) : callback은 side-effect를 수행
+
+
+// useEffect(()=> {...}) : 컴포넌트가 호출 될 때마다 실행
+// useEffect(()=> {...}, []) : 컴포넌트가 처음 호출될 때 실행
+// useEffect(()=> {...}, [dep1, dep2, ...]) : 컴포넌트가 처음 호출될때, dependecy가 업데이트 될 때 실행
+
+
+// function App() {
+//   const [count, setCount] = useState(0);
+
+//   // 컴포넌트가 호출 될 때마다 실행된다
+//   useEffect(()=> {
+//     document.title=count
+//   })
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <button onClick={()=> setCount(count+1)}>Add</button>
+//     </>
+//   )
+// }
+
+
+// function App() {
+//   console.log("App loaded")
+//   const [count, setCount] = useState(0);
+
+//   // 컴포넌트가 처음 호출되었을때 실행된다
+//   useEffect(()=> {
+//     document.title=count
+//   },[])
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <button onClick={()=> setCount(count+1)}>Add</button>
+//     </>
+//   )
+// }
+
+// function App() {
+//   console.log("App loaded")
+//   const [count, setCount] = useState(0);
+//   const [foo,setFoo]=useState(2);
+
+//   // 컴포넌트가 처음 호출되었을때 실행된다
+//   // dep가 업데이트 되었을때 실행
+//   useEffect(()=> {
+//     document.title=foo;
+//   },[foo])
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <button onClick={()=>setFoo(foo+2)}>Foo</button>
+//       <button onClick={()=> setCount(count+1)}>Add</button>
+//     </>
+//   )
+// }
+
+// #useRef
+// 컴포넌트가 업데이트 되기 전의 state값에 접근할 수 있다
+// HTML DOM에 직접적으로 접근할 수 있다
+// useRef는 key가 current 한 개인 object를 return한다
+
+// function App() {
+//   const [count,setCount] = useState(0);
+//   // Ref(Reference)의 초기값
+//   const previousCount = useRef(null);
+//   console.log(previousCount)
+//   // useEffect는 비동기 함수
+//   useEffect(()=> {
+//     previousCount.current=count
+//     console.log(previousCount)
+//   })
+//   return(
+//     <>
+//       <h1>App</h1>
+//       <p>이전 count : {previousCount.current}</p>
+//       <p>{count}</p>
+//       <button onClick={()=>setCount(count+1)}>Add</button>
+//     </>
+//   )
+// }
+
+// UI = User Interface(사용자 <> Application)
+// API = Application Programing Interface(Application <>)
+
+// function App() {
+//   const inputEl = useRef(null);
+//   console.log(inputEl);
+//   useEffect(()=>{
+//     inputEl.current.focus()
+//   })
+//   return (
+//     <>
+//       <h1>App</h1>
+//       <input type="text" name='name' ref={inputEl} autoComplete="off"/>
+//     </>
+//   )
+// }
+
+// # useContext
+// VirtualDom Tree 안에서 깊은 부분까지 간단하게 props를 전달할 수 있다.
+
 function App() {
-  const [isCount,setIsCount] = useState(false);
-
-  function handleCount() {
-    setIsCount(!isCount)
-  }
-
   return (
     <>
-      <h1>좋아요 {isCount}</h1>
-      <button onClick={handleCount}>{isCount ? "좋아요 취소" : "좋아요"}</button>
+      <Component>
+        <Component2>
+          <Component3/>
+        </Component2>
+      </Component>
     </>
+  )
+}
+function Component(props) {
+  return (
+    <div>
+      <h1>Component 1</h1>
+      <p>Component 1</p>
+      {props.children}
+    </div>
+  )
+}
+function Component2(props) {
+  return (
+    <div>
+      <h2>Component 2</h2>
+      <p>Component 2</p>
+      {props.children}      
+    </div>
+  )
+}
+function Component3() {
+  return (
+    <div>
+      <h3>Component 3</h3>
+      <p>Component 3</p>
+    </div>
   )
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
