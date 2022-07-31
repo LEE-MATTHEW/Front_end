@@ -558,43 +558,45 @@ import './index.css';
 // # useContext
 // VirtualDom Tree 안에서 깊은 부분까지 간단하게 props를 전달할 수 있다.
 
-function App() {
-  return (
-    <>
-      <Component>
-        <Component2>
-          <Component3/>
-        </Component2>
-      </Component>
-    </>
-  )
-}
-function Component(props) {
-  return (
-    <div>
-      <h1>Component 1</h1>
-      <p>Component 1</p>
-      {props.children}
-    </div>
-  )
-}
-function Component2(props) {
-  return (
-    <div>
-      <h2>Component 2</h2>
-      <p>Component 2</p>
-      {props.children}      
-    </div>
-  )
-}
-function Component3() {
-  return (
-    <div>
-      <h3>Component 3</h3>
-      <p>Component 3</p>
-    </div>
-  )
-}
+// function App() {
+//   return (
+//     <>
+//       <Component>
+//         <Component2>
+//           <Component3/>
+//         </Component2>
+//       </Component>
+//     </>
+//   )
+// }
+// function Component(props) {
+//   return (
+//     <div>
+//       <h1>Component 1</h1>
+//       <p>Component 1</p>
+//       {props.children}
+//     </div>
+//   )
+// }
+// function Component2(props) {
+//   return (
+//     <div>
+//       <h2>Component 2</h2>
+//       <p>Component 2</p>
+//       {props.children}      
+//     </div>
+//   )
+// }
+// function Component3() {
+//   return (
+//     <div>
+//       <h3>Component 3</h3>
+//       <p>Component 3</p>
+//     </div>
+//   )
+// }
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(<App />); : App 함수 컴포넌트르 호출한다
 // <컴포넌트의 이름  key=value />
