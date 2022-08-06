@@ -1,38 +1,67 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
+}
+label {
+  display: block;
+}
+input[type="text"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+input[type=checkbox] {
+  width: 2rem;
+  height: 2rem;
+}
+.btn {
+  padding: 0.5rem;
+  cursor: pointer;
+  display: inline-block;
+  border: none;
+}
+.btn-light {
+  background-color: #ddd;
+}
+.btn-secondary {
+  background-color: #555;
+  color: #fff;
+}
+.btn-danger {
+  background-color: #ca3c3c;
+  color: #fff;
+}
+.text-center {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*:focus {
+  outline: 4px dashed #228bec;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.w-full {
+  width: 100%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex {
   display: flex;
-  flex-direction: column;
+  /* flex-wrap: wrap; */
+}
+.flex-equal {
+  gap: 0.25rem;
+}
+.flex-equal > * {
+  flex-basis: 100%;
+}
+.items-center {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.ml-2 {
+  margin-left: 0.5rem;
 }
