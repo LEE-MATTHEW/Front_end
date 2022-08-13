@@ -1,3 +1,5 @@
+Node JS를 먼저 설치 : npm 툴을 이용하기 위해 먼저 설치 
+
 npm installl : 리엑트 설치
 
 mkdir react : react 경로 설정
