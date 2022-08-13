@@ -14,3 +14,6 @@ react 홈페이지에서 자세한 설명들 보기 가능함!!!
 
 
 https://reactrouter.com/ 예제 풀이 가능
+
+CSR 과 SSR의 차이
+
