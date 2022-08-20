@@ -51,8 +51,31 @@ GET /search - 유저 검색의 결과를 전송한다.
 # Package
 passport, jwt cookieParser, cors, path, formidable, mongoose
 
+- passport
+유저 인증에 사용(로그인)
+
+- cookieParser
+요청에 담긴 cookie 데이터를 파싱한다
+
+- cors(Cross-Origin Resource Sharing)
+교차 출처 리소스 공유를 허가한다
+
+- path
+서버에서 정적인 경로를 설정한다
+
+- formidable 
+요청의 formData를 파싱한다
+
+- mongoose
+ODM(Object DOcument Model)
+JavaScript로 작성된 데이터베이스 쿼리를 네이티브 데이터베이스 쿼리로 변환한다
+> JavaScript로 작성된 쿼리 : User.find({ username: "changno" })
+> 네이티브 쿼리(데이터베이스 언어)로 작성된 쿼리 : SELECT * FROM User WHERE username="changno"
+> 단점 : 네이티브 쿼리로 한번의 번역이 필요하기 때문에 네이티브 쿼리에 비해 속도가 느리다
+
 # 리엑트는 view 서버
 
 # 흔히 많이 사용하는 API서버 
 postman
+
 
