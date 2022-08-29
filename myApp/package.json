@@ -1,7 +1,7 @@
 {
   "name": "myapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "- index\r GET / - index로 요청",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -18,5 +18,6 @@
     "mongoose": "^6.5.2",
     "passport": "^0.6.0",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {}
 }

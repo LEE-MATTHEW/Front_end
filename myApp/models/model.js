@@ -17,7 +17,7 @@ const followSchema = new Schema({
 
 const articleSchema = new Schema({
   description: { type: String },
-  photos: { type: String },
+  photos: [{ type: String }],
   created: { type: Date, default: Date.now },
   undated: { type: Date, default: Date.now },
   tagList: [{ type: String }],

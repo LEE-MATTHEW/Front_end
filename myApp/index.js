@@ -45,7 +45,7 @@ app.get("/", async (req, res, next) => {
 // auth에서 유저인증을 처리
 // 성공할 경우 다음 callback을 실행한다
 // 실패할 경우 401에러
-app.get("/user",auth,async(req,res,next)=>{
+app.get("/user", auth, async (req, res, next) => {
   try {
     res.json(req.user);
   } catch (error) {
@@ -81,30 +81,30 @@ app.post("/users", async (req, res, next) => {
 })
 
 // Login
-app.post("/user/login", async (req,res,next)=>{
+app.post("/user/login", async (req, res, next) => {
   try {
-    const {email,password} = req.body;
+    const { email, password } = req.body;
     // 전달받은 email을 가진 user를 찾는다
-    const user = await User.findOne({email});
+    const user = await User.findOne({ email });
     // 만약 user가 존재하지 않는 경우 401에러(Not Authorized)를 발생
-    if(!user) {
+    if (!user) {
       const err = new Error("Authentication failed");
       err.status = 401;
       return next(err);
     }
     // 전달받은 비밀번호를 user의 salt로 암호화한다
-    const hashedPassword = crypto.pbkdf2Sync(password,user.salt,310000,32,"sha256").toString("hex");
+    const hashedPassword = crypto.pbkdf2Sync(password, user.salt, 310000, 32, "sha256").toString("hex");
 
     if (user.password !== hashedPassword) {
       const err = new Error("Authentication failed");
-      err.status=401;
+      err.status = 401;
       return next(err);
     }
 
     // 인증에 성공한 경우 jwt(Json Web Token)을 발급한다
     // user의 username을 secret key(shhhhh)를 가지고 token을 생성한다
-    const token = jwt.sign({username:user.username},"shhhhh");
-    res.json({user, token});
+    const token = jwt.sign({ username: user.username }, "shhhhh");
+    res.json({ user, token });
 
   } catch (error) {
     next(error)
@@ -112,17 +112,80 @@ app.post("/user/login", async (req,res,next)=>{
 })
 
 // Profile 
+app.get("/profiles/:username", auth, async (req, res, next) => {
+  try {
+    const loginUser = req.user;
+    const username = req.params.username;
+    // 파라미터로 전달받은 username으로 유저를 검색한다.
+    const user = await User.findOne({ username });
+
+    // 유저가 존재하지 않을 경우 404에러(Not found)를 발생
+    if (!user) {
+      const err = new Error("User not found");
+      err.status = 404;
+      return next(err);
+    }
+    // 팔로우 및 게시물 데이터
+    const following = await Follow.findOne({ follower: loginUser._id, following: user._id });
+    // 유저의 팔로잉 수
+    const followingCount = await Follow.countDocuments({ follower: user._id });
+    // 유저의 팔로워 수
+    const followersCount = await Follow.countDocuments({ following: user._id });
+    // 게시물 수 
+    const articlesCount = await Article.countDocuments({ user: user._id });
+
+    const profile = {
+      username: user.username,
+      bio: user.bio,
+      image: user.image,
+      isFollowing: following ? true : false,
+      followersCount,
+      followingCount,
+      articlesCount
+    }
+
+    res.json(profile);
+  } catch (err) {
+    next(err)
+  }
+})
+
+app.get("/profiles/:username/articles", auth, async (req, res, next) => {
+  try {
+    // 파라미터로 전달된 username으로 유저를 검색한다
+    const username = req.params.username;
+    const user = await User.findOne({ username });
+
+    // 유저가 존재하지 않을 경우 404에러 발생
+    if (!user) {
+      const err = new Error("User not found");
+      err.status = 404;
+      return next(err);
+    }
+
+    // 유저가 작성한 게시물을 검색 
+    const articles = await Article.find({ user: user._id })
+      .sort([["created", "decending"]])
+      .populate("user")
+
+    res, json(articles);
+
+  } catch (err) {
+    next(err)
+  }
+})
+
 // Account Edit(정보 수정)
-app.post("/accounts/edit", auth, async(req,res,next)=>{
+app.post("/accounts/edit", auth, async (req, res, next) => {
   try {
     const loginUser = req.user;
     // 로그인한 유저의 id를 가지고 user를 검색한다
     const user = await User.findById(loginUser._id);
     // bio : 자기소개
-    const bio = req.body.bio;   
+    const bio = req.body.bio;
 
     // 유저의 bio를 업데이트 한다
-    user.bio =bio;
+    user.bio = bio;
     await user.save();
 
     res.json(user.bio);
@@ -132,11 +195,11 @@ app.post("/accounts/edit", auth, async(req,res,next)=>{
   }
 })
 // 프로필 image 등록
-app.post("/accounts/edit/image", auth,async(req,res,next)=>{
+app.post("/accounts/edit/image", auth, async (req, res, next) => {
   // 파일을 처리하기 위해서 formidable이 필요
   const form = formidable({});
 
-  form.parse(req, async(err,fields,files)=>{
+  form.parse(req, async (err, fields, files) => {
     try {
       if (err) {
         return next(err);
@@ -147,7 +210,7 @@ app.post("/accounts/edit/image", auth,async(req,res,next)=>{
       // 전달받은 이미지를 image변수에 담는다
       const image = files.image;
 
-      const oldPath = image.filepath;
+      const oldpath = image.filepath;
       // 원본이미지의 확장자(extension)
       const ext = image.originalFilename.split(".")[1];
       // 이미지에 새로운 이름으로 변경 (hexstring + 확장자)
@@ -156,10 +219,10 @@ app.post("/accounts/edit/image", auth,async(req,res,next)=>{
       const newPath = __dirname + "/data/users/" + newName;
 
       // 전달받은 이미지를 data폴더에 저장
-      fs.renameSync(oldPath, newPath);
+      fs.renameSync(oldpath, newPath);
 
       // 유저의 이미지를 업데이트한다
-      user.image=newName;
+      user.image = newName;
       await user.save();
 
       res.json(newName);
@@ -171,9 +234,9 @@ app.post("/accounts/edit/image", auth,async(req,res,next)=>{
 })
 
 // 프로필 이미지 삭제
-app.delete("/accounts/edit/image", auth,async(req,res,next)=>{
+app.delete("/accounts/edit/image", auth, async (req, res, next) => {
   try {
-    const loginUser=req.user;
+    const loginUser = req.user;
     const user = await User.findById(loginUser._id);
 
     // 유저의 이미지를 업데이트 한다(삭제)
@@ -188,6 +251,197 @@ app.delete("/accounts/edit/image", auth,async(req,res,next)=>{
   }
 })
 
+// 팔로우
+app.post("/profiles/:username/follow", auth, async (req, res, next) => {
+
+  try {
+    const loginUser = req.user;
+    const username = req.params.username;
+    const user = await User.findOne({ username });
+    // 팔로우 데이터 검색
+    // 로그인 유저가 파라미터로 전달된 유저를 팔로잉 하는지 확인
+    const follow = await Follow.findOne({ follower: loginUser._id, following: user._id });
+    // 이미 팔로잉 중인 경우 400에러(Bad Request) 발생
+    if (follow) {
+      const err = new Error("Aleady Follow");
+      err.status = 400;
+      return next(err);
+    }
+    const newFollow = new Follow({
+      follower: loginUser._id,
+      following: user._id
+    })
+    await newFollow.save();
+    res.json(newFollow)
+  } catch (err) {
+    next(err)
+  }
+});
+
+app.delete("profiles/:username/follow", auth, async (req, res, next) => {
+  try {
+    const loginUser = req.user;
+    const username = req.params.username;
+    const user = await User.findOne({ username });
+    // 팔로우 데이터 검색
+    const follow = await Follow.findOne({ follower: loginUser._id, following: user._id });
+
+    // 팔로우 데이터가 존재하지 않을경우 400에러 발생
+    if (!follow) {
+      const err = new Error("Follow not found");
+      err.status = 400;
+      return next(err);
+    }
+    await follow.delete();
+    res.end();
+  } catch (err) {
+    next(err);
+  }
+})
+
+// 팔로워 및 팔로잉 리스트
+app.get("/profiles/:username/followers", auth, async (req, res, next) => {
+  try {
+    const username = req.params.username;
+    const user = await User.findOne({ username });
+    // 팔로우 데이터를 검색
+    const follows = await Follow.find({ following: user._id }).populate("follower");
+    res.json(follows);
+  } catch (err) {
+    next(err)
+  }
+})
+
+app.get("/profiles/:username/following", auth, async (req, res, next) => {
+  try {
+    const username = req.params.username;
+    const user = await User.findOne({ username });
+    // 팔로우 데이터를 검색
+    const follows = await Follow.find({ follower: user._id }).populate("following");
+    res.json(follows);
+  } catch (err) {
+    next(err)
+  }
+})
+
+// 피드
+app.get("/feed", auth, async (req, res, next) => {
+  try {
+    const loginUser = req.user;
+    const follows = await Follow.find({ follower: loginUser._id });
+    // 로그인 유저가 팔로우하는 유저의 게시물과 로그인 유저 본인의 게시물 검색
+    const articles = await Article
+      .find({ user: [...follows.map(follow => follow.following), loginUser._id] })
+      .sort([["created", "decending"]])
+      .populate("user");
+    // 로그인한 유저가 좋아하는 게시물인지 아닌지 확인
+    // article.isFavorite
+    for (let article of articles) {
+      const favorite = await Favorite.findOne({ user: loginUser._id, article: article._id })
+      // article에 isFavorite 키를 추가
+      article.isFavorite = favorite ? true : false;
+    }
+
+    res.json(articles)
+
+  } catch (error) {
+    next(error)
+  }
+})
+
+// 게시물
+app.post("/articles", auth, async (req, res, next) => {
+
+  // form에서 파일이 있는 경우 formidable을 사용한다
+  const form = formidable({ multiples: true });
+
+  form.parse(req, async (err, fields, files) => {
+    try {
+      const loginUser = req.user;
+      if (err) {
+        return next(err);
+      }
+      // 파일이 여러개인 경우 Array의 형태로 전달된다
+      // 파일이 하나인 경우 Object의 형태로 전달된다
+      // photos 변수에 전달받은 파일을 담는다
+      // photos는 파일 Array이다
+
+      // res.json({fields, files})
+      const photos = files.photos instanceof Array ? files.photos : new Array(files.photos);
+      // return console.log(photos)
+      // 파일이 없는 경우 400에러를 발생시킨다
+      if (!photos[0].originalFilename) {
+        const err = new Error("Image must be specified");
+        err.status = 400;
+        return next(err);
+      }
+      // image validation check needed
+      const photoList = photos.map(photo => {
+        // 파일을 정적폴더에 저장한다
+        const oldpath = photo.filepath;
+        const ext = photo.originalFilename.split(".")[1]
+        const newName = photo.newFilename + "." + ext;
+        const newpath = __dirname + "/data/articles/" + newName;
+
+        fs.renameSync(oldpath, newpath);
+
+        // 새로운 파일이름을 return한다
+        return newName;
+      })
+      // 게시글을 저장한다
+      const article = new Article({
+        description: fields.description,
+        photos: photoList,
+        user: loginUser._id
+      })
+      await article.save();
+      res.json(photoList)
+    } catch (error) {
+      next(error)
+    }
+  });
+})
+
+// 전체 게시물 가져오기
+app.get("/articles", auth, async (req, res, next) => {
+  try {
+    const articles = await Article.find().sort([["created", "decending"]]).populate("user")
+
+    res.json(articles);
+
+  } catch (error) {
+    next(error)
+  }
+})
+
+// 특정 게시물 가져오기
+app.get("/articles/:id", auth, async (req, res, next) => {
+  try {
+    const loginUser = req.user;
+    const id = req.params.id;
+    // 파라미터로 전달된 id로 게시물을 검색
+    // lean() : mongoDB Document 인스턴스를 일반 JavaScript Object로 변환
+    // 변환이 된 경우, MongoDB Document를 일반 JavaScript Object로 다룰 수 있다
+    // 예) MogoDB Document 에 새로운 key를 추가하는 등
+    const article = await Article.findById(id).populate("user").lean();
+
+    // 게시물이 존대하지 않는 경우 404에러를 발생
+    if (!article) {
+      const err = new Error("Article not found")
+      err.status = 404;
+      return next(err);
+    }
+
+    // 로그인 유저가 좋아요 누른 게시물인지 확인
+    const favorite = await Favorite.findOne({ user: loginUser._id, article: article._id })
+    // article에 isFavorite 키를 추가
+    article.isFavorite = favorite ? true : false;
+
+    res.json(article)
+  } catch (error) {
+    next(error)
+  }
+})
 
 // # Error Handler
 app.use((err, req, res, next) => {
