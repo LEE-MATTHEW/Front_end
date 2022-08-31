@@ -332,7 +332,7 @@ app.get("/feed", auth, async (req, res, next) => {
     // 로그인 유저가 팔로우하는 유저의 게시물과 로그인 유저 본인의 게시물 검색
     const articles = await Article
       .find({ user: [...follows.map(follow => follow.following), loginUser._id] })
-      .sort([["created", "decending"]])
+      .sort([["created", "descending"]])
       .populate("user");
     // 로그인한 유저가 좋아하는 게시물인지 아닌지 확인
     // article.isFavorite
@@ -402,10 +402,12 @@ app.post("/articles", auth, async (req, res, next) => {
   });
 })
 
+
 // 전체 게시물 가져오기
 app.get("/articles", auth, async (req, res, next) => {
   try {
-    const articles = await Article.find().sort([["created", "decending"]]).populate("user")
+    const articles = await Article.find()
+      .sort([["created", "descending"]]).populate("user")
 
     res.json(articles);
 
@@ -438,6 +440,235 @@ app.get("/articles/:id", auth, async (req, res, next) => {
     article.isFavorite = favorite ? true : false;
 
     res.json(article)
+  } catch (error) {
+    next(error)
+  }
+})
+
+app.delete("/articles/:id", auth, async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const article = await Article.findById(id);
+
+    if (!article) {
+      const err = new Error("Article not found");
+      err.status = 404;
+      return next(err);
+    }
+    await article.delete();
+    res.end();
+  } catch (err) {
+    next(err)
+  }
+})
+
+// 게시물 좋아요
+app.post("/articles/:id/favorite", auth, async (req, res, next) => {
+  try {
+    // 로그인한 유저
+    const loginUser = req.user;
+    const id = req.params.id;
+    // id에 일치하는 게시물을 찾는다
+    const article = await Article.findById(id);
+    // 로그인한 유저가 좋아요를 이미 누른 게시물인지 확인
+    const favorite = await Favorite.findOne({ user: loginUser._id, article: article._id })
+
+    // 이미 좋아요를 누른 게시물인 경우
+    if (favorite) {
+      const err = new Error("Aleady favorite article");
+      err.status = 400;
+      return next(err)
+    }
+
+    // 새로운 favorite 데이터를 만든다
+    const newFavorite = new Favorite({
+      user: loginUser._id,
+      article: article._id
+    })
+    await newFavorite.save();
+
+    // id에 일치하는 게시물의 좋아요를 1증가 
+    article.favoriteCount++;
+    await article.save();
+    res.end();
+  } catch (error) {
+    next(error)
+  }
+})
+
+// 좋아요 취소
+app.delete("/articles/:id/favorite", auth, async (req, res, next) => {
+  try {
+    const loginUser = req.user;
+    const id = req.params.id;
+    const article = await Article.findById(id);
+    const favorite = await Favorite.findOne({ user: loginUser._id, article: article._id })
+
+    if (!favorite) {
+      const err = new Error("Aleady unfavorite article");
+      err.status = 400;
+      return next(err)
+    }
+
+    // favorite document를 삭제
+    await favorite.delete();
+
+    // 게시물의 좋아요 1감소
+    article.favoriteCount--;
+    await article.save();
+
+    res.end();
+
+  } catch (error) {
+    next(error)
+  }
+})
+
+// 댓글
+app.post("/articles/:id/comments", auth, async (req, res, next) => {
+  try {
+    const loginUser = req.user;
+    const id = req.params.id;
+    const content = req.body.content;
+
+    const comment = new Comment({
+      article: id,
+      content: content,
+      user: loginUser._id
+    })
+    await comment.save();
+
+    res.json(await comment.populate("user"));
+
+  } catch (error) {
+    next(error)
+  }
+})
+
+// 댓글 가져오기
+app.get("/articles/:id/comments", auth, async (req, res, next) => {
+  try {
+    const loginUser = req.user;
+    const id = req.params.id;
+    // id에 일치하는 댓글 가져오기
+    const comments = await Comment.find({ article: id })
+      .populate("user")
+      .sort([["created", "descending"]])
+      .lean();
+
+    // 로그인한 유저의 댓글에 대한 좋아요 정보를 추가
+    for (let comment of comments) {
+      const favoriteComment = await FavoriteComment
+        .findOne({ user: loginUser._id, comment: comment._id });
+      comment.isFavorite = favoriteComment ? true : false;
+    }
+    res.json(comments);
+
+  } catch (error) {
+    next(error)
+  }
+})
+
+// 댓글 삭제
+app.delete("/comments/:id", auth, async (req, res, next) => {
+  try {
+    const loginUser = req.user;
+    const id = req.params.id;
+    // id에 일치하는 댓글을 검색
+    const comment = await Comment.findById(id);
+
+    // 로그인한 유저와 댓글의 작성자가 일치하지 않는 경우
+    if(loginUser._id.toString() !== comment.user.toString()) {
+      const err = new Error("User not mach")
+      err.status = 400;
+      return next(err)
+    }
+    
+    await comment.delete();
+
+    res.end();
+
+  } catch (error) {
+    next(error)
+  }
+})
+
+// 댓글 좋아요
+app.post("/comments/:id/favorite", auth, async (req, res, next) => {
+  try {
+    // 로그인한 유저
+    const loginUser = req.user;
+    const id = req.params.id;
+    // id에 일치하는 댓글을 찾는다
+    const comment = await Comment.findById(id);
+    // favoriteComment document가 있는지 찾는다
+    const favoriteComment = await FavoriteComment
+    .findOne({ user: loginUser._id, comment: comment._id })
+
+    // 이미 좋아요를 누른 댓글인 경우
+    if (favoriteComment) {
+      const err = new Error("Aleady favorite comment");
+      err.status = 400;
+      return next(err)
+    }
+
+    // 새로운 favoriteComment 데이터를 만든다
+    const newFavoriteComment = new FavoriteComment({
+      user: loginUser._id,
+      comment: comment._id
+    })
+    await newFavoriteComment.save();
+
+    // id에 일치하는 댓글의 좋아요를 1증가 
+    comment.favoriteCount++;
+    await comment.save();
+    res.end();
+  } catch (error) {
+    next(error)
+  }
+})
+
+// 댓글 좋아요 취소
+app.delete("/comments/:id/favorite", auth, async (req, res, next) => {
+  try {
+    const loginUser = req.user;
+    const id = req.params.id;
+    // id에 일치하는 댓글을 찾는다
+    const comment = await Comment.findById(id);
+    // favoriteComment document가 있는지 찾는다
+    const favoriteComment = await FavoriteComment.findOne({ user: loginUser._id, comment: comment._id })
+
+    // 좋아요를 누른 게시물이 아닌 경우
+    if (!favoriteComment) {
+      const err = new Error("NO comment to unfavorite");
+      err.status = 400;
+      return next(err)
+    }
+
+    // favoriteComment document 를 삭제
+    await favoriteComment.delete();
+
+    // id에 일치하는 댓글의 좋아요를 1감소
+    comment.favoriteCount--;
+    await comment.save();
+
+    res.end();
+
+  } catch (error) {
+    next(error)
+  }
+})
+
+// 유저 검색
+app.get("/search", auth, async(req,res,next)=>{
+  try {
+    const username = req.query.username;
+    const patt = new RegExp("^"+username);
+    // req.query로 전달된 username에 일치하는 유저를 검색한다
+    const users = await User.find({
+      username: {$regex: patt}
+    });
+    res.json(users)
   } catch (error) {
     next(error)
   }
