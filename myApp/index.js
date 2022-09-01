@@ -80,6 +80,25 @@ app.post("/users", async (req, res, next) => {
   }
 })
 
+//  Sign Up validation
+app.get("/validation/username", async(req,res,next)=>{
+  try {
+    const user = await User.findOne({ username: req.query.value})
+    res.json(user);
+  } catch (error) {
+    next(error)
+  }
+}
+)
+app.get("/validation/email", async(req,res,next)=>{
+  try {
+    const user = await User.findOne({ email: req.query.value})
+    res.json(user);
+  } catch (error) {
+    next(error)
+  }
+})
+
 // Login
 app.post("/user/login", async (req, res, next) => {
   try {
