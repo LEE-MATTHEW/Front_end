@@ -39,10 +39,138 @@ function Feed() {
   return <h1>Feed</h1>
 }
 function Explore() {
-  return <h1>Explore</h1>
+  console.log("Explore loaded!")
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/articles`, {
+      // 서버에 token을 전달
+      headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw res;
+        }
+        return res.json();
+      })
+      .then(data => {
+        // articles를 업데이트
+        setArticles(data)
+      })
+      .catch(error => {
+        console.log(error);
+        setError(error)
+      })
+      .finally(() => setIsLoaded(true))
+  }, [])
+
+  if (error) {
+    return <h1>Error!</h1>
+  }
+  if (isLoaded === false) {
+    return <h1>Loading...</h1>
+  }
+  return (
+    <>
+      <h1>Explore</h1>
+      <ul>
+        {articles.map(article => (<li key={article._id}>{article.description}</li>))}
+      </ul>
+    </>
+  )
 }
 function Login() {
-  return <h1>Login</h1>
+  const [error, setError] = useState("");
+  const [isLoaded, setIsLoaded] = useState(null);
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  })
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    setIsLoaded(false);
+
+    const formData = JSON.stringify(user);
+
+    fetch(`http://localhost:3000/user/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: formData
+    })
+      .then(res => {
+        // 서버의 응답 확인
+        console.log(res)
+        if (!res.ok) {
+          throw res;
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+        // 브라우저에 토큰을 저장한다
+        // localStorage : 쿠키의 대체제
+        localStorage.setItem("token", data.token);
+      })
+      .catch(error => {
+        if (error.status === 401) {
+          return alert("User not found");
+        }
+        // 기타에러 (401제외)
+        alert('Error!');
+      })
+      .finally(() => setIsLoaded(true));
+  };
+
+  function handleChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setUser({ ...user, [name]: value });
+  };
+
+  console.log(user);
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <div className="">
+          <label htmlFor="email" className="">Email</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            className=""
+            onChange={handleChange}
+            autoComplete="off"
+          />
+        </div>
+        <div className="">
+          <label htmlFor="password" className="">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            className=""
+            onChange={handleChange}
+            autoComplete="off"
+          />
+        </div>
+        <div className="">
+          <button
+            className=""
+            type="submit"
+            disabled={!user.email.trim() || !user.password.trim}>
+            Submit
+          </button>
+        </div>
+      </form>
+    </>
+  )
 }
 function SignUp() {
   const [error, setError] = useState({});
@@ -50,7 +178,28 @@ function SignUp() {
   const [message, setMessage] = useState({});
   const [user, setUser] = useState({});
 
-  function handleSubmit() { }
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = JSON.stringify(user);
+
+    fetch(`http://localhost:3000/users`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: formData
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw res;
+        }
+        navigate("/accounts/login", { replace: false })
+      })
+      .catch(error => {
+        alert("Error!");
+      })
+  }
   function handleChange(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -235,7 +384,7 @@ function Validation({ error, isLoaded, message }) {
   if (error) {
     return <p>{error}</p>
   }
-  if (isLoaded===false) {
+  if (isLoaded === false) {
     return <p>loading...</p>
   }
   return <p>{message}</p>
