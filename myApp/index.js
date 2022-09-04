@@ -184,10 +184,10 @@ app.get("/profiles/:username/articles", auth, async (req, res, next) => {
 
     // 유저가 작성한 게시물을 검색 
     const articles = await Article.find({ user: user._id })
-      .sort([["created", "decending"]])
+      .sort([["created", "descending"]])
       .populate("user")
 
-    res, json(articles);
+    res.json(articles);
 
   } catch (err) {
     next(err)
