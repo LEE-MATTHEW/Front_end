@@ -1,7 +1,13 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "./AuthContext";
+
 
 export default function Login() {
+
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [error, setError] = useState("");
   const [isLoaded, setIsLoaded] = useState(null);
   const [user, setUser] = useState({
@@ -30,12 +36,12 @@ export default function Login() {
         return res.json();
       })
       .then(data => {
-        console.log(data);
-        // 브라우저에 토큰을 저장한다
-        // localStorage : 쿠키의 대체제
-        localStorage.setItem("token", data.token);
+       auth.signIn(data, ()=> navigate("/", {replace: true}))
       })
       .catch(error => {
+        // 에러 확인
+        console.log(error);
+        
         if (error.status === 401) {
           return alert("User not found");
         }

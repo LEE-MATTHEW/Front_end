@@ -19,3 +19,6 @@ https://reactrouter.com/ 예제 풀이 가능
 
 CSR 과 SSR의 차이
 
+# HTML, CSS, Java Script
+Electron(프레임워크, Github) => 데스크톱 앱도 가능
+react native(React 문법) => 모바일 네이티브앱, 하이브리드 앱 등 개발 가능
