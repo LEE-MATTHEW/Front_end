@@ -11,7 +11,7 @@ import {
 
 
 // lazy를 사용함으로써 굳이 쓰지 않을 페이지를 가져오지 않을 수 있다
-const AuthRequired = lazy(()=> import('./components/AuthRequired'))
+const AuthRequired = lazy(() => import('./components/AuthRequired'))
 const AuthProvider = lazy(() => import("./components/AuthProvider"));
 
 const Signup = lazy(() => import('./components/Signup'));
@@ -21,7 +21,9 @@ const Layout = lazy(() => import('./components/Layout'))
 
 const Feed = lazy(() => import('./components/Feed'));
 const Explore = lazy(() => import('./components/Explore+'));
+
 const ArticleView = lazy(() => import('./components/ArticleView'))
+const ArticleCreate = lazy(()=> import('./components/ArticleCreate'))
 
 const Profile = lazy(() => import('./components/Profile'));
 
@@ -39,6 +41,7 @@ export default function App() {
             <Route path="/" element={<AuthRequired layout={<Layout />} />}>
               <Route index element={<Feed />} />
               <Route path="/explore" element={<Explore />} />
+              <Route path="/create" element={<ArticleCreate />} />
               <Route path="/profiles/:username">
                 <Route index element={<Profile />} />
               </Route>

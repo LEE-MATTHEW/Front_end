@@ -12,6 +12,7 @@ function fetchData() {
       }
       return res.json();
     })
+  
   return wrapPromise(promise);
 }
 
@@ -20,7 +21,7 @@ export default function () {
 
   return (
     <Suspense fallback={<p>fetching articles...</p>}>
-      <Explore resource={resource} />
+      <Explore resource={resource} /> 
     </Suspense>
   )
 }

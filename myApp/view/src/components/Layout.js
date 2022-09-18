@@ -12,9 +12,8 @@ export default function () {
         <ul>
           <li><Link to="/">Feed</Link></li>
           <li><Link to="/explore">Explore</Link></li>
-          <li><Link to="/profiles/changno">Profile</Link></li>
-          <li><Link to="/accounts/login">Login</Link></li>
-          <li><Link to="/accounts/signup">SignUp</Link></li>
+          <li><Link to="/create">Create</Link></li>
+          <li><Link to={`/profiles/${auth.user.username}`}>Profile</Link></li>
         </ul>
       </nav>
 

@@ -1,6 +1,7 @@
 import { Suspense, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import wrapPromise from "./wrapPromise";
+import AuthContext from "./AuthContext";
 
 function fetchData(username) {
   const profilePromise = fetch(`http://localhost:3000/profiles/${username}`, {
@@ -29,6 +30,8 @@ function fetchData(username) {
 }
 
 export default function () {
+  
+
   const params = useParams();
   const username = params.username;
   const resource = fetchData(username);
@@ -41,6 +44,8 @@ export default function () {
   )
 }
 function ProfileDetail({ resource }) {
+  const auth = useContext(AuthContext);
+
   const initialProfile = resource.profile.read();
   const [profile, setProfile] = useState(initialProfile);
 
@@ -51,6 +56,7 @@ function ProfileDetail({ resource }) {
       <div className="">
         <h3>{profile.username}</h3>
         <p>{profile.bio}</p>
+        <button onClick={auth.signOut}>Logout</button>
         <Link to="/account/edit">Edit profile</Link>
       </div>
     </>
