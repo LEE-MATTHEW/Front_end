@@ -57,7 +57,7 @@ function ProfileDetail({ resource }) {
         <h3>{profile.username}</h3>
         <p>{profile.bio}</p>
         <button onClick={auth.signOut}>Logout</button>
-        <Link to="/account/edit">Edit profile</Link>
+        <Link to="/accounts/edit">Edit profile</Link>
       </div>
     </>
   )

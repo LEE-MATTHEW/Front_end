@@ -1,23 +1,27 @@
-import { Suspense, useState } from "react";
-import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
+import { useState, Suspense } from "react";
+import { useParams, Link, Navigate, useNavigate } from "react-router-dom";
 import wrapPromise from "./wrapPromise";
 
 function fetchData(articleId) {
+  
   const promise = fetch(`http://localhost:3000/articles/${articleId}`, {
     headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
   })
-    .then(res => {
-      if (!res.ok) {
-        throw res;
-      }
-      return res.json();
-    })
+  .then(res => {
+    if (!res.ok) {
+      throw res;
+    }
+    return res.json();
+  })
+
   return wrapPromise(promise);
 }
 
 export default function () {
   const params = useParams();
   const articleId = params.articleId;
+
+
   const resource = fetchData(articleId);
 
   return (
@@ -37,6 +41,9 @@ function ArticleView({ resource }) {
       <h3>{article.user.username}</h3>
       <p>{article.description}</p>
       <small>{new Date(article.created).toLocaleDateString()}</small>
+      <p>
+        <Link to={`/p/${article._id}/comments`}>댓글보기</Link>
+      </p>
     </>
   )
 }

@@ -18,14 +18,17 @@ const Signup = lazy(() => import('./components/Signup'));
 const Login = lazy(() => import('./components/Login'));
 
 const Layout = lazy(() => import('./components/Layout'))
-
 const Feed = lazy(() => import('./components/Feed'));
 const Explore = lazy(() => import('./components/Explore+'));
-
 const ArticleView = lazy(() => import('./components/ArticleView'))
-const ArticleCreate = lazy(()=> import('./components/ArticleCreate'))
+const ArticleCreate = lazy(() => import('./components/ArticleCreate'))
+const Comments = lazy(() => import('./components/Comments'))
 
 const Profile = lazy(() => import('./components/Profile'));
+
+const ProfileEdit = lazy(() => import('./components/ProfileEdit'))
+const EditImage = lazy(() => import('./components/EditImage'))
+const EditAccount = lazy(() => import('./components/EditAccount'))
 
 const NotFound = lazy(() => import('./components/NotFound'));
 
@@ -45,8 +48,14 @@ export default function App() {
               <Route path="/profiles/:username">
                 <Route index element={<Profile />} />
               </Route>
-              <Route path="/p/:articleID">
+              <Route path="/p/:articleId">
                 <Route index element={<ArticleView />} />
+                <Route path="comments" element={<Comments />} />
+              </Route>
+              <Route path="accounts/edit">
+                <Route index element={<ProfileEdit />} />
+                <Route path="image" element={<EditImage />} />
+                <Route path="profile" element={<EditAccount />} />
               </Route>
             </Route>
 
