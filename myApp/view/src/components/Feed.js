@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import wrapPromise from "./wrapPromise";
+import ArticleItem from "./ArticleItem";
 
 
 function fetchData() {
@@ -35,9 +36,9 @@ function Feed({resource}) {
     <ul>
       {articles.map(article => (
         <li key={article._id}>
-          <h3>{article.user.username}</h3>
-          <p>{article.description}</p>
-          <small>{new Date(article.created).toLocaleDateString()}</small>
+          <ArticleItem 
+            article={article}
+          />
         </li>
       ))}
     </ul>

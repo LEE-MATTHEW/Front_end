@@ -31,9 +31,16 @@ function Explore({ resource }) {
   return (
     <>
       <h1>Explore</h1>
+      <p>
+        <Link to={"/search"}>검색</Link>
+      </p>
       <ul>
         {articles.map(article => (
-          <li key={article._id}>{article.description}</li>
+          <li key={article._id}>
+            <Link to={`/p/${article._id}`}>
+              {article.description}
+            </Link>
+          </li>
         ))}
       </ul>
 

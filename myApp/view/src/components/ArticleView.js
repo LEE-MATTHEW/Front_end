@@ -1,6 +1,7 @@
 import { useState, Suspense } from "react";
 import { useParams, Link, Navigate, useNavigate } from "react-router-dom";
 import wrapPromise from "./wrapPromise";
+import ArticleItem from "./ArticleItem";
 
 function fetchData(articleId) {
   
@@ -37,13 +38,9 @@ function ArticleView({ resource }) {
 
   return (
     <>
-      <h1>Article View</h1>
-      <h3>{article.user.username}</h3>
-      <p>{article.description}</p>
-      <small>{new Date(article.created).toLocaleDateString()}</small>
-      <p>
-        <Link to={`/p/${article._id}/comments`}>댓글보기</Link>
-      </p>
+      <ArticleItem
+        article={article}
+      />
     </>
   )
 }

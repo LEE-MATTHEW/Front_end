@@ -20,6 +20,7 @@ const Login = lazy(() => import('./components/Login'));
 const Layout = lazy(() => import('./components/Layout'))
 const Feed = lazy(() => import('./components/Feed'));
 const Explore = lazy(() => import('./components/Explore+'));
+const Search = lazy(() => import("./components/Search"))
 const ArticleView = lazy(() => import('./components/ArticleView'))
 const ArticleCreate = lazy(() => import('./components/ArticleCreate'))
 const Comments = lazy(() => import('./components/Comments'))
@@ -43,12 +44,13 @@ export default function App() {
             {/* 로그인이 필요한 페이지 */}
             <Route path="/" element={<AuthRequired layout={<Layout />} />}>
               <Route index element={<Feed />} />
-              <Route path="/explore" element={<Explore />} />
-              <Route path="/create" element={<ArticleCreate />} />
-              <Route path="/profiles/:username">
+              <Route path="explore" element={<Explore />} />
+              <Route path="search" element={<Search />} />
+              <Route path="create" element={<ArticleCreate />} />
+              <Route path="profiles/:username">
                 <Route index element={<Profile />} />
               </Route>
-              <Route path="/p/:articleId">
+              <Route path="p/:articleId">
                 <Route index element={<ArticleView />} />
                 <Route path="comments" element={<Comments />} />
               </Route>
@@ -60,8 +62,8 @@ export default function App() {
             </Route>
 
             {/* 로그인이 필요하지 않은 페이지 */}
-            <Route path="/account/login" element={<Login />} />
-            <Route path="/account/signup" element={<Signup />} />
+            <Route path="account/login" element={<Login />} />
+            <Route path="account/signup" element={<Signup />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
