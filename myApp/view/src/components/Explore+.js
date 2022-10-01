@@ -1,5 +1,6 @@
 import { Suspense, useState } from "react";
 import { Link } from "react-router-dom";
+import ArticleList from "./ArticleList";
 import wrapPromise from "./wrapPromise";
 
 function fetchData() {
@@ -12,7 +13,7 @@ function fetchData() {
       }
       return res.json();
     })
-  
+
   return wrapPromise(promise);
 }
 
@@ -21,7 +22,7 @@ export default function () {
 
   return (
     <Suspense fallback={<p>fetching articles...</p>}>
-      <Explore resource={resource} /> 
+      <Explore resource={resource} />
     </Suspense>
   )
 }
@@ -34,15 +35,8 @@ function Explore({ resource }) {
       <p>
         <Link to={"/search"}>검색</Link>
       </p>
-      <ul>
-        {articles.map(article => (
-          <li key={article._id}>
-            <Link to={`/p/${article._id}`}>
-              {article.description}
-            </Link>
-          </li>
-        ))}
-      </ul>
+
+      <ArticleList articles={articles} />
 
     </>
   )

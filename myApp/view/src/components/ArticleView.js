@@ -35,11 +35,48 @@ export default function () {
 function ArticleView({ resource }) {
   const initialArticle = resource.read();
   const [article, setArticle] = useState(initialArticle);
+  const [isLoaded, setIsLoaded] = useState(null);
+  const [errot, setError] = useState(null);
+
+  function editArticle(isFavorite, articleId) {
+    console.log(isFavorite, articleId)
+
+    setError(null);
+
+    if (!isFavorite) { // 좋아요
+      fetch(`http://localhost:3000/articles/${articleId}/favorite`, {
+        method: "POST",
+        headers: {"Authorization": `Bearer ${localStorage.getItem("token")}`}
+      })
+      .then(res=>{
+        if (!res.ok) {
+          throw res;
+        }
+        const editedArticle = {...article, isFavorite: true, favoriteCount: article.favoriteCount + 1};
+        setArticle(editedArticle);
+      })
+      .catch(error => setError("문제가 발생했습니다. 잠시 후 다시 시도해주세요"))
+    } else {  // 좋아요 취소
+      fetch(`http://localhost:3000/articles/${articleId}/favorite`, {
+        method: "DELETE",
+        headers: {"Authorization": `Bearer ${localStorage.getItem("token")}`}
+      })
+      .then(res=>{
+        if (!res.ok) {
+          throw res;
+        }
+        const editedArticle = {...article, isFavorite: false, favoriteCount: article.favoriteCount - 1};
+        setArticle(editedArticle);
+      })
+      .catch(error => setError("문제가 발생했습니다. 잠시 후 다시 시도해주세요"))
+    }
+  }
 
   return (
     <>
       <ArticleItem
         article={article}
+        editArticle={editArticle}
       />
     </>
   )

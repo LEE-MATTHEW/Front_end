@@ -1,21 +1,24 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "./AuthContext"
+import Carousel from "./Carousel";
+import Avatar from "./Avatar";
 
-export default function ArticleItem({article}) {
+export default function ArticleItem({ article, editArticle }) {
   return (
     <>
       <h1>Article</h1>
-      <h3>{article.user.username}</h3>
+      <Avatar user={article.user} />
+
+      <Carousel photos={article.photos} />
 
       <div className="">
-        {article.photos.map((photo, index)=> (
-          <img 
-            key={index}
-            src={`http://localhost:3000/articles/${photo}`}
-            width="200"
-          />
-        ))}
+        <button
+          type="button"
+          onClick={() => editArticle(article.isFavorite, article._id)}
+        >
+          {article.isFavorite ? "좋아요 취소" : "좋아요"}
+        </button>
       </div>
       <p>{article.description}</p>
       <small>{new Date(article.created).toLocaleDateString()}</small>

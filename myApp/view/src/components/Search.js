@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Avatar from "./Avatar";
 
 export default function Search() {
   const [error, setError] = useState(null);
@@ -50,11 +51,15 @@ export default function Search() {
           autoComplete="off"
         />
       </div>
+
       <ul>
         {users.map(user=> (
-          <li key={user._id}>{user.username}</li>
+          <li key={user._id}>
+            <Avatar user={user} />
+          </li>
         ))}
       </ul>
+
     </div>
   )
 

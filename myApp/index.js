@@ -297,7 +297,7 @@ app.post("/profiles/:username/follow", auth, async (req, res, next) => {
   }
 });
 
-app.delete("profiles/:username/follow", auth, async (req, res, next) => {
+app.delete("/profiles/:username/follow", auth, async (req, res, next) => {
   try {
     const loginUser = req.user;
     const username = req.params.username;
@@ -578,7 +578,7 @@ app.get("/articles/:id/comments", auth, async (req, res, next) => {
     // 로그인한 유저의 댓글에 대한 좋아요 정보를 추가
     for (let comment of comments) {
       const favoriteComment = await FavoriteComment
-        .findOne({ user: loginUser._id, comment: comment._id });
+      .findOne({ user: loginUser._id, comment: comment._id });
       comment.isFavorite = favoriteComment ? true : false;
     }
     res.json(comments);
