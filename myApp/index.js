@@ -352,7 +352,9 @@ app.get("/feed", auth, async (req, res, next) => {
     const articles = await Article
       .find({ user: [...follows.map(follow => follow.following), loginUser._id] })
       .sort([["created", "descending"]])
-      .populate("user");
+      .populate("user")
+      .lean();
+
     // 로그인한 유저가 좋아하는 게시물인지 아닌지 확인
     // article.isFavorite
     for (let article of articles) {

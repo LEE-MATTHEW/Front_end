@@ -4,6 +4,7 @@ import wrapPromise from "./wrapPromise";
 import ArticleItem from "./ArticleItem";
 
 
+
 function fetchData() {
   const promise = fetch(`http://localhost:3000/feed`,{
     headers : { "Authorization": `Bearer ${localStorage.getItem("token")}`}
@@ -30,6 +31,74 @@ function Feed({resource}) {
   const initialArticles = resource.read();
   const [articles, setArticles] = useState(initialArticles);
 
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(null);
+
+  function editArticle(isFavorite, articleId) {
+    setError(null);
+
+    if(!isFavorite) {
+      fetch(`http://localhost:3000/articles/${articleId}/favorite`, {
+        method: "POST",
+        headers: {"Authorization": `Bearer ${localStorage.getItem("token")}`}
+      })
+      .then(res => {
+        if(!res.ok) {
+          throw res;
+        }
+        const editedArticles = articles.map(article => {
+          if(articleId === article._id) {
+            return {...article, isFavorite: true, favoriteCount: article.favoriteCount + 1}
+          }
+          return article;
+        })
+        setArticles(editedArticles)
+      })
+      .catch(error => {
+        setError("문제가 발생했습니다. 잠시 후 다시 시도해주세요")
+      })
+    } else {
+      fetch(`http://localhost:3000/articles/${articleId}/favorite`, {
+        method: "DELETE",
+        headers: {"Authorization": `Bearer ${localStorage.getItem("token")}`}
+      })
+      .then(res => {
+        if(!res.ok) {
+          throw res;
+        }
+        const editedArticles = articles.map(article => {
+          if(articleId === article._id) {
+            return {...article, isFavorite: false, favoriteCount: article.favoriteCount - 1}
+          }
+          return article;
+        })
+        setArticles(editedArticles)
+      })
+      .catch(error => {
+        setError("문제가 발생했습니다. 잠시 후 다시 시도해주세요")
+      })
+
+    }
+  }
+
+  function deleteArticle(articleId) {
+    setError(null);
+
+    fetch(`http://localhost:3000/articles/${articleId}`, {
+      method: "DELETE",
+      headers: {"Authorization": `Bearer ${localStorage.getItem("token")}`}
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+      }
+      const updatedArticles = articles.filter(article => articleId !== article._id);
+      setArticles(updatedArticles);
+    })
+    .catch(error => {
+      setError("문제가 발생했습니다. 잠시 후 다시 시도해주세요")
+    })
+  }
   return (
     <>
     <h1>Feed</h1>
@@ -38,6 +107,8 @@ function Feed({resource}) {
         <li key={article._id}>
           <ArticleItem 
             article={article}
+            editArticle={editArticle}
+            deleteArticle={deleteArticle}
           />
         </li>
       ))}

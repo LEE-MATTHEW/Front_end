@@ -3,6 +3,7 @@ import { useParams, Link, Navigate, useNavigate } from "react-router-dom";
 import wrapPromise from "./wrapPromise";
 import ArticleItem from "./ArticleItem";
 
+
 function fetchData(articleId) {
   
   const promise = fetch(`http://localhost:3000/articles/${articleId}`, {
@@ -37,6 +38,10 @@ function ArticleView({ resource }) {
   const [article, setArticle] = useState(initialArticle);
   const [isLoaded, setIsLoaded] = useState(null);
   const [errot, setError] = useState(null);
+  
+  const navigate = useNavigate();
+
+  console.log(article);
 
   function editArticle(isFavorite, articleId) {
     console.log(isFavorite, articleId)
@@ -72,11 +77,31 @@ function ArticleView({ resource }) {
     }
   }
 
+  function deleteArticle(articleId) {
+    
+    setIsLoaded(false);
+    setError(null);
+
+    fetch(`http://localhost:3000/articles/${articleId}`, {
+      method: "DELETE",
+      headers: {"Authorization" : `Bearer ${localStorage.getItem("token")}`}
+    })
+    .then(res => {
+      if(!res.ok) {
+        throw res;
+      }
+      navigate("/",{replace: true})
+    })
+    .catch(error => {
+      setError("문제가 발생했습니다. 잠시 후 다시 시도해주세요")
+    })
+  }
   return (
     <>
       <ArticleItem
         article={article}
         editArticle={editArticle}
+        deleteArticle={deleteArticle}
       />
     </>
   )

@@ -6,6 +6,7 @@ export default function Carousel({photos}) {
     return (
         photos.map((photo, index) => (
             <img 
+                key={index}
                 src={`http://localhost:3000/articles/${photo}`}
                 className=""
                 width="200"

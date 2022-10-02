@@ -34,7 +34,7 @@ const commentSchema = new Schema({
   content:{type:String},
   article:{type:Schema.ObjectId},
   user : {type:Schema.ObjectId,ref:"User"},
-  crrated: {type:Date, default:Date.now},
+  created: {type:Date, default:Date.now},
   favoriteCount:{type:Number,default:0}
 })
 

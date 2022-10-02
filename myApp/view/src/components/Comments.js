@@ -175,7 +175,6 @@ function Form({ createComment }) {
     setText(e.target.value);
 
   }
-
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -203,6 +202,8 @@ function Form({ createComment }) {
 function Comment({ comment, editComment, deleteComment }) {
   const auth = useContext(AuthContext);
   const isMaster = auth.user.username === comment.user.username;
+
+  console.log(comment)
 
   return (
     <>
