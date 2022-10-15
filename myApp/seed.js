@@ -1,22 +1,21 @@
 const { User, Article, Follow } = require("./models/model");
 const crypto = require("crypto");
 const fs = require("fs");
-const e = require("express");
 
 // 유저 생성
 async function createUser(username, email, password = '123') {
   try {
     // 비밀번호 암호화
     const salt = crypto.randomBytes(16).toString("hex");
-    const hashedPassword = crypto.pbkdf2Sync(password, salt, 31000, 32, "sha256").toString("hex");
+    const hashedPassword = crypto.pbkdf2Sync(password, salt, 310000, 32, "sha256").toString("hex");
 
     // 프로필 사진등록
     const imgs = fs.readdirSync(`${__dirname}/seeds/profiles`);
-    const image = imgs.find(img => img.match(new RefExp("^" + username)));
+    const image = imgs.find(img => img.match(new RegExp("^" + username)));
 
     const newName = `${createId()}.${image.split(".")[1]}`;
 
-    fs.copyFileSyncy(`${__dirname}/seeds/profiles/${image}`, `${__dirname}/data/users/${newNAme}`);
+    fs.copyFileSync(`${__dirname}/seeds/profiles/${image}`, `${__dirname}/data/users/${newName}`);
 
     // 유저 저장
     const user = new User({
@@ -31,7 +30,7 @@ async function createUser(username, email, password = '123') {
     await user.save();
 
   } catch (error) {
-    cocnsole.log(error);
+    console.log(error);
   }
 }
 
@@ -40,10 +39,10 @@ async function createArticle(username, postId) {
   try {
     // 사진 처리
     const imgs = fs.readdirSync(`${__dirname}/seeds/${username}`);
-    const user = await User.findOne({ username });
-    const userphotos = imgs.filter(img => img.match(new RegExp("^" + username + postId)));
+    const user = await User.findOne({username});
+    const userPhotos = imgs.filter(img => img.match(new RegExp("^" + username + postId)));
 
-    const photos = userphotos.map(photo => {
+    const photos = userPhotos.map(photo => {
       const newName = `${createId()}.${photo.split(".")[1]}`;
       fs.copyFileSync(`${__dirname}/seeds/${username}/${photo}`, `${__dirname}/data/articles/${newName}`);
 
@@ -57,9 +56,11 @@ async function createArticle(username, postId) {
       user: user._id,
       created: Date.now()
     })
+
     await article.save();
+
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -84,7 +85,7 @@ async function createFollowing(follower, following) {
 }
 
 // ID 생성
-async function createId() {
+function createId() {
   let id = "";
 
   for (let i = 0; i < 24; i++) {
@@ -148,3 +149,5 @@ async function plantSeeds() {
     console.log(error)
   }
 }
+
+plantSeeds()

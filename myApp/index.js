@@ -32,6 +32,7 @@ mongoose.connect("mongodb://localhost:27017/myapp", {
   useUnifiedTopology: true
 })
 
+const seeds = require("./seed.js")
 
 const {
   User, Follow, Article, Favorite, Comment, Token, FavoriteComment
@@ -102,10 +103,13 @@ app.get("/validation/email", async(req,res,next)=>{
 // Login
 app.post("/user/login", async (req, res, next) => {
   try {
+
+    
     const { email, password } = req.body;
     // 전달받은 email을 가진 user를 찾는다
     const user = await User.findOne({ email });
     // 만약 user가 존재하지 않는 경우 401에러(Not Authorized)를 발생
+
     if (!user) {
       const err = new Error("Authentication failed");
       err.status = 401;
@@ -353,6 +357,8 @@ app.get("/feed", auth, async (req, res, next) => {
       .find({ user: [...follows.map(follow => follow.following), loginUser._id] })
       .sort([["created", "descending"]])
       .populate("user")
+      .skip(req.query.skip)
+      .limit(req.query.limit)
       .lean();
 
     // 로그인한 유저가 좋아하는 게시물인지 아닌지 확인
@@ -428,7 +434,10 @@ app.post("/articles", auth, async (req, res, next) => {
 app.get("/articles", auth, async (req, res, next) => {
   try {
     const articles = await Article.find()
-      .sort([["created", "descending"]]).populate("user")
+      .sort([["created", "descending"]])
+      .populate("user")
+      .skip(req.query.skip)
+      .limit(req.query.limit)
 
     res.json(articles);
 

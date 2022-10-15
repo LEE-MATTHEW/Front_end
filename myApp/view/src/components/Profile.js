@@ -101,25 +101,56 @@ function ProfileDetail({ resource }) {
 
   return (
     <>
-      <div className="">
-        <h3>{profile.username}</h3>
-        <div className="">
-          {isMaster ?
-            <Link to="/accounts/edit">Edit profile</Link>
-            :
-            <button
-              type="button"
-              onClick={editFollow}
-            >
-              {profile.isFollowing ? "팔로잉 취소" : "팔로잉"}
-            </button>
-          }
+      {/* 유저 이미지와 프로필 수정(팔로우 버튼) */}
+      <div className="flex mt-3 mb-3 px-3">
+        <div className="w-24 h-24 rounded-full overflow-hidden">
+          <img 
+            src={`http://localhost:3000/users/${profile.image || "avatar.jpeg"}`}
+            className = "w-full h-full object-cover"
+          />
         </div>
-
-        <p>{profile.bio}</p>
-
-
+        <div className="grow ml-3">
+          <div className="flex flex-col">
+            <div className="text-xl mb-2">{profile.username}</div>
+            {isMaster ?
+              <Link to="/accounts/edit" className="border p-1 text-center">
+                정보 수정
+              </Link>
+              :
+              <button
+                className="border p-1 w-full"
+                onClick={editFollow}
+              >
+                {profile.isFollowing ? "팔로잉 취소" : "팔로잉"}
+              </button>
+            }
+          </div>
+        </div>
       </div>
+      {/* 자기소개 */}
+      <div className="mb-3 px-3">
+        <p>{profile.bio}</p>
+      </div>
+
+      {/* 팔로잉 수 / 팔로워 수 / 게시물 수 */}
+      <ul className="flex border-y mb-3 py-1">
+        <li className="flex flex-col items-center w-full">
+          <div className="">팔로워</div>
+          <Link to={`/profiles/${profile.username}/following`}>
+            {profile.followersCount}
+          </Link>
+        </li>
+        <li className="flex flex-col items-center w-full">
+          <div className="">팔로잉</div>
+          <Link to={`/profiles/${profile.username}/following`}>
+            {profile.followingCount}
+          </Link>
+        </li>
+        <li className="flex flex-col items-center w-full">
+          <div className="">게시물</div>
+          <div className="">{profile.articlesCount}</div>
+        </li>
+      </ul>
     </>
   )
 }

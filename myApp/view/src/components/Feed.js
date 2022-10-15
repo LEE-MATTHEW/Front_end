@@ -3,10 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import wrapPromise from "./wrapPromise";
 import ArticleItem from "./ArticleItem";
 
-
+const limit = 5;
 
 function fetchData() {
-  const promise = fetch(`http://localhost:3000/feed`,{
+  const promise = fetch(`http://localhost:3000/feed/?limit=${limit}`,{
     headers : { "Authorization": `Bearer ${localStorage.getItem("token")}`}
   })
   .then(res => {
@@ -33,6 +33,7 @@ function Feed({resource}) {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(null);
+  const [skip, setSkip] = useState(limit);
 
   function editArticle(isFavorite, articleId) {
     setError(null);
@@ -99,6 +100,29 @@ function Feed({resource}) {
       setError("문제가 발생했습니다. 잠시 후 다시 시도해주세요")
     })
   }
+
+  function addArticles() {
+    setError(null);
+    setIsLoaded(false);
+
+    fetch(`http://localhost:3000/feed/?limit=${limit}&skip=${skip}`,{
+      headers: {"Authorization": `Bearer ${localStorage.getItem("token")}`}
+    })
+    .then(res => {
+      if(!res.ok) {
+        throw res;
+      }
+      return res.json();
+    })
+    .then(data => {
+      setArticles([...articles, ...data]);
+      setSkip(skip + limit);
+    })
+    .catch(error => {
+      setError("문제가 발생했습니다. 잠시 후 다시 시도해주세요")
+    })
+    .finally(()=> setIsLoaded(true));
+  }
   return (
     <>
     <h1>Feed</h1>
@@ -113,6 +137,7 @@ function Feed({resource}) {
         </li>
       ))}
     </ul>
+    <button onClick={addArticles}>더보기</button>
     </>
   )
 }
