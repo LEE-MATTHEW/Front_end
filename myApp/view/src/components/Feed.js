@@ -125,7 +125,7 @@ function Feed({resource}) {
   }
   return (
     <>
-    <h1>Feed</h1>
+    
     <ul>
       {articles.map(article => (
         <li key={article._id}>

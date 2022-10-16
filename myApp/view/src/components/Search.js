@@ -39,28 +39,28 @@ export default function Search() {
       })
   }
 
+  // 유저 리스트 불러오기
+  const userList = users.map(user => (
+    <div key={user._id} className="mb-2">
+      <Avatar user={user} />
+    </div>
+  ))
+
   return (
-    <div className="">
-      <h1>Search</h1>
-      <div className="">
+    <div className="px-3 pt-3">
+      {/* 검색창 */}
+      <h1 className="text-2xl mb-3">Search</h1>
+      <div className="mb-3">
         <input
           type="text"
-          className=""
+          className="border p-1 w-full outline-none"
           onChange={handleChange}
           placeholder="검색"
-          autoComplete="off"
         />
       </div>
 
-      <ul>
-        {users.map(user=> (
-          <li key={user._id}>
-            <Avatar user={user} />
-          </li>
-        ))}
-      </ul>
-
+      {/* 리스트 출력 */}
+      {userList}
     </div>
   )
-
 }

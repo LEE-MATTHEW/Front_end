@@ -65,8 +65,7 @@ function Explore({ resource }) {
 
   return (
     <>
-      <h1 className="text-2xl mt-3 mb-3 px-3">Explore</h1>
-      <div className="mb-3 px-3">
+      <div className="pt-3 mb-3 px-3">
         <Link to={"/search"}>검색</Link>
       </div>
 
