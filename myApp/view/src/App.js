@@ -62,8 +62,8 @@ export default function App() {
             </Route>
 
             {/* 로그인이 필요하지 않은 페이지 */}
-            <Route path="account/login" element={<Login />} />
-            <Route path="account/signup" element={<Signup />} />
+            <Route path="accounts/login" element={<Login />} />
+            <Route path="accounts/signup" element={<Signup />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

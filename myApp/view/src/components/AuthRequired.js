@@ -9,7 +9,7 @@ export default function AuthRequired({ layout }) {
 
   // user가 없을 경우 login페이지로 이동시킨다
   if (!auth.user) {
-    return <Navigate to="/account/login" replace={true} />
+    return <Navigate to="/accounts/login" replace={true} />
   }
 
   return layout;

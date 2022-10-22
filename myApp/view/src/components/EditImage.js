@@ -90,36 +90,41 @@ function EditImage({ resource }) {
   }
 
   return (
-    <>
-      <h1>프로필 이미지</h1>
-      <div>
-        <img src={`http://localhost:3000/users/${user.image || "avatar.png"}`}
-          width="200"
-          className=""
-        />
+    <div className="mt-3 px-3">
+      <h1 className="text-2xl mb-3">Edit Image</h1>
+
+      <div className="mb-3">
+        <div className="w-48 h-48 mx-auto rounded-full overflow-hidden">
+          <img
+            src={`http://localhost:3000/users/${user.image || "avatar.jpeg"}`}
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
+
       <div className="">
-        {user.image ?
-          <button
-            onClick={deleteImage}
-          >
-            이미지 삭제
-          </button>
-          :
-          <label className="">
-            이미지 등록 +
-            <input
-              type="file"
-              name="image"
-              id="file-input"
-              className=""
-              onChange={uploadImage}
-              accept="image/*"
-              style={{ display : "none" }}
-            />
-          </label>
+        {user.image ? 
+        <button
+          type="submit"
+          className="border p-1"
+          onClick={deleteImage}
+        >
+          Delete
+        </button>
+        :
+        <label className="border p-1">
+          Upload
+          <input 
+            type="file"
+            name="image"
+            id="file-input"
+            className="hidden"
+            onChange={uploadImage}
+            accept="image/*"
+          />
+        </label>
         }
       </div>
-    </>
+    </div>
   )
 }

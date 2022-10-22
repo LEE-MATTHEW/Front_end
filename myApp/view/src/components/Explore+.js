@@ -2,6 +2,7 @@ import { Suspense, useState } from "react";
 import { Link } from "react-router-dom";
 import ArticleList from "./ArticleList";
 import wrapPromise from "./wrapPromise";
+import { Fallback } from "./Progress";
 
 // 한번에 나오는 게시물 갯수 제한
 const limit= 9;
@@ -24,7 +25,7 @@ export default function () {
   const resource = fetchData();
 
   return (
-    <Suspense fallback={<p>fetching articles...</p>}>
+    <Suspense fallback={<Fallback />}>
       <Explore resource={resource} />
     </Suspense>
   )

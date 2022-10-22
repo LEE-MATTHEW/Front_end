@@ -1,5 +1,6 @@
 import { Suspense, useState } from "react";
 import wrapPromise from "./wrapPromise";
+import {SucessMessage} from "./Progress"
 
 function fetchData() {
   const promise = fetch('http://localhost:3000/user', {
@@ -76,38 +77,41 @@ function EditAccount({ resource }) {
   }
 
   return (
-    <>
-      <h1>프로필 정보</h1>
+    <div className="mt-3 px-3">
+      <h1 className="text-2xl mb-3">프로필 수정</h1>
+
+      <div className="mb-3">
+        <label htmlFor="" className="block font-bold">Username</label>
+        <p>{user.username}</p>
+      </div>
+
+      <div className="mb-3">
+        <label htmlFor="" className="block font-bold">Email</label>
+        <p>{user.email}</p>
+      </div>
+
       <form onSubmit={handleSubmit}>
         <div className="">
-          <label htmlFor="">Username</label>
-          <p>{user.username}</p>
-        </div>
-        <div className="">
-          <label htmlFor="">E-mail</label>
-          <p>{user.email}</p>
-        </div>
-        <div className="">
-          <label htmlFor="bio">
-            소개
-          </label>
+          <label htmlFor="bio" className="block font-bold">Bio</label>
           <textarea
             name="bio"
-            className=""
+            className="border p-1 w-full outline-none"
             onChange={handleChange}
             defaultValue={user.bio}
           />
         </div>
-        <div>
+
+        <div className="">
           <button
             type="submit"
-            className=""
+            className="border p-1 disabled:text-gray-300"
             disabled={!text.trim()}
           >
-            제출
+            Submit
           </button>
         </div>
       </form>
-    </>
+      <SucessMessage message={message} />
+    </div>
   )
 }

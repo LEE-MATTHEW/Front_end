@@ -53,7 +53,7 @@ export default function Carousel({ photos }) {
             {/* 이미지 버튼 */}
             <div className="relative">
                 {/* 이미지 */}
-                <div className="flex overflow-hidden h-64">
+                <div className="flex overflow-hidden h-96">
                     {photos.map((photo, index) => (
                         <div
                             key={index}

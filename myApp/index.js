@@ -127,7 +127,10 @@ app.post("/user/login", async (req, res, next) => {
     // 인증에 성공한 경우 jwt(Json Web Token)을 발급한다
     // user의 username을 secret key(shhhhh)를 가지고 token을 생성한다
     const token = jwt.sign({ username: user.username }, "shhhhh");
-    res.json({ user, token });
+
+    setTimeout(() => {
+      res.json({ user, token });
+    },1000);
 
   } catch (error) {
     next(error)
@@ -369,7 +372,10 @@ app.get("/feed", auth, async (req, res, next) => {
       article.isFavorite = favorite ? true : false;
     }
 
-    res.json(articles)
+    // 피드를 전송
+    setTimeout(() => {
+      res.json(articles)
+    },1000)
 
   } catch (error) {
     next(error)

@@ -136,7 +136,7 @@ function ProfileDetail({ resource }) {
       <ul className="flex border-y mb-3 py-1">
         <li className="flex flex-col items-center w-full">
           <div className="">팔로워</div>
-          <Link to={`/profiles/${profile.username}/following`}>
+          <Link to={`/profiles/${profile.username}/followers`}>
             {profile.followersCount}
           </Link>
         </li>

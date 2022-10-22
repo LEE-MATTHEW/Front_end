@@ -6,21 +6,21 @@ export default function ProfileEdit() {
   const auth = useContext(AuthContext);
 
   return (
-    <>
-      <h1>프로필 수정</h1>
-      <ul>
-        <li>
-          <Link to="/accounts/edit/image">이미지 수정</Link>
-        </li>
-        <li>
-          <Link to="/accounts/edit/profile">정보 수정</Link>
-        </li>
-        <li>
-          <button className="" onClick={auth.signOut}>
-            로그아웃
-          </button>
-        </li>
-      </ul>
-    </>
+   <div className="mt-3 px-3">
+    <h1 className="text-2xl mb-3">Edit Profile</h1>
+    <ul>
+      <li className="">
+        <Link to={`/accounts/edit/image`}>Edit Image</Link>
+      </li>
+      <li className="">
+        <Link to={`/accounts/edit/profile`}>Edit Account</Link>
+      </li>
+      <li className="">
+        <button className="text-red-500" onClick={auth.signOut}>
+          Logout
+        </button>
+      </li>
+    </ul>
+   </div>
   )
 }

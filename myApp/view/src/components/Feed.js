@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import wrapPromise from "./wrapPromise";
 import ArticleItem from "./ArticleItem";
+import { Fallback } from "./Progress";
 
 const limit = 5;
 
@@ -21,7 +22,7 @@ export default function () {
   const resource = fetchData();
   
   return (
-  <Suspense fallback={<p>fetching feed...</p>}>
+  <Suspense fallback={<Fallback />}>
     <Feed resource={resource}/>
   </Suspense>
   )

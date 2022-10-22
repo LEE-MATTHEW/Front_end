@@ -135,15 +135,15 @@ export default function SignUp() {
   console.log("message", message);
 
   return (
-    <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="">
-          <label htmlFor="username">Username</label>
+    <div className="flex justify-center">
+      <form onSubmit={handleSubmit} className="w-60 pt-24">
+        <h1 className="text-2xl mb-3">Sign Up</h1>
+        <div className="mb-2">
+          <label htmlFor="" className="block font-bold">Username</label>
           <input
             type="text"
             name="username"
-            id="username"
+            className="border w-full p-1 outline-none"
             onChange={handleChange}
           />
           <Validation
@@ -152,12 +152,12 @@ export default function SignUp() {
             message={message.username}
           />
         </div>
-        <div className="">
-          <label htmlFor="email">E-mail</label>
+        <div className="mb-2">
+          <label htmlFor="" className="block font-bold">E-mail</label>
           <input
             type="text"
             name="email"
-            id="email"
+            className="border w-full p-1 outline-none"
             autoComplete="off"
             onChange={handleChange}
           />
@@ -167,12 +167,12 @@ export default function SignUp() {
             message={message.email}
           />
         </div>
-        <div className="">
-          <label htmlFor="password">Password</label>
+        <div className="mb-2">
+          <label htmlFor="password" className="block font-bold">Password</label>
           <input
             type="text"
             name="password"
-            id="password"
+            className="border w-full p-1 outline-none"
             autoComplete="off"
             onChange={handleChange}
           />
@@ -182,12 +182,12 @@ export default function SignUp() {
             message={message.password}
           />
         </div>
-        <div className="">
-          <label htmlFor="passwordConfirm">Password Confirm</label>
+        <div className="mb-2">
+          <label htmlFor="" className="block font-bold">Password Confirm</label>
           <input
             type="text"
             name="passwordConfirm"
-            id="passwordConfirm"
+            className="border w-full p-1 outline-none"
             autoComplete="off"
             onChange={handleChange}
           />
@@ -200,21 +200,25 @@ export default function SignUp() {
         <div className="">
           <button
             type="submit"
+            className="border w-full p-1 disabled:text-gray-300"
             disabled={!user.username || !user.email || !user.password || !user.passwordConfirm}
           >
             Submit</button>
         </div>
+        <div className="text-center">
+          <small>2022 &copy; myapp</small>
+        </div>
       </form>
-    </>
+    </div>
   )
 }
 
 function Validation({ error, isLoaded, message }) {
   if (error) {
-    return <p>{error}</p>
+    return <p className="text-red-500 text-sm">{error}</p>
   }
   if (isLoaded === false) {
-    return <p>loading...</p>
+    return <p className="text-sm">loading...</p>
   }
-  return <p>{message}</p>
+  return <p className="text-blue-500 text-sm">{message}</p>
 }
