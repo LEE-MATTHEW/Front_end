@@ -4,6 +4,7 @@ import wrapPromise from "./wrapPromise";
 import AuthContext from "./AuthContext";
 import ArticleList from "./ArticleList";
 
+
 function fetchData(username) {
   const profilePromise = fetch(`http://localhost:3000/profiles/${username}`, {
     headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` }
@@ -136,7 +137,8 @@ function ProfileDetail({ resource }) {
       <ul className="flex border-y mb-3 py-1">
         <li className="flex flex-col items-center w-full">
           <div className="">팔로워</div>
-          <Link to={`/profiles/${profile.username}/followers`}>
+          <Link 
+            to={`/profiles/${profile.username}/followers`}>
             {profile.followersCount}
           </Link>
         </li>

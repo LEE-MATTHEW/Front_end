@@ -38,13 +38,13 @@ export default function Search() {
         setIsLoaded(true);
       })
   }
-
   // 유저 리스트 불러오기
   const userList = users.map(user => (
     <div key={user._id} className="mb-2">
       <Avatar user={user} />
     </div>
   ))
+  
 
   return (
     <div className="px-3 pt-3">

@@ -26,6 +26,9 @@ const ArticleCreate = lazy(() => import('./components/ArticleCreate'))
 const Comments = lazy(() => import('./components/Comments'))
 
 const Profile = lazy(() => import('./components/Profile'));
+const FollowerList = lazy(() => import('./components/FollowerList'));
+const FollowingList = lazy(() => import('./components/FollowingList'));
+
 
 const ProfileEdit = lazy(() => import('./components/ProfileEdit'))
 const EditImage = lazy(() => import('./components/EditImage'))
@@ -49,7 +52,10 @@ export default function App() {
               <Route path="create" element={<ArticleCreate />} />
               <Route path="profiles/:username">
                 <Route index element={<Profile />} />
+                <Route path="followers" element={<FollowerList />} />
+                <Route path="following" element={<FollowingList />} />
               </Route>
+              
               <Route path="p/:articleId">
                 <Route index element={<ArticleView />} />
                 <Route path="comments" element={<Comments />} />
