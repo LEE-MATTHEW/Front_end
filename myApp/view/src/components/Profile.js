@@ -143,7 +143,7 @@ function ProfileDetail({ resource }) {
           </Link>
         </li>
         <li className="flex flex-col items-center w-full">
-          <div className="">팔로잉</div>
+          <div className="">팔로우</div>
           <Link to={`/profiles/${profile.username}/following`}>
             {profile.followingCount}
           </Link>

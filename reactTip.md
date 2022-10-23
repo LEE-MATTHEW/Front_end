@@ -87,3 +87,6 @@
     * Component의 단점
         - state 쓸때 복잡해짐
         - 상위 Component에서 만든 state 쓰려면 props 문법이용해야 함
+
+# 'react-scripts'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는 배치 파일이 아닙니다.
+    - 오류 발생시 npm update를 하면 해결가능
