@@ -128,7 +128,7 @@ export default function Login() {
           <Link to={`/accounts/signup`}>Create Account</Link>
         </div>
         <div className="text-center">
-          <small>2022 &copy; myapp</small>
+          <small>2022 &copy; myins</small>
         </div>
       </form>
       <Loading isLoaded={isLoaded} />

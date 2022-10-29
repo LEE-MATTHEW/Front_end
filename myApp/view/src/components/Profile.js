@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import wrapPromise from "./wrapPromise";
 import AuthContext from "./AuthContext";
 import ArticleList from "./ArticleList";
+import { Fallback } from "./Progress";
 
 
 function fetchData(username) {
@@ -39,7 +40,7 @@ export default function () {
   const resource = fetchData(username);
 
   return (
-    <Suspense fallback={<p>fetching profile...</p>}>
+    <Suspense fallback={<Fallback />}>
       <ProfileDetail resource={resource} />
       <ProfileTimeline resource={resource} />
     </Suspense>

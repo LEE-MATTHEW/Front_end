@@ -206,7 +206,7 @@ export default function SignUp() {
             Submit</button>
         </div>
         <div className="text-center">
-          <small>2022 &copy; myapp</small>
+          <small>2022 &copy; myins</small>
         </div>
       </form>
     </div>

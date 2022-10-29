@@ -2,6 +2,7 @@ import { useState, Suspense } from "react";
 import { useParams, Link, Navigate, useNavigate } from "react-router-dom";
 import wrapPromise from "./wrapPromise";
 import ArticleItem from "./ArticleItem";
+import { Fallback } from "./Progress";
 
 
 function fetchData(articleId) {
@@ -27,7 +28,7 @@ export default function () {
   const resource = fetchData(articleId);
 
   return (
-    <Suspense fallback={<p>fetching article...</p>}>
+    <Suspense fallback={<Fallback />}>
       <ArticleView resource={resource} />
     </Suspense>
   )

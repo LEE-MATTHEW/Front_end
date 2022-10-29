@@ -4,6 +4,7 @@ import AuthContext from "./AuthContext";
 import wrapPromise from "./wrapPromise";
 import Avatar from "./Avatar";
 import ModalWindow from "./ModalWindow";
+import { Fallback } from "./Progress";
 
 function fetchData(articleId) {
   const promise = fetch(`http://localhost:3000/articles/${articleId}/comments`, {
@@ -24,7 +25,7 @@ export default function () {
   const resource = fetchData(articleId);
 
   return (
-    <Suspense fallback={<p>fetching comments...</p>}>
+    <Suspense fallback={<Fallback />}>
       <Comments
         articleId={articleId}
         resource={resource}

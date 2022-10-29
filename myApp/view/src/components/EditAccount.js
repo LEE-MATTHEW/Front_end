@@ -1,6 +1,6 @@
 import { Suspense, useState } from "react";
 import wrapPromise from "./wrapPromise";
-import {SucessMessage} from "./Progress"
+import {Fallback, SucessMessage} from "./Progress"
 
 function fetchData() {
   const promise = fetch('http://localhost:3000/user', {
@@ -19,7 +19,7 @@ export default function () {
   const resource = fetchData();
 
   return (
-    <Suspense fallback={<p>fetching accounts...</p>}>
+    <Suspense fallback={<Fallback />}>
       <EditAccount resource={resource} />
     </Suspense>
   )

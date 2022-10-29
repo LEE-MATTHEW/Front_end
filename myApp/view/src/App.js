@@ -7,6 +7,7 @@ import {
   Outlet, Link, useParams,
   Navigate, useNavigate, useLocation
 } from "react-router-dom";
+import { Fallback } from "./components/Progress";
 
 
 
@@ -40,7 +41,7 @@ const NotFound = lazy(() => import('./components/NotFound'));
 export default function App() {
   return (
     <>
-      <Suspense fallback={<p>fetching app...</p>}>
+      <Suspense fallback={<Fallback />}>
         <AuthProvider>
           <Routes>
 

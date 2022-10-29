@@ -1,5 +1,6 @@
 import { Suspense, useState } from "react";
 import { Link } from "react-router-dom";
+import { Fallback } from "./Progress";
 import wrapPromise from "./wrapPromise";
 
 function fetchData() {
@@ -20,7 +21,7 @@ export default function () {
   const resource = fetchData();
 
   return (
-    <Suspense fallback={<p>fetching image...</p>}>
+    <Suspense fallback={<Fallback />}>
       <EditImage resource={resource} />
     </Suspense>
   )

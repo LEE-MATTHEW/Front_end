@@ -57,7 +57,7 @@ export default function ArticleItem({ article, editArticle, deleteArticle }) {
         </div>
         {/* 댓글 이동 버튼 */}
         <div className="mb-2">
-          <Link to={`/p/${article._id}/comments`} className="text-gray-400">Comments</Link>
+          <Link to={`/p/${article._id}/comments`} className="text-gray-400">댓글</Link>
         </div>
         {/* 게시물 올린 날짜 */}
         <div className="text-xs text-gray-400">
